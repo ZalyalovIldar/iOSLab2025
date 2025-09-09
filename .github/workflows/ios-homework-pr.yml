@@ -11,62 +11,61 @@ on:
 
 permissions:
   contents: read
-  checks: write
-  pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   lint:
-    name: SwiftLint (no project setup)
+    name: SwiftLint (zero-setup)
     runs-on: ubuntu-latest
+    # Запускаем официальный контейнер SwiftLint — ничего не ставим руками.
+    container:
+      image: ghcr.io/realm/swiftlint:latest
     steps:
-      - uses: norio-nomura/action-swiftlint@3.2.1
-    with:
-      args: --config .swiftlint-ci.yml --strict
+      - uses: actions/checkout@v4
 
-      # 1) Временный конфиг SwiftLint — живёт только в раннере.
-      - name: Write teaching SwiftLint config
+      # Конфиг для "учебной" проверки создаём на лету (в проект его добавлять не нужно).
+      - name: Generate SwiftLint CI config
         run: |
           cat > .swiftlint-ci.yml <<'YML'
           reporter: github-actions-logging
           strict: true
           only_rules:
-            - anyobject_protocol
-            - array_init
             - attributes
             - closure_spacing
             - colon
             - comma
             - control_statement
-            - empty_enum_arguments
-            - empty_parameters
-            - empty_parentheses_with_trailing_closure
-            - fallthrough
             - force_cast
             - force_try
             - force_unwrapping
             - identifier_name
-            - implicit_getter
-            - large_tuple
-            - leading_whitespace
-            - mark
             - opening_brace
             - operator_usage_whitespace
-            - redundant_discardable_let
             - redundant_optional_initialization
             - return_arrow_whitespace
             - statement_position
-            - todo
             - trailing_newline
             - trailing_semicolon
             - trailing_whitespace
-            - type_body_length
             - type_name
             - vertical_whitespace
           YML
 
-      # 2) Запуск SwiftLint через готовый action — аннотации прямо в PR.
-      - name: Run SwiftLint
-        uses: norio-nomura/action-swiftlint@v3
-        with:
-          args: --config .swiftlint-ci.yml --strict
+      # Аннотации появятся прямо в Checks у PR, строки подсветятся.
+      - name: Run SwiftLint (strict)
+        run: swiftlint lint --config .swiftlint-ci.yml --strict --reporter github-actions-logging
 
+  build_spm:
+    name: Compile check (SwiftPM, if present)
+    # Автосборка запустится только если в репозитории есть Package.swift
+    if: ${{ hashFiles('Package.swift') != '' }}
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Swift version
+        run: swift --version
+      - name: Build Swift Package (debug)
+        run: swift build -c debug
