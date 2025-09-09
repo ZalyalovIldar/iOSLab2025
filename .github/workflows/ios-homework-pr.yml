@@ -19,7 +19,9 @@ jobs:
     name: SwiftLint (no project setup)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: norio-nomura/action-swiftlint@3.2.1
+    with:
+      args: --config .swiftlint-ci.yml --strict
 
       # 1) Временный конфиг SwiftLint — живёт только в раннере.
       - name: Write teaching SwiftLint config
