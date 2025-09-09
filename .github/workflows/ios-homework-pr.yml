@@ -1,0 +1,70 @@
+name: iOS Homework PR checks
+
+on:
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - '**/*.swift'
+      - 'Package.swift'
+      - '**/*.xcodeproj/**'
+      - '**/*.xcworkspace/**'
+
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
+
+jobs:
+  lint:
+    name: SwiftLint (no project setup)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # 1) Временный конфиг SwiftLint — живёт только в раннере.
+      - name: Write teaching SwiftLint config
+        run: |
+          cat > .swiftlint-ci.yml <<'YML'
+          reporter: github-actions-logging
+          strict: true
+          only_rules:
+            - anyobject_protocol
+            - array_init
+            - attributes
+            - closure_spacing
+            - colon
+            - comma
+            - control_statement
+            - empty_enum_arguments
+            - empty_parameters
+            - empty_parentheses_with_trailing_closure
+            - fallthrough
+            - force_cast
+            - force_try
+            - force_unwrapping
+            - identifier_name
+            - implicit_getter
+            - large_tuple
+            - leading_whitespace
+            - mark
+            - opening_brace
+            - operator_usage_whitespace
+            - redundant_discardable_let
+            - redundant_optional_initialization
+            - return_arrow_whitespace
+            - statement_position
+            - todo
+            - trailing_newline
+            - trailing_semicolon
+            - trailing_whitespace
+            - type_body_length
+            - type_name
+            - vertical_whitespace
+          YML
+
+      # 2) Запуск SwiftLint через готовый action — аннотации прямо в PR.
+      - name: Run SwiftLint
+        uses: norio-nomura/action-swiftlint@v3
+        with:
+          args: --config .swiftlint-ci.yml --strict
+
