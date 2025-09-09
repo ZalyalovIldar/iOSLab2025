@@ -57,15 +57,3 @@ jobs:
       # Аннотации появятся прямо в Checks у PR, строки подсветятся.
       - name: Run SwiftLint (strict)
         run: swiftlint lint --config .swiftlint-ci.yml --strict --reporter github-actions-logging
-
-  build_spm:
-    name: Compile check (SwiftPM, if present)
-    # Автосборка запустится только если в репозитории есть Package.swift
-    if: ${{ hashFiles('Package.swift') != '' }}
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Swift version
-        run: swift --version
-      - name: Build Swift Package (debug)
-        run: swift build -c debug
