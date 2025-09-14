@@ -35,6 +35,7 @@ struct ContentView: View {
                     
                     Text("Artur Bagautdinov")
                         .font(.custom("Arial Bold", size: 28))
+                        .foregroundStyle(Color("textAccent"))
                     
                     Text("iOS Developer")
                         .font(.custom("Arial", size: 20))
@@ -49,6 +50,7 @@ struct ContentView: View {
                     HStack {
                         Image(systemName: "phone.fill")
                         Text("+7 (222) 333-21-03")
+                            .foregroundStyle(Color("textAccent"))
                     }
                     
                     HStack {
