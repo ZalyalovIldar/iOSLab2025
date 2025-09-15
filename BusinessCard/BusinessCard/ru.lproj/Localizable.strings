@@ -2,4 +2,6 @@
 "job_title" = "iOS Разработчик";
 "call_button" = "Позвонить";
 "share_button" = "Поделиться";
-"share_text" = "👤 Артур Багаутдинов\n🚀 iOS Разработчик\n\n📞 Телефон: +7 (222) 333-21-03\n✉️ Почта: artur.bagautdinov@gmail.com\n💼 GitHub: https://github.com/arturbagautdinov";
+"phone_label" = "Телефон";
+"email_label" = "Email";
+"github_label" = "GitHub";
