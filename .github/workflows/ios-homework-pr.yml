@@ -85,7 +85,6 @@ jobs:
             - trailing_newline
             - trailing_semicolon
             - type_name
-            - vertical_whitespace
           YML
 
       # 4) reviewdog (прибит к коммиту)
