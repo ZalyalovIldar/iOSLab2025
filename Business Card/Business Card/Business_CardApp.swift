@@ -21,6 +21,4 @@ struct Business_CardApp: App {
             .tint(DataStorage.stringToColor(color: accentColor))
         }
     }
-    
-    
 }
