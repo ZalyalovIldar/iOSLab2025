@@ -88,7 +88,7 @@ jobs:
       - name: Choose reviewdog reporter
         run: |
           if [ "${{ github.event.pull_request.head.repo.fork }}" = "true" ]; then
-            echo "REPORTER=github-pr-check" >> $GITHUB_ENV
+            echo "REPORTER=github-pr-review" >> $GITHUB_ENV
           else
             echo "REPORTER=github-pr-review" >> $GITHUB_ENV
           fi
