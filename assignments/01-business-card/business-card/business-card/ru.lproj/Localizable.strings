@@ -1,0 +1,13 @@
+//
+//  Localizable.strings
+//  business-card
+//
+//  Created by Айнур on 09.09.2025.
+//
+
+"name" = "Айнур Сайтов";
+"job_title" = "iOS Разработчик";
+"call" = "Позвонить";
+"calling..." = "Идет звонок...";
+"share" = "Поделиться";
+
