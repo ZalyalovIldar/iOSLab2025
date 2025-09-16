@@ -1,4 +1,4 @@
-name: iOS Homework PR checks (SwiftLint + reviewdog, PRs from forks)
+name: iOS Homework PR checks (SwiftLint + reviewdog, forks OK)
 
 on:
   pull_request_target:
@@ -11,7 +11,7 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write   
+  pull-requests: write
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
@@ -19,11 +19,12 @@ concurrency:
 
 jobs:
   lint_reviewdog:
-    name: SwiftLint + reviewdog (inline PR comments)
+    name: SwiftLint + reviewdog (PR review comments)
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/realm/swiftlint:latest
     steps:
+      # 0) Пакеты, чтобы был .git и скачался reviewdog
       - name: Install git & curl in container
         run: |
           set -e
@@ -40,6 +41,7 @@ jobs:
           git --version
           curl --version
 
+      # 1) Безопасный checkout кода из форка (без токенов, с историей)
       - name: Checkout PR HEAD (from fork) safely
         uses: actions/checkout@v4
         with:
@@ -48,11 +50,18 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
 
+      # 1.1) Починка "dubious ownership"
+      - name: Mark workspace as safe for git
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      # 2) Подтянуть базовую ветку для диффа (ничего не исполняем)
       - name: Fetch base branch (for diff only)
         run: |
           git remote add base "https://github.com/${{ github.repository }}.git"
           git fetch --no-tags --depth=1 base ${{ github.event.pull_request.base.ref }}
-          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      # 3) Конфиг SwiftLint — только заданные правила
       - name: Generate SwiftLint CI config
         run: |
           cat > .swiftlint-ci.yml <<'YML'
@@ -78,8 +87,12 @@ jobs:
             - type_name
             - vertical_whitespace
           YML
+
+      # 4) reviewdog (прибит к коммиту)
       - name: Setup reviewdog
         uses: reviewdog/action-setup@d8edfce3dd5e1ec6978745e801f9c50b5ef80252 # v1.4.0
+
+      # 5) Линт + публикация комментариев
       - name: Run SwiftLint through reviewdog (PR review)
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
