@@ -9,8 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @Environment(\.colorScheme) var colorScheme
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.colorScheme)
+    var colorScheme
+    
+    @Environment(\.horizontalSizeClass)
+    var horizontalSizeClass
     
     private var isiPad: Bool {
         horizontalSizeClass == .regular
@@ -144,4 +147,3 @@ private func createText() -> String {
 #Preview {
     ContentView()
 }
-
