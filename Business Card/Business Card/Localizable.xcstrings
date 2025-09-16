@@ -1,7 +1,166 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-
+    "- basic skills in SwiftUI" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- базовые навыки работы с SwiftUI"
+          }
+        }
+      }
+    },
+    "- essential knowledge of Git/GitHub" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- владение Git/GitHub"
+          }
+        }
+      }
+    },
+    "- experience in developing simple learning app" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- опыт разработки простого обучающего приложения"
+          }
+        }
+      }
+    },
+    "- fundamentals of programming in Java " : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- основы программирования на Java"
+          }
+        }
+      }
+    },
+    "ACCENT COLOR       " : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ЦВЕТОВОЙ АКЦЕНТ"
+          }
+        }
+      }
+    },
+    "APPEARANCE" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОФОРМЛЕНИЕ"
+          }
+        }
+      }
+    },
+    "Business Card" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Бизнес карта"
+          }
+        }
+      }
+    },
+    "Dark" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Темное"
+          }
+        }
+      }
+    },
+    "Display" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Экран"
+          }
+        }
+      }
+    },
+    "INFO" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ИНФО"
+          }
+        }
+      }
+    },
+    "iOS Developer" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iOS Разработчик"
+          }
+        }
+      }
+    },
+    "Junior- iOS Developer" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Junior- iOS Разработчик"
+          }
+        }
+      }
+    },
+    "lajsanminlebaeva@mail.ru" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "lajsanminlebaeva@mail.ru"
+          }
+        }
+      }
+    },
+    "Laysan Minlebaeva" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ляйсан Минлебаева"
+          }
+        }
+      }
+    },
+    "Light" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Светлое"
+          }
+        }
+      }
+    },
+    "Personal Information" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Личная информация"
+          }
+        }
+      }
+    }
   },
   "version" : "1.0"
 }
