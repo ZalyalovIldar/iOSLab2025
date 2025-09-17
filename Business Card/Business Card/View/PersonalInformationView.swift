@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct PersonalInformationView: View {
-    @AppStorage("isAccentColor") private var accentColor = "systemBlue"
-    @Environment(\.colorScheme) private var colorScheme
+    @AppStorage("isAccentColor")
+    private var accentColor = "systemBlue"
+    
+    @Environment(\.colorScheme)
+    private var colorScheme
     
     var body: some View {
         ZStack {

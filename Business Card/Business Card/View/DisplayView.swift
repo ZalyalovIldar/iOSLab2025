@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct DisplayView: View {
-    @AppStorage("isDarkMode") private var isDarkMode = false
-    @AppStorage("isAccentColor") private var accentColor = "systemBlue"
-    @Environment(\.colorScheme) private var colorScheme
+    @AppStorage("isDarkMode")
+    private var isDarkMode = false
+    
+    @AppStorage("isAccentColor")
+    private var accentColor = "systemBlue"
+    
+    @Environment(\.colorScheme)
+    private var colorScheme
+    
     private var data = DataStorage()
     
     var body: some View {
@@ -75,7 +81,7 @@ struct DisplayView: View {
             VStack {
                 Image(image)
                     .resizable()
-                    .frame(width: 150 , height: 320)
+                    .frame(width: 150, height: 320)
                     .cornerRadius(20)
                 modeName.padding(10)
                 Button {

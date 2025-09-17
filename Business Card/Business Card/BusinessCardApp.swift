@@ -9,8 +9,11 @@ import SwiftUI
 
 @main
 struct BusinessCardApp: App {
-    @AppStorage("isDarkMode") private var isDarkMode = false
-    @AppStorage("isAccentColor") private var accentColor = "systemBlue"
+    @AppStorage("isDarkMode")
+    private var isDarkMode = false
+    
+    @AppStorage("isAccentColor")
+    private var accentColor = "systemBlue"
     
     var body: some Scene {
         WindowGroup {

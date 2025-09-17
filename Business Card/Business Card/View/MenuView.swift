@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct MenuView: View {
-    @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.colorScheme)
+    private var colorScheme
+    
     private var menu = DataStorage()
     
     var body: some View {

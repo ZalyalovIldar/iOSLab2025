@@ -50,7 +50,7 @@ struct DataStorage {
             case "systemYellow": return Color(.systemYellow)
             case "systemGreen": return Color(.systemGreen)
             case "systemGray": return Color(.systemGray)
-            default : return Color(.systemBlue)
+            default: return Color(.systemBlue)
         }
     }
     
