@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct Business_CardApp: App {
+struct BusinessCardApp: App {
     @AppStorage("isDarkMode") private var isDarkMode = false
     @AppStorage("isAccentColor") private var accentColor = "systemBlue"
     
