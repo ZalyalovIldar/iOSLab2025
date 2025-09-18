@@ -2,7 +2,8 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.horizontalSizeClass) private var hSizeClass
-    @State private var colorSchemeOverride: ColorScheme? = nil
+    
+    @State private var colorSchemeOverride: ColorScheme?
 
     private let name = "Иван Иванов"
     private let jobTitleKey: LocalizedStringKey = "job_title"
@@ -13,7 +14,7 @@ struct ContentView: View {
         let job = NSLocalizedString("job_title", comment: "")
         let phoneLabel = NSLocalizedString("phone_label", comment: "")
         let emailLabel = NSLocalizedString("email_label", comment: "")
-        
+
         return """
         \(name)
         \(job)
@@ -44,7 +45,7 @@ struct ContentView: View {
                         .fill(Color(.secondarySystemBackground))
                 )
                 .padding()
-                
+
                 Button {
                     if colorSchemeOverride == .dark {
                         colorSchemeOverride = .light
@@ -55,7 +56,7 @@ struct ContentView: View {
                     Label("Сменить тему", systemImage: "paintbrush")
                 }
                 .buttonStyle(.bordered)
-                
+
             }
             .padding(.vertical)
         }
@@ -63,7 +64,6 @@ struct ContentView: View {
         .preferredColorScheme(colorSchemeOverride)
     }
 
-    // Фото (Base)
     private var avatar: some View {
         Image("avatar")
             .resizable()
@@ -130,20 +130,12 @@ struct ContactRow: View {
     }
 }
 
-
 #Preview {
     Group {
         ContentView()
             .previewDisplayName("Светлая тема")
-    }
-}
-
-
-@main
-struct BusinessCardApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+        ContentView()
+            .preferredColorScheme(.dark)
+            .previewDisplayName("Тёмная тема")
     }
 }
