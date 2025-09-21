@@ -16,10 +16,10 @@ struct ContentView: View {
                 Image("E1724DCD-5C25-4825-B050-99FD981B79D6_1_105_c")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 150,height: 150)
+                    .frame(width: 150, height: 150)
                     .clipShape(.circle)
                     .overlay(Circle()
-                        .stroke(Color.gray, lineWidth: 4))
+                    .stroke(Color.gray, lineWidth: 4))
                     .shadow(radius: 10)
                 
                 Text("Nastya Shevchuk")
@@ -31,7 +31,6 @@ struct ContentView: View {
             }
             
             Divider()
-            
             
             VStack(alignment: .leading,
                    spacing: 10){
@@ -47,9 +46,7 @@ struct ContentView: View {
                 }
             }
             .font(.headline)
-            
             .padding()
-            
             
             Button(action: {
                 print("Звоним на номер +7 (912) 123-45-67...")
@@ -72,23 +69,15 @@ struct ContentView: View {
                         .foregroundColor(.white)
                         .cornerRadius(15)
                 }
-            
-            
-            
                 .padding(.top, 5)
-            
-                
-            
+
             Spacer()
             
         }
         .padding()
-        
-    
     }
 }
 
 #Preview {
     ContentView()
 }
-
