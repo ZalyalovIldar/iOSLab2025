@@ -12,14 +12,14 @@ struct ContentView: View {
     var body: some View {
         VStack {
             
-            VStack{
+            VStack {
                 Image("E1724DCD-5C25-4825-B050-99FD981B79D6_1_105_c")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 150, height: 150)
                     .clipShape(.circle)
                     .overlay(Circle()
-                    .stroke(Color.gray, lineWidth: 4))
+                        .stroke(Color.gray, lineWidth: 4))
                     .shadow(radius: 10)
                 
                 Text("Nastya Shevchuk")
@@ -32,15 +32,14 @@ struct ContentView: View {
             
             Divider()
             
-            VStack(alignment: .leading,
-                   spacing: 10){
+            VStack(alignment: .leading, spacing: 10) {
                 
-                HStack{
+                HStack {
                     Image(systemName: "phone")
                     Text("+7 (912) 123-45-67")
                 }
                 
-                HStack{
+                HStack {
                     Image(systemName: "envelope")
                     Text("nastya.sobaka228@gmail.com")
                 }
@@ -61,7 +60,7 @@ struct ContentView: View {
             
             
             ShareLink(
-                item: "Анастасия Шевчук, ios developer, +7 (912) 123-45-67, nastya.sobaka228@gmail.com"){
+                item: "Анастасия Шевчук, ios developer, +7 (912) 123-45-67, nastya.sobaka228@gmail.com") {
                     Label("Share...", systemImage: "square.and.arrow.up")
                         .padding()
                         .frame(maxWidth: .infinity)
