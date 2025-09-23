@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class business_card_GusmanovUITestsLaunchTests: XCTestCase {
+final class businesscardGusmanovUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
