@@ -17,17 +17,45 @@ struct StartView: View {
     let maxLimit: Int = 1000
     let numberRange = 1...1000
     
+    @AppStorage("wins")
+    private var wins = 0
+    
+    @AppStorage("losses")
+    private var losses = 0
+    
     var body: some View {
     
         NavigationStack(path: $path) {
             
-            TitleView()
-            
-            Divider()
-                .background(Color(.gray))
-                .padding(.horizontal)
+            VStack(spacing: 20) {
+                
+                TitleView()
+                
+                Divider()
+                    .background(Color(.gray))
+                    .padding(.horizontal)
+                
+                StatsView(wins: $wins, losses: $losses)
+                
+                Button("Reset stats") {
+                    wins = 0
+                    losses = 0
+                }
+                .foregroundColor(.white)
+                .background(
+                    RoundedRectangle(cornerRadius: 40)
+                        .fill(gradient)
+                        .frame(width: 110, height: 35)
+                )
+                
+                Divider()
+                    .background(Color(.gray))
+                    .padding(.horizontal)
+                
+            }
             
             VStack(spacing: 30) {
+                
                 Text("Select Difficulty")
                     .font(.headline)
                     .fontWeight(.bold)
@@ -97,6 +125,7 @@ struct StartView: View {
                         )
                         
                     }
+                    
                 }
                 
                 Divider()
@@ -109,10 +138,9 @@ struct StartView: View {
                 .foregroundStyle(Color.white)
                 .background(
                     RoundedRectangle(cornerRadius: 30)
-                        .fill(Color.blue)
+                        .fill(gradient)
                         .frame(width: 200, height: 50)
                 )
-                    
                 
                 Text("Attempts: \(selectedDifficulty.attemptCount), range: from \(minValue) to \(maxValue)")
                     .foregroundStyle(Color.gray)
@@ -123,8 +151,8 @@ struct StartView: View {
             .padding(.horizontal)
             .navigationDestination(for: GameSettings.self) { settings in
                 GameView(maxAttempts: settings.maxAttempts, min: settings.minNumber, max: settings.maxNumber)
+                
             }
-            
         }
     }
 }

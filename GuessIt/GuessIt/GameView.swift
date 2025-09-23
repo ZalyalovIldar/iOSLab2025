@@ -17,7 +17,14 @@ struct GameView: View {
     @State private var showingResult = false
     @State private var gameResult: GameResult?
     @State private var shouldCloseToStart = false
+    
     @Environment(\.dismiss) private var dismiss
+    
+    @AppStorage("wins")
+    private var wins = 0
+    
+    @AppStorage("losses")
+    private var losses = 0
     
     let min: Int
     let max: Int
@@ -27,6 +34,20 @@ struct GameView: View {
         VStack(spacing: 40) {
             
             TitleView()
+            
+            VStack(spacing: 20) {
+                
+                Divider()
+                    .background(Color(.gray))
+                    .padding(.horizontal)
+                
+                StatsView(wins: $wins, losses: $losses)
+                
+                Divider()
+                    .background(Color(.gray))
+                    .padding(.horizontal)
+                
+            }
             
             TextField("Guess the number from \(min) to \(max)",
                       text: $userInput)
@@ -79,11 +100,13 @@ struct GameView: View {
                     RoundedRectangle(cornerRadius: 30)
                         .foregroundColor(.gray.opacity(0.2))
                         .frame(width: 170, height: 80))
+                
             }
             Text("\(gameMessage)")
                 .padding()
                 .font(.headline)
                 .multilineTextAlignment(.center)
+            
         }
         .padding()
         .onAppear {
@@ -117,6 +140,7 @@ struct GameView: View {
         
         if userGuess == targetNumb, currentAttempt > 0 {
             
+            wins += 1
             gameResult = GameResult(isWin: true, targetNumber: targetNumb, attemptsUsed: currentAttempt, min: min, max: max)
             showingResult = true
             
@@ -138,6 +162,7 @@ struct GameView: View {
         
         if maxAttempts == 0 {
             
+            losses += 1
             gameResult = GameResult(isWin: false, targetNumber: targetNumb, attemptsUsed: currentAttempt-1, min: min, max: max)
             showingResult = true
             
@@ -150,7 +175,7 @@ struct TitleView: View {
         Text("Guess it!")
             .font(.system(size: 40))
             .bold()
-            .foregroundStyle(Gradient(colors: [.blue, .purple]))
+            .foregroundStyle(gradient)
     }
 }
 

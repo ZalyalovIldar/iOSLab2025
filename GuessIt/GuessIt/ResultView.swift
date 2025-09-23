@@ -14,12 +14,22 @@ struct ResultView: View {
     let attemptsUsed: Int
     let min: Int
     let max: Int
-    @Binding var shouldCloseToStart: Bool
-    @Environment(\.dismiss) private var dismiss
     
+    @Binding var shouldCloseToStart: Bool
+    
+    @Environment(\.dismiss)
+    private var dismiss
+    
+    @AppStorage("wins")
+    private var wins = 0
+    
+    @AppStorage("losses")
+    private var losses = 0
     
     var body: some View {
+        
         VStack(spacing: 30) {
+            
             Image(systemName: isWin ? "trophy.fill" : "xmark.circle.fill")
                 .font(.system(size: 80))
                 .foregroundColor(isWin ? .yellow : .red)
@@ -34,17 +44,22 @@ struct ResultView: View {
             Text("Attempts used: \(attemptsUsed)")
                 .font(.headline)
             
+            StatsView(wins: $wins, losses: $losses)
+            
             Button("Play Again") {
                 dismiss()
                 shouldCloseToStart = true
+                
             }
             .padding()
-            .background(Color.blue)
+            .background(gradient)
             .foregroundColor(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .clipShape(RoundedRectangle(cornerRadius: 40))
+            
         }
         .padding()
         .interactiveDismissDisabled(true)
+        
     }
 }
 
