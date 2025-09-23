@@ -1,0 +1,10 @@
+//
+//  Localizable.strings
+//  IOS_LAB_1
+//
+//  Created by krnklvx on 09.09.2025.
+//
+"call_button" = "Позвонить";
+"share_button" = "Поделиться";
+"name_text" = "Ахметова Карина";
+"profession_text" = "IOS Разрабочик";
