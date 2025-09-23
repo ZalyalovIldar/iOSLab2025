@@ -102,4 +102,4 @@ jobs:
                 -reporter=github-pr-review \
                 -filter-mode=added \
                 -level=warning \
-                -fail-on-error=false
+                -fail-on-error=true
