@@ -7,7 +7,7 @@
 
 import Testing
 
-struct businesscardGusmanovTests {
+struct BusinesscardGusmanovTests {
 
     @Test
     func example() async throws {
