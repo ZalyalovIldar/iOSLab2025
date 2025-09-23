@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class guess_it_GusmanovUITestsLaunchTests: XCTestCase {
+final class GuessitGusmanovUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

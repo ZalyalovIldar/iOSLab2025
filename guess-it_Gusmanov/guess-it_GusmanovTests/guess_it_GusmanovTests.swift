@@ -7,9 +7,10 @@
 
 import Testing
 
-struct guess_it_GusmanovTests {
+struct GuessitGusmanovTests {
 
-    @Test func example() async throws {
+    @Test
+    func example() async throws {
         // Write your test here and use APIs like `#expect(...)` to check expected conditions.
     }
 
