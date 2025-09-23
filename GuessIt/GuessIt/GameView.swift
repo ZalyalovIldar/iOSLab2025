@@ -18,7 +18,8 @@ struct GameView: View {
     @State private var gameResult: GameResult?
     @State private var shouldCloseToStart = false
     
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
     
     @AppStorage("wins")
     private var wins = 0
@@ -57,7 +58,7 @@ struct GameView: View {
             .padding(.horizontal)
             
             Button("Guess the number") {
-                GenerateNumber()
+                generateNumber()
             }
             .padding()
             .background(gradient)
@@ -131,7 +132,7 @@ struct GameView: View {
         
     }
     
-    private func GenerateNumber() {
+    private func generateNumber() {
         
         guard let userGuess = Int(userInput) else {
             gameMessage = "Enter a valid number, please"
@@ -163,7 +164,7 @@ struct GameView: View {
         if maxAttempts == 0 {
             
             losses += 1
-            gameResult = GameResult(isWin: false, targetNumber: targetNumb, attemptsUsed: currentAttempt-1, min: min, max: max)
+            gameResult = GameResult(isWin: false, targetNumber: targetNumb, attemptsUsed: currentAttempt - 1, min: min, max: max)
             showingResult = true
             
         }
