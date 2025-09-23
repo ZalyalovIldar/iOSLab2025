@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  GuessGame
+
+  Created by Ляйсан on 23.09.2025.
+  
+*/
+
+"game_title" = "Guess It Game ";
+"difficulty_level" = "Difficulty level ";
+"set_range" = "Set range ";
+"to" = "to";
+"attempts_left" = "Attempts left: %d";
+"enter_your_guess" = "Enter your guess";
+"fantastic" = "Fantastic";
+"try_your_best" = "Try your best!";
+"you_nailed_it" = "You nailed it!";
+"game_over" = "Game over";
+"number_was" = "%d";
+"guess_button" = "Guess";
+"start_playing" = "Start Playing";
+"new_game" = "New game +";
+"new_round" = "New +";
+"invalid_range_title" = "Invalid range";
+"invalid_range_message" = "Make sure the start is smaller than the end";
+"hint_higher" = "Higher";
+"hint_lower" = "Lower";

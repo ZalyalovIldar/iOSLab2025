@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  GuessGame
+
+  Created by Ляйсан on 23.09.2025.
+  
+*/
+
+"game_title" = "Угадай число";
+"difficulty_level" = "Уровень сложности";
+"set_range" = "Диапазон";
+"to" = "до";
+"attempts_left" = "Попыток осталось: %d";
+"enter_your_guess" = "Введите число";
+"fantastic" = "Фантастика!";
+"try_your_best" = "Не сдавайся!";
+"you_nailed_it" = "Точно в цель!";
+"game_over" = "Игра окончена";
+"number_was" = "%d";
+"guess_button" = "Угадать";
+"start_playing" = "Начать игру";
+"new_game" = "Игра +";
+"new_round" = "Новый раунд +";
+"invalid_range_title" = "Неверный диапазон";
+"invalid_range_message" = "Начало должно быть меньше конца";
+"hint_higher" = "Больше";
+"hint_lower" = "Меньше";
