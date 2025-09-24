@@ -42,6 +42,7 @@ struct GameView: View {
                 game = GameViewModel(difficulty: selectedLevel, rangeStart: 1, rangeEnd: 100)
             }
         }
+        .hideKeyboardOnTap()
         .alert("Invalid", isPresented: $isShowingAlert) {
             Button("OK", role: .cancel) { }
         } message: {
