@@ -8,7 +8,7 @@
 import Foundation
 
 @Observable
-class GameViewModel  {
+class GameViewModel {
     var game: Game
     var hint: String { game.hint }
     var didWin: Bool { game.didWin }

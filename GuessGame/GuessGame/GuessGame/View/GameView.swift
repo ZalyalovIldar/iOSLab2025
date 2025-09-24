@@ -150,7 +150,7 @@ struct GameView: View {
         }
     }
     
-    private var numberToGuess: some  View {
+    private var numberToGuess: some View {
         Text(game.gameIsOver ? "\(game.numberToGuess)" : "?")
             .foregroundStyle(game.gameIsOver && game.didWin ?  Color.greenish : game.gameIsOver && !game.didWin ? Color.reddish : .gray.opacity(0.7))
             .font(.system(size: 100, weight: .bold))
