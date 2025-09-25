@@ -1,13 +1,13 @@
 //
-//  business_cardUITests.swift
-//  business cardUITests
+//  guess_numberUITests.swift
+//  guess_numberUITests
 //
-//  Created by OstapMamykin on 16.09.2025.
+//  Created by OstapMamykin on 25.09.2025.
 //
 
 import XCTest
 
-final class business_cardUITests: XCTestCase {
+final class guess_numberUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

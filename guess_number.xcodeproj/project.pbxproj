@@ -7,62 +7,62 @@
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
-		777D7F522E78C30D0087B478 /* PBXContainerItemProxy */ = {
+		777D7FAC2E85B2360087B478 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 777D7F3C2E78C30A0087B478 /* Project object */;
+			containerPortal = 777D7F962E85B2330087B478 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 777D7F432E78C30A0087B478;
-			remoteInfo = "business card";
+			remoteGlobalIDString = 777D7F9D2E85B2330087B478;
+			remoteInfo = guess_number;
 		};
-		777D7F5C2E78C30D0087B478 /* PBXContainerItemProxy */ = {
+		777D7FB62E85B2360087B478 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 777D7F3C2E78C30A0087B478 /* Project object */;
+			containerPortal = 777D7F962E85B2330087B478 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 777D7F432E78C30A0087B478;
-			remoteInfo = "business card";
+			remoteGlobalIDString = 777D7F9D2E85B2330087B478;
+			remoteInfo = guess_number;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		777D7F442E78C30A0087B478 /* business card.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "business card.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		777D7F512E78C30D0087B478 /* business cardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "business cardTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		777D7F5B2E78C30D0087B478 /* business cardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "business cardUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		777D7F9E2E85B2340087B478 /* guess_number.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = guess_number.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		777D7FAB2E85B2360087B478 /* guess_numberTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = guess_numberTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		777D7FB52E85B2360087B478 /* guess_numberUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = guess_numberUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		777D7F462E78C30A0087B478 /* business card */ = {
+		777D7FA02E85B2340087B478 /* guess_number */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "business card";
+			path = guess_number;
 			sourceTree = "<group>";
 		};
-		777D7F542E78C30D0087B478 /* business cardTests */ = {
+		777D7FAE2E85B2360087B478 /* guess_numberTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "business cardTests";
+			path = guess_numberTests;
 			sourceTree = "<group>";
 		};
-		777D7F5E2E78C30D0087B478 /* business cardUITests */ = {
+		777D7FB82E85B2360087B478 /* guess_numberUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "business cardUITests";
+			path = guess_numberUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		777D7F412E78C30A0087B478 /* Frameworks */ = {
+		777D7F9B2E85B2330087B478 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		777D7F4E2E78C30D0087B478 /* Frameworks */ = {
+		777D7FA82E85B2360087B478 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		777D7F582E78C30D0087B478 /* Frameworks */ = {
+		777D7FB22E85B2360087B478 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -72,22 +72,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		777D7F3B2E78C30A0087B478 = {
+		777D7F952E85B2330087B478 = {
 			isa = PBXGroup;
 			children = (
-				777D7F462E78C30A0087B478 /* business card */,
-				777D7F542E78C30D0087B478 /* business cardTests */,
-				777D7F5E2E78C30D0087B478 /* business cardUITests */,
-				777D7F452E78C30A0087B478 /* Products */,
+				777D7FA02E85B2340087B478 /* guess_number */,
+				777D7FAE2E85B2360087B478 /* guess_numberTests */,
+				777D7FB82E85B2360087B478 /* guess_numberUITests */,
+				777D7F9F2E85B2340087B478 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		777D7F452E78C30A0087B478 /* Products */ = {
+		777D7F9F2E85B2340087B478 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				777D7F442E78C30A0087B478 /* business card.app */,
-				777D7F512E78C30D0087B478 /* business cardTests.xctest */,
-				777D7F5B2E78C30D0087B478 /* business cardUITests.xctest */,
+				777D7F9E2E85B2340087B478 /* guess_number.app */,
+				777D7FAB2E85B2360087B478 /* guess_numberTests.xctest */,
+				777D7FB52E85B2360087B478 /* guess_numberUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,98 +95,98 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		777D7F432E78C30A0087B478 /* business card */ = {
+		777D7F9D2E85B2330087B478 /* guess_number */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 777D7F652E78C30D0087B478 /* Build configuration list for PBXNativeTarget "business card" */;
+			buildConfigurationList = 777D7FBF2E85B2360087B478 /* Build configuration list for PBXNativeTarget "guess_number" */;
 			buildPhases = (
-				777D7F402E78C30A0087B478 /* Sources */,
-				777D7F412E78C30A0087B478 /* Frameworks */,
-				777D7F422E78C30A0087B478 /* Resources */,
+				777D7F9A2E85B2330087B478 /* Sources */,
+				777D7F9B2E85B2330087B478 /* Frameworks */,
+				777D7F9C2E85B2330087B478 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				777D7F462E78C30A0087B478 /* business card */,
+				777D7FA02E85B2340087B478 /* guess_number */,
 			);
-			name = "business card";
+			name = guess_number;
 			packageProductDependencies = (
 			);
-			productName = "business card";
-			productReference = 777D7F442E78C30A0087B478 /* business card.app */;
+			productName = guess_number;
+			productReference = 777D7F9E2E85B2340087B478 /* guess_number.app */;
 			productType = "com.apple.product-type.application";
 		};
-		777D7F502E78C30D0087B478 /* business cardTests */ = {
+		777D7FAA2E85B2360087B478 /* guess_numberTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 777D7F682E78C30D0087B478 /* Build configuration list for PBXNativeTarget "business cardTests" */;
+			buildConfigurationList = 777D7FC22E85B2360087B478 /* Build configuration list for PBXNativeTarget "guess_numberTests" */;
 			buildPhases = (
-				777D7F4D2E78C30D0087B478 /* Sources */,
-				777D7F4E2E78C30D0087B478 /* Frameworks */,
-				777D7F4F2E78C30D0087B478 /* Resources */,
+				777D7FA72E85B2360087B478 /* Sources */,
+				777D7FA82E85B2360087B478 /* Frameworks */,
+				777D7FA92E85B2360087B478 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				777D7F532E78C30D0087B478 /* PBXTargetDependency */,
+				777D7FAD2E85B2360087B478 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				777D7F542E78C30D0087B478 /* business cardTests */,
+				777D7FAE2E85B2360087B478 /* guess_numberTests */,
 			);
-			name = "business cardTests";
+			name = guess_numberTests;
 			packageProductDependencies = (
 			);
-			productName = "business cardTests";
-			productReference = 777D7F512E78C30D0087B478 /* business cardTests.xctest */;
+			productName = guess_numberTests;
+			productReference = 777D7FAB2E85B2360087B478 /* guess_numberTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		777D7F5A2E78C30D0087B478 /* business cardUITests */ = {
+		777D7FB42E85B2360087B478 /* guess_numberUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 777D7F6B2E78C30D0087B478 /* Build configuration list for PBXNativeTarget "business cardUITests" */;
+			buildConfigurationList = 777D7FC52E85B2360087B478 /* Build configuration list for PBXNativeTarget "guess_numberUITests" */;
 			buildPhases = (
-				777D7F572E78C30D0087B478 /* Sources */,
-				777D7F582E78C30D0087B478 /* Frameworks */,
-				777D7F592E78C30D0087B478 /* Resources */,
+				777D7FB12E85B2360087B478 /* Sources */,
+				777D7FB22E85B2360087B478 /* Frameworks */,
+				777D7FB32E85B2360087B478 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				777D7F5D2E78C30D0087B478 /* PBXTargetDependency */,
+				777D7FB72E85B2360087B478 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				777D7F5E2E78C30D0087B478 /* business cardUITests */,
+				777D7FB82E85B2360087B478 /* guess_numberUITests */,
 			);
-			name = "business cardUITests";
+			name = guess_numberUITests;
 			packageProductDependencies = (
 			);
-			productName = "business cardUITests";
-			productReference = 777D7F5B2E78C30D0087B478 /* business cardUITests.xctest */;
+			productName = guess_numberUITests;
+			productReference = 777D7FB52E85B2360087B478 /* guess_numberUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		777D7F3C2E78C30A0087B478 /* Project object */ = {
+		777D7F962E85B2330087B478 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
-					777D7F432E78C30A0087B478 = {
+					777D7F9D2E85B2330087B478 = {
 						CreatedOnToolsVersion = 16.4;
 					};
-					777D7F502E78C30D0087B478 = {
+					777D7FAA2E85B2360087B478 = {
 						CreatedOnToolsVersion = 16.4;
-						TestTargetID = 777D7F432E78C30A0087B478;
+						TestTargetID = 777D7F9D2E85B2330087B478;
 					};
-					777D7F5A2E78C30D0087B478 = {
+					777D7FB42E85B2360087B478 = {
 						CreatedOnToolsVersion = 16.4;
-						TestTargetID = 777D7F432E78C30A0087B478;
+						TestTargetID = 777D7F9D2E85B2330087B478;
 					};
 				};
 			};
-			buildConfigurationList = 777D7F3F2E78C30A0087B478 /* Build configuration list for PBXProject "business card" */;
+			buildConfigurationList = 777D7F992E85B2330087B478 /* Build configuration list for PBXProject "guess_number" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -194,36 +194,36 @@
 				Base,
 				ru,
 			);
-			mainGroup = 777D7F3B2E78C30A0087B478;
+			mainGroup = 777D7F952E85B2330087B478;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 777D7F452E78C30A0087B478 /* Products */;
+			productRefGroup = 777D7F9F2E85B2340087B478 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				777D7F432E78C30A0087B478 /* business card */,
-				777D7F502E78C30D0087B478 /* business cardTests */,
-				777D7F5A2E78C30D0087B478 /* business cardUITests */,
+				777D7F9D2E85B2330087B478 /* guess_number */,
+				777D7FAA2E85B2360087B478 /* guess_numberTests */,
+				777D7FB42E85B2360087B478 /* guess_numberUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		777D7F422E78C30A0087B478 /* Resources */ = {
+		777D7F9C2E85B2330087B478 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		777D7F4F2E78C30D0087B478 /* Resources */ = {
+		777D7FA92E85B2360087B478 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		777D7F592E78C30D0087B478 /* Resources */ = {
+		777D7FB32E85B2360087B478 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -233,21 +233,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		777D7F402E78C30A0087B478 /* Sources */ = {
+		777D7F9A2E85B2330087B478 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		777D7F4D2E78C30D0087B478 /* Sources */ = {
+		777D7FA72E85B2360087B478 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		777D7F572E78C30D0087B478 /* Sources */ = {
+		777D7FB12E85B2360087B478 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -257,25 +257,24 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		777D7F532E78C30D0087B478 /* PBXTargetDependency */ = {
+		777D7FAD2E85B2360087B478 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 777D7F432E78C30A0087B478 /* business card */;
-			targetProxy = 777D7F522E78C30D0087B478 /* PBXContainerItemProxy */;
+			target = 777D7F9D2E85B2330087B478 /* guess_number */;
+			targetProxy = 777D7FAC2E85B2360087B478 /* PBXContainerItemProxy */;
 		};
-		777D7F5D2E78C30D0087B478 /* PBXTargetDependency */ = {
+		777D7FB72E85B2360087B478 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 777D7F432E78C30A0087B478 /* business card */;
-			targetProxy = 777D7F5C2E78C30D0087B478 /* PBXContainerItemProxy */;
+			target = 777D7F9D2E85B2330087B478 /* guess_number */;
+			targetProxy = 777D7FB62E85B2360087B478 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		777D7F632E78C30D0087B478 /* Debug */ = {
+		777D7FBD2E85B2360087B478 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -334,12 +333,11 @@
 			};
 			name = Debug;
 		};
-		777D7F642E78C30D0087B478 /* Release */ = {
+		777D7FBE2E85B2360087B478 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -391,7 +389,7 @@
 			};
 			name = Release;
 		};
-		777D7F662E78C30D0087B478 /* Debug */ = {
+		777D7FC02E85B2360087B478 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -410,7 +408,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "lol.business-card";
+				PRODUCT_BUNDLE_IDENTIFIER = "lol.guess-number";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -418,7 +416,7 @@
 			};
 			name = Debug;
 		};
-		777D7F672E78C30D0087B478 /* Release */ = {
+		777D7FC12E85B2360087B478 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -437,7 +435,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "lol.business-card";
+				PRODUCT_BUNDLE_IDENTIFIER = "lol.guess-number";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -445,7 +443,7 @@
 			};
 			name = Release;
 		};
-		777D7F692E78C30D0087B478 /* Debug */ = {
+		777D7FC32E85B2360087B478 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -454,16 +452,16 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "lol.business-cardTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "lol.guess-numberTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/business card.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/business card";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/guess_number.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/guess_number";
 			};
 			name = Debug;
 		};
-		777D7F6A2E78C30D0087B478 /* Release */ = {
+		777D7FC42E85B2360087B478 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -472,87 +470,87 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "lol.business-cardTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "lol.guess-numberTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/business card.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/business card";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/guess_number.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/guess_number";
 			};
 			name = Release;
 		};
-		777D7F6C2E78C30D0087B478 /* Debug */ = {
+		777D7FC62E85B2360087B478 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "lol.business-cardUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "lol.guess-numberUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "business card";
+				TEST_TARGET_NAME = guess_number;
 			};
 			name = Debug;
 		};
-		777D7F6D2E78C30D0087B478 /* Release */ = {
+		777D7FC72E85B2360087B478 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "lol.business-cardUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "lol.guess-numberUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "business card";
+				TEST_TARGET_NAME = guess_number;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		777D7F3F2E78C30A0087B478 /* Build configuration list for PBXProject "business card" */ = {
+		777D7F992E85B2330087B478 /* Build configuration list for PBXProject "guess_number" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				777D7F632E78C30D0087B478 /* Debug */,
-				777D7F642E78C30D0087B478 /* Release */,
+				777D7FBD2E85B2360087B478 /* Debug */,
+				777D7FBE2E85B2360087B478 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		777D7F652E78C30D0087B478 /* Build configuration list for PBXNativeTarget "business card" */ = {
+		777D7FBF2E85B2360087B478 /* Build configuration list for PBXNativeTarget "guess_number" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				777D7F662E78C30D0087B478 /* Debug */,
-				777D7F672E78C30D0087B478 /* Release */,
+				777D7FC02E85B2360087B478 /* Debug */,
+				777D7FC12E85B2360087B478 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		777D7F682E78C30D0087B478 /* Build configuration list for PBXNativeTarget "business cardTests" */ = {
+		777D7FC22E85B2360087B478 /* Build configuration list for PBXNativeTarget "guess_numberTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				777D7F692E78C30D0087B478 /* Debug */,
-				777D7F6A2E78C30D0087B478 /* Release */,
+				777D7FC32E85B2360087B478 /* Debug */,
+				777D7FC42E85B2360087B478 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		777D7F6B2E78C30D0087B478 /* Build configuration list for PBXNativeTarget "business cardUITests" */ = {
+		777D7FC52E85B2360087B478 /* Build configuration list for PBXNativeTarget "guess_numberUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				777D7F6C2E78C30D0087B478 /* Debug */,
-				777D7F6D2E78C30D0087B478 /* Release */,
+				777D7FC62E85B2360087B478 /* Debug */,
+				777D7FC72E85B2360087B478 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 777D7F3C2E78C30A0087B478 /* Project object */;
+	rootObject = 777D7F962E85B2330087B478 /* Project object */;
 }

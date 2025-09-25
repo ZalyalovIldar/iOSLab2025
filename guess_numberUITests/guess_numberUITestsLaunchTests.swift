@@ -1,13 +1,13 @@
 //
-//  business_cardUITestsLaunchTests.swift
-//  business cardUITests
+//  guess_numberUITestsLaunchTests.swift
+//  guess_numberUITests
 //
-//  Created by OstapMamykin on 16.09.2025.
+//  Created by OstapMamykin on 25.09.2025.
 //
 
 import XCTest
 
-final class business_cardUITestsLaunchTests: XCTestCase {
+final class guess_numberUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
