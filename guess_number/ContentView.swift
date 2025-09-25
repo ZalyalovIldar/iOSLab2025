@@ -3,12 +3,12 @@ import SwiftUI
 
 @main
 struct GuessItApp: App {
-    @StateObject private var vm = GameViewModel()
+    @StateObject private var gvm = GameViewModel()
     
     var body: some Scene {
         WindowGroup {
             GameView()
-                .environmentObject(vm)
+                .environmentObject(gvm)
         }
     }
 }
@@ -162,7 +162,7 @@ enum Difficulty: String, CaseIterable, Identifiable {
 
 
 struct GameView: View {
-    @EnvironmentObject private var vm: GameViewModel
+    @EnvironmentObject private var gvm: GameViewModel
     @State private var showSettings = false
     @State private var showStats = false
     @State private var showEndAlert = false
@@ -171,22 +171,22 @@ struct GameView: View {
         NavigationStack {
             VStack(spacing: 16) {
                 HStack(spacing: 16) {
-                                CounterBadge(title: String(localized: "wins"), value: vm.wins, color: .green)
-                                CounterBadge(title: String(localized: "losses"), value: vm.losses, color: .red)
+                                CounterBadge(title: String(localized: "wins"), value: gvm.wins, color: .green)
+                                CounterBadge(title: String(localized: "losses"), value: gvm.losses, color: .red)
                             }
                 
                 // Ввод числа
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("enter_number \(vm.range.lowerBound) \(vm.range.upperBound)")
+                    Text("enter_number \(gvm.range.lowerBound) \(gvm.range.upperBound)")
                         .font(.headline)
                     
                     HStack {
-                        TextField("placeholder.enter", text: $vm.guessText)
+                        TextField("placeholder.enter", text: $gvm.guessText)
                             .textFieldStyle(.roundedBorder)
-                            .onSubmit { vm.makeGuess() }
+                            .onSubmit { gvm.makeGuess() }
                         
                         Button {
-                            vm.makeGuess()
+                            gvm.makeGuess()
                         } label: {
                             Text("guess")
                                 .bold()
@@ -194,9 +194,9 @@ struct GameView: View {
                         .buttonStyle(.borderedProminent)
                     }
                 }
-                .disabled(vm.isGameOver)
+                .disabled(gvm.isGameOver)
                 
-                if let hint = vm.hint {
+                if let hint = gvm.hint {
                                 Text(hint)
                                     .font(.title3.weight(.semibold))
                                     .foregroundStyle(.blue)
@@ -206,16 +206,16 @@ struct GameView: View {
                 HStack {
                     Text("attempts_left")
                     Spacer()
-                    Text("\(vm.attemptsLeft)/\(vm.maxAttempts)")
+                    Text("\(gvm.attemptsLeft)/\(gvm.maxAttempts)")
                         .monospacedDigit()
                         .bold()
                 }
                 
-                ProgressView(value: Double(vm.maxAttempts - vm.attemptsLeft), total: Double(vm.maxAttempts))
+                ProgressView(value: Double(gvm.maxAttempts - gvm.attemptsLeft), total: Double(gvm.maxAttempts))
                                 .tint(.blue)
                 
                 Button {
-                    vm.newGame()
+                    gvm.newGame()
                 } label: {
                     Label("new_game", systemImage: "arrow.clockwise")
                         .frame(maxWidth: .infinity)
@@ -247,15 +247,15 @@ struct GameView: View {
                     .sheet(isPresented: $showStats) {
                         StatsView()
                     }
-                    .onChange(of: vm.isGameOver) { _, newValue in
+                    .onChange(of: gvm.isGameOver) { _, newValue in
                         if newValue { showEndAlert = true }
                     }
             .alert(isPresented: $showEndAlert) {
-                let titleKey: LocalizedStringKey = vm.isWin ? "result.win_title" : "result.lose_title"
+                let titleKey: LocalizedStringKey = gvm.isWin ? "result.win_title" : "result.lose_title"
                 
-                let message: Text = vm.isWin
-                    ? Text("result.you_found \(vm.targetNumber)")
-                    : Text("result.was \(vm.targetNumber)")
+                let message: Text = gvm.isWin
+                    ? Text("result.you_found \(gvm.targetNumber)")
+                    : Text("result.was \(gvm.targetNumber)")
                 
                 return Alert(
                     title: Text(titleKey),
@@ -290,24 +290,24 @@ struct CounterBadge: View {
 
 
 struct SettingsView: View {
-    @EnvironmentObject private var vm: GameViewModel
+    @EnvironmentObject private var gvm: GameViewModel
     
     var body: some View {
         NavigationStack {
             Form {
                 Section(header: Text(String(localized: "section.difficulty"))) {
-                    Picker(String(localized: "difficulty"), selection: $vm.difficulty) {
-                        ForEach(Difficulty.allCases) { d in
-                            Text(d.localizedName).tag(d)
+                    Picker(String(localized: "difficulty"), selection: $gvm.difficulty) {
+                        ForEach(Difficulty.allCases) { dif in
+                            Text(dif.localizedName).tag(dif)
                         }
                     }
                     .pickerStyle(.segmented)
                 }
                 
                 Section(header: Text(String(localized: "section.range"))) {
-                    Picker(String(localized: "range"), selection: $vm.rangeOption) {
-                        ForEach(RangeOption.allCases) { r in
-                            Text(r.localizedName).tag(r)
+                    Picker(String(localized: "range"), selection: $gvm.rangeOption) {
+                        ForEach(RangeOption.allCases) { ran in
+                            Text(ran.localizedName).tag(ran)
                         }
                     }
                     .pickerStyle(.segmented)
@@ -315,7 +315,7 @@ struct SettingsView: View {
                 
                 Section {
                     Button(role: .destructive) {
-                        vm.clearHistory()
+                        gvm.clearHistory()
                     } label: {
                         Label(String(localized: "clear_history"), systemImage: "trash")
                     }
@@ -328,19 +328,19 @@ struct SettingsView: View {
 
 
 struct StatsView: View {
-    @EnvironmentObject private var vm: GameViewModel
+    @EnvironmentObject private var gvm: GameViewModel
     
     var body: some View {
         NavigationStack {
             Group {
-                if vm.history.isEmpty {
+                if gvm.history.isEmpty {
                     ContentUnavailableView(
                         "stats.empty.title",
                         systemImage: "tray",
                         description: Text("stats.empty.subtitle")
                     )
                 } else {
-                    List(vm.history) { rec in
+                    List(gvm.history) { rec in
                         VStack(alignment: .leading, spacing: 6) {
                             HStack {
                                 Text(rec.win ? "result.win_short" : "result.lose_short")
@@ -378,10 +378,10 @@ struct StatsView: View {
 
 
 #Preview {
-    @StateObject var vm = GameViewModel()
+    @StateObject var gvm = GameViewModel()
     
     GameView()
-        .environmentObject(vm)
+        .environmentObject(gvm)
 }
 
 
