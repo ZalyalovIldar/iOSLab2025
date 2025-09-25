@@ -8,7 +8,7 @@
 import Testing
 @testable import guess_number
 
-struct guess_numberTests {
+struct GuessNumberTests {
 
     @Test
     func example() async throws {
