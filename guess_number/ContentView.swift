@@ -57,7 +57,7 @@ final class GameViewModel: ObservableObject {
     @Published private(set) var targetNumber: Int = 0
     @Published private(set) var attemptsLeft: Int = 0
     @Published var guessText: String = ""
-    @Published var hint: String? = nil
+    @Published var hint: String?
     @Published private(set) var isGameOver: Bool = false
     @Published private(set) var isWin: Bool = false
     
@@ -383,6 +383,3 @@ struct StatsView: View {
     GameView()
         .environmentObject(gvm)
 }
-
-
-
