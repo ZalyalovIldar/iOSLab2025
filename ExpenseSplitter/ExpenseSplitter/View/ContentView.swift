@@ -12,6 +12,7 @@ struct ContentView: View {
     @StateObject private var vm = ExpenseViewModel()
     
     var body: some View {
+        
         VStack {
             
             TitleView()
@@ -93,20 +94,30 @@ struct ParticipantsListView: View {
     
     var body: some View {
         
-        List {
-            ForEach(vm.participants) { participant in
-                HStack {
-                    Text(participant.name)
-                    Spacer()
-                    Text("\(participant.expense, specifier: "%.2f") ₽")
-                    
-                    Button {
-                        vm.removeParticipant(participant)
-                    } label: {
-                        Image(systemName: "trash")
-                            .foregroundColor(.red)
+        if vm.participants.isEmpty {
+            ContentUnavailableView(
+                "No Participants",
+                systemImage: "person.3.sequence.fill",
+                description: Text("Add friends to start splitting expenses")
+            )
+            .foregroundStyle(.gray)
+            .padding()
+        } else {
+            List {
+                ForEach(vm.participants) { participant in
+                    HStack {
+                        Text(participant.name)
+                        Spacer()
+                        Text("\(participant.expense, specifier: "%.2f") ₽")
+                        
+                        Button {
+                            vm.removeParticipant(participant)
+                        } label: {
+                            Image(systemName: "trash")
+                                .foregroundColor(.red)
+                        }
+                        .buttonStyle(.plain)
                     }
-                    .buttonStyle(.plain)
                 }
             }
         }
