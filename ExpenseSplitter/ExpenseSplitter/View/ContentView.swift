@@ -106,9 +106,15 @@ struct ParticipantsListView: View {
             List {
                 ForEach(vm.participants) { participant in
                     HStack {
+                        
                         Text(participant.name)
+                        
                         Spacer()
+                        
+                        let balance = vm.balances()[participant.name] ?? 0
+                        
                         Text("\(participant.expense, specifier: "%.2f") ₽")
+                            .foregroundColor(balance > 0 ? .green : (balance < 0 ? .red : .gray))
                         
                         Button {
                             vm.removeParticipant(participant)
