@@ -22,6 +22,14 @@ class ExpenseViewModel: ObservableObject {
         newExpense = ""
     }
     
+    func removeParticipant(_ participant: Participant) {
+            participants.removeAll { $0.id == participant.id }
+    }
+    
+    func clearAll() {
+            participants.removeAll()
+    }
+    
     var averageExpense: Double {
         guard !participants.isEmpty else { return 0 }
         let total = participants.reduce(0) { $0 + $1.expense }

@@ -18,15 +18,14 @@ struct ContentView: View {
             
             AddParticipantView(vm: vm)
             
-            List {
-                ForEach(vm.participants) { participant in
-                    HStack {
-                        Text(participant.name)
-                        Spacer()
-                        Text("\(participant.expense, specifier: "%.2f") ₽")
-                    }
-                }
+            ParticipantsListView(vm: vm)
+            
+            Button() {
+                vm.clearAll()
+            } label: {
+                Label("Clear All", systemImage: "trash")
             }
+            .foregroundStyle(.red)
             
             ResultsView(vm: vm)
             
@@ -85,6 +84,32 @@ struct ResultsView: View {
             }
         }
         .padding()
+    }
+}
+
+struct ParticipantsListView: View {
+    
+    @ObservedObject var vm: ExpenseViewModel
+    
+    var body: some View {
+        
+        List {
+            ForEach(vm.participants) { participant in
+                HStack {
+                    Text(participant.name)
+                    Spacer()
+                    Text("\(participant.expense, specifier: "%.2f") ₽")
+                    
+                    Button {
+                        vm.removeParticipant(participant)
+                    } label: {
+                        Image(systemName: "trash")
+                            .foregroundColor(.red)
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+        }
     }
 }
 
