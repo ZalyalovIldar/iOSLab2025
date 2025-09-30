@@ -38,11 +38,10 @@ class ExpenseViewModel: ObservableObject {
     
     func balances() -> [String: Double] {
         var result: [String: Double] = [:]
-        for p in participants {
-            result[p.name] = p.expense - averageExpense
+        for participant in participants {
+            result[participant.name] = participant.expense - averageExpense
         }
         return result
         
     }
 }
-

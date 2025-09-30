@@ -10,7 +10,7 @@ import Charts
 
 struct ContentView: View {
     
-    @StateObject private var vm = ExpenseViewModel()
+    @StateObject private var expVM = ExpenseViewModel()
     
     var body: some View {
         
@@ -20,20 +20,20 @@ struct ContentView: View {
                 
                 TitleView()
                 
-                AddParticipantView(vm: vm)
+                AddParticipantView(expVM: expVM)
                 
                 Divider()
                 
-                ParticipantsListView(vm: vm)
+                ParticipantsListView(expVM: expVM)
                     .frame(minHeight: 250)
                 
-                DeleteAllButton(vm: vm)
+                DeleteAllButton(expVM: expVM)
                 
                 Divider()
                 
-                ResultsView(vm: vm)
+                ResultsView(expVM: expVM)
                 
-                ExpensesPieChartView(vm: vm)
+                ExpensesPieChartView(expVM: expVM)
                 
             }
             .padding()
@@ -43,21 +43,21 @@ struct ContentView: View {
 
 struct AddParticipantView: View {
     
-    @ObservedObject var vm: ExpenseViewModel
+    @ObservedObject var expVM: ExpenseViewModel
     
     var body: some View {
         
         VStack(spacing: 10) {
             
-            TextField("Name", text: $vm.newName)
+            TextField("Name", text: $expVM.newName)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
-            TextField("Expense", text: $vm.newExpense)
+            TextField("Expense", text: $expVM.newExpense)
                 .keyboardType(.decimalPad)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
             Button("Add") {
-                vm.addParticipant()
+                expVM.addParticipant()
             }
             .buttonStyle(.borderedProminent)
         }
@@ -66,7 +66,7 @@ struct AddParticipantView: View {
 
 struct ResultsView: View {
     
-    @ObservedObject var vm: ExpenseViewModel
+    @ObservedObject var expVM: ExpenseViewModel
     
     var body: some View {
         
@@ -75,7 +75,7 @@ struct ResultsView: View {
             Text("Results:")
                 .font(.headline)
             
-            ForEach(vm.balances().sorted(by: { $0.key < $1.key }), id: \.key) { name, balance in
+            ForEach(expVM.balances().sorted(by: { $0.key < $1.key }), id: \.key) { name, balance in
                 HStack {
                     Text(name)
                     Spacer()
@@ -98,11 +98,11 @@ struct ResultsView: View {
 
 struct ParticipantsListView: View {
     
-    @ObservedObject var vm: ExpenseViewModel
+    @ObservedObject var expVM: ExpenseViewModel
     
     var body: some View {
         
-        if vm.participants.isEmpty {
+        if expVM.participants.isEmpty {
             ContentUnavailableView(
                 "No Participants",
                 systemImage: "person.3.sequence.fill",
@@ -112,20 +112,20 @@ struct ParticipantsListView: View {
             .padding()
         } else {
             List {
-                ForEach(vm.participants) { participant in
+                ForEach(expVM.participants) { participant in
                     HStack {
                         
                         Text(participant.name)
                         
                         Spacer()
                         
-                        let balance = vm.balances()[participant.name] ?? 0
+                        let balance = expVM.balances()[participant.name] ?? 0
                         
                         Text("\(participant.expense, specifier: "%.2f") ₽")
                             .foregroundColor(balance > 0 ? .green : (balance < 0 ? .red : .gray))
                         
                         Button {
-                            vm.removeParticipant(participant)
+                            expVM.removeParticipant(participant)
                         } label: {
                             Image(systemName: "trash")
                                 .foregroundColor(.red)
@@ -140,17 +140,17 @@ struct ParticipantsListView: View {
 
 struct ExpensesPieChartView: View {
     
-    @ObservedObject var vm: ExpenseViewModel
+    @ObservedObject var expVM: ExpenseViewModel
     
     var body: some View {
         
-        if vm.participants.isEmpty {
+        if expVM.participants.isEmpty {
             Text("No data to display")
                 .foregroundColor(.gray)
                 .padding()
         } else {
             Chart {
-                ForEach(vm.participants) { participant in
+                ForEach(expVM.participants) { participant in
                     SectorMark(
                         angle: .value("Expense", participant.expense),
                         innerRadius: .ratio(0.5),
@@ -171,14 +171,14 @@ struct ExpensesPieChartView: View {
     }
 }
 
-struct DeleteAllButton : View {
+struct DeleteAllButton: View {
     
-    @ObservedObject var vm: ExpenseViewModel
+    @ObservedObject var expVM: ExpenseViewModel
     
     var body: some View {
         
         Button() {
-            vm.clearAll()
+            expVM.clearAll()
         } label: {
             Label("Clear All", systemImage: "trash")
         }
