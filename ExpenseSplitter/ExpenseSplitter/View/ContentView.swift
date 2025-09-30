@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Charts
 
 struct ContentView: View {
     
@@ -13,25 +14,30 @@ struct ContentView: View {
     
     var body: some View {
         
-        VStack {
+        ScrollView {
             
-            TitleView()
-            
-            AddParticipantView(vm: vm)
-            
-            ParticipantsListView(vm: vm)
-            
-            Button() {
-                vm.clearAll()
-            } label: {
-                Label("Clear All", systemImage: "trash")
+            VStack {
+                
+                TitleView()
+                
+                AddParticipantView(vm: vm)
+                
+                Divider()
+                
+                ParticipantsListView(vm: vm)
+                    .frame(minHeight: 250)
+                
+                DeleteAllButton(vm: vm)
+                
+                Divider()
+                
+                ResultsView(vm: vm)
+                
+                ExpensesPieChartView(vm: vm)
+                
             }
-            .foregroundStyle(.red)
-            
-            ResultsView(vm: vm)
-            
+            .padding()
         }
-        .padding()
     }
 }
 
@@ -40,7 +46,9 @@ struct AddParticipantView: View {
     @ObservedObject var vm: ExpenseViewModel
     
     var body: some View {
+        
         VStack(spacing: 10) {
+            
             TextField("Name", text: $vm.newName)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
@@ -127,6 +135,54 @@ struct ParticipantsListView: View {
                 }
             }
         }
+    }
+}
+
+struct ExpensesPieChartView: View {
+    
+    @ObservedObject var vm: ExpenseViewModel
+    
+    var body: some View {
+        
+        if vm.participants.isEmpty {
+            Text("No data to display")
+                .foregroundColor(.gray)
+                .padding()
+        } else {
+            Chart {
+                ForEach(vm.participants) { participant in
+                    SectorMark(
+                        angle: .value("Expense", participant.expense),
+                        innerRadius: .ratio(0.5),
+                        angularInset: 1
+                    )
+                    .foregroundStyle(by: .value("Participant", participant.name))
+                    .annotation(position: .overlay) {
+                        Text(participant.name)
+                            .font(.caption2)
+                            .foregroundColor(.white)
+                    }
+                }
+            }
+            .chartLegend(.visible)
+            .frame(height: 300)
+            .padding()
+        }
+    }
+}
+
+struct DeleteAllButton : View {
+    
+    @ObservedObject var vm: ExpenseViewModel
+    
+    var body: some View {
+        
+        Button() {
+            vm.clearAll()
+        } label: {
+            Label("Clear All", systemImage: "trash")
+        }
+        .foregroundStyle(.red)
     }
 }
 
