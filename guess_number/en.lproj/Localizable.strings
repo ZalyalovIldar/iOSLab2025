@@ -1,0 +1,44 @@
+"app.title" = "Guess the number";
+"enter_number %lld %lld" = "Enter a number (%lld to %lld)";
+"placeholder.enter" = "Enter";
+"guess" = "Guess";
+"new_game" = "New Game";
+"attempts_left" = "Attempts left";
+"wins" = "Wins";
+"losses" = "Losses";
+"settings" = "Settings";
+"stats" = "Statistics";
+"ok" = "OK";
+
+"hint.higher" = "Higher ↑";
+"hint.lower" = "Lower ↓";
+"result.win_hint" = "Nice! You got it";
+
+"result.win_title" = "You win!";
+"result.lose_title" = "You lose";
+"result.you_found %lld" = "Correct number: %lld";
+"result.was %lld" = "The number was %lld";
+
+"error.not_number" = "Enter a valid number";
+"error.out_of_range %lld %lld" = "Enter a number between %lld and %lld";
+
+"section.difficulty" = "Difficulty";
+"section.range" = "Range";
+"difficulty" = "Difficulty";
+"range" = "Range";
+
+"difficulty.easy" = "Easy";
+"difficulty.medium" = "Medium";
+"difficulty.hard" = "Hard";
+
+"range.1_100" = "1–100";
+"range.1_500" = "1–500";
+"range.1_1000" = "1–1000";
+
+"clear_history" = "Clear history";
+
+"stats.empty.title" = "No games yet";
+"stats.empty.subtitle" = "Your results will appear here";
+
+"result.win_short" = "Win";
+"result.lose_short" = "Loss";
