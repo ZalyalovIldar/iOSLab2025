@@ -7,62 +7,62 @@
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
-		777D7FAC2E85B2360087B478 /* PBXContainerItemProxy */ = {
+		77EA8A052E8C7A75003B327F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 777D7F962E85B2330087B478 /* Project object */;
+			containerPortal = 77EA89EF2E8C7A73003B327F /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 777D7F9D2E85B2330087B478;
-			remoteInfo = guess_number;
+			remoteGlobalIDString = 77EA89F62E8C7A73003B327F;
+			remoteInfo = hw_3;
 		};
-		777D7FB62E85B2360087B478 /* PBXContainerItemProxy */ = {
+		77EA8A0F2E8C7A75003B327F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 777D7F962E85B2330087B478 /* Project object */;
+			containerPortal = 77EA89EF2E8C7A73003B327F /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 777D7F9D2E85B2330087B478;
-			remoteInfo = guess_number;
+			remoteGlobalIDString = 77EA89F62E8C7A73003B327F;
+			remoteInfo = hw_3;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		777D7F9E2E85B2340087B478 /* guess_number.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = guess_number.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		777D7FAB2E85B2360087B478 /* guess_numberTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = guess_numberTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		777D7FB52E85B2360087B478 /* guess_numberUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = guess_numberUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		77EA89F72E8C7A73003B327F /* hw_3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hw_3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		77EA8A042E8C7A75003B327F /* hw_3Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hw_3Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		77EA8A0E2E8C7A75003B327F /* hw_3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hw_3UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		777D7FA02E85B2340087B478 /* guess_number */ = {
+		77EA89F92E8C7A73003B327F /* hw_3 */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = guess_number;
+			path = hw_3;
 			sourceTree = "<group>";
 		};
-		777D7FAE2E85B2360087B478 /* guess_numberTests */ = {
+		77EA8A072E8C7A75003B327F /* hw_3Tests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = guess_numberTests;
+			path = hw_3Tests;
 			sourceTree = "<group>";
 		};
-		777D7FB82E85B2360087B478 /* guess_numberUITests */ = {
+		77EA8A112E8C7A75003B327F /* hw_3UITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = guess_numberUITests;
+			path = hw_3UITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		777D7F9B2E85B2330087B478 /* Frameworks */ = {
+		77EA89F42E8C7A73003B327F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		777D7FA82E85B2360087B478 /* Frameworks */ = {
+		77EA8A012E8C7A75003B327F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		777D7FB22E85B2360087B478 /* Frameworks */ = {
+		77EA8A0B2E8C7A75003B327F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -72,22 +72,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		777D7F952E85B2330087B478 = {
+		77EA89EE2E8C7A73003B327F = {
 			isa = PBXGroup;
 			children = (
-				777D7FA02E85B2340087B478 /* guess_number */,
-				777D7FAE2E85B2360087B478 /* guess_numberTests */,
-				777D7FB82E85B2360087B478 /* guess_numberUITests */,
-				777D7F9F2E85B2340087B478 /* Products */,
+				77EA89F92E8C7A73003B327F /* hw_3 */,
+				77EA8A072E8C7A75003B327F /* hw_3Tests */,
+				77EA8A112E8C7A75003B327F /* hw_3UITests */,
+				77EA89F82E8C7A73003B327F /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		777D7F9F2E85B2340087B478 /* Products */ = {
+		77EA89F82E8C7A73003B327F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				777D7F9E2E85B2340087B478 /* guess_number.app */,
-				777D7FAB2E85B2360087B478 /* guess_numberTests.xctest */,
-				777D7FB52E85B2360087B478 /* guess_numberUITests.xctest */,
+				77EA89F72E8C7A73003B327F /* hw_3.app */,
+				77EA8A042E8C7A75003B327F /* hw_3Tests.xctest */,
+				77EA8A0E2E8C7A75003B327F /* hw_3UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,135 +95,134 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		777D7F9D2E85B2330087B478 /* guess_number */ = {
+		77EA89F62E8C7A73003B327F /* hw_3 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 777D7FBF2E85B2360087B478 /* Build configuration list for PBXNativeTarget "guess_number" */;
+			buildConfigurationList = 77EA8A182E8C7A75003B327F /* Build configuration list for PBXNativeTarget "hw_3" */;
 			buildPhases = (
-				777D7F9A2E85B2330087B478 /* Sources */,
-				777D7F9B2E85B2330087B478 /* Frameworks */,
-				777D7F9C2E85B2330087B478 /* Resources */,
+				77EA89F32E8C7A73003B327F /* Sources */,
+				77EA89F42E8C7A73003B327F /* Frameworks */,
+				77EA89F52E8C7A73003B327F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				777D7FA02E85B2340087B478 /* guess_number */,
+				77EA89F92E8C7A73003B327F /* hw_3 */,
 			);
-			name = guess_number;
+			name = hw_3;
 			packageProductDependencies = (
 			);
-			productName = guess_number;
-			productReference = 777D7F9E2E85B2340087B478 /* guess_number.app */;
+			productName = hw_3;
+			productReference = 77EA89F72E8C7A73003B327F /* hw_3.app */;
 			productType = "com.apple.product-type.application";
 		};
-		777D7FAA2E85B2360087B478 /* guess_numberTests */ = {
+		77EA8A032E8C7A75003B327F /* hw_3Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 777D7FC22E85B2360087B478 /* Build configuration list for PBXNativeTarget "guess_numberTests" */;
+			buildConfigurationList = 77EA8A1B2E8C7A75003B327F /* Build configuration list for PBXNativeTarget "hw_3Tests" */;
 			buildPhases = (
-				777D7FA72E85B2360087B478 /* Sources */,
-				777D7FA82E85B2360087B478 /* Frameworks */,
-				777D7FA92E85B2360087B478 /* Resources */,
+				77EA8A002E8C7A75003B327F /* Sources */,
+				77EA8A012E8C7A75003B327F /* Frameworks */,
+				77EA8A022E8C7A75003B327F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				777D7FAD2E85B2360087B478 /* PBXTargetDependency */,
+				77EA8A062E8C7A75003B327F /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				777D7FAE2E85B2360087B478 /* guess_numberTests */,
+				77EA8A072E8C7A75003B327F /* hw_3Tests */,
 			);
-			name = guess_numberTests;
+			name = hw_3Tests;
 			packageProductDependencies = (
 			);
-			productName = guess_numberTests;
-			productReference = 777D7FAB2E85B2360087B478 /* guess_numberTests.xctest */;
+			productName = hw_3Tests;
+			productReference = 77EA8A042E8C7A75003B327F /* hw_3Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		777D7FB42E85B2360087B478 /* guess_numberUITests */ = {
+		77EA8A0D2E8C7A75003B327F /* hw_3UITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 777D7FC52E85B2360087B478 /* Build configuration list for PBXNativeTarget "guess_numberUITests" */;
+			buildConfigurationList = 77EA8A1E2E8C7A75003B327F /* Build configuration list for PBXNativeTarget "hw_3UITests" */;
 			buildPhases = (
-				777D7FB12E85B2360087B478 /* Sources */,
-				777D7FB22E85B2360087B478 /* Frameworks */,
-				777D7FB32E85B2360087B478 /* Resources */,
+				77EA8A0A2E8C7A75003B327F /* Sources */,
+				77EA8A0B2E8C7A75003B327F /* Frameworks */,
+				77EA8A0C2E8C7A75003B327F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				777D7FB72E85B2360087B478 /* PBXTargetDependency */,
+				77EA8A102E8C7A75003B327F /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				777D7FB82E85B2360087B478 /* guess_numberUITests */,
+				77EA8A112E8C7A75003B327F /* hw_3UITests */,
 			);
-			name = guess_numberUITests;
+			name = hw_3UITests;
 			packageProductDependencies = (
 			);
-			productName = guess_numberUITests;
-			productReference = 777D7FB52E85B2360087B478 /* guess_numberUITests.xctest */;
+			productName = hw_3UITests;
+			productReference = 77EA8A0E2E8C7A75003B327F /* hw_3UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		777D7F962E85B2330087B478 /* Project object */ = {
+		77EA89EF2E8C7A73003B327F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
-					777D7F9D2E85B2330087B478 = {
+					77EA89F62E8C7A73003B327F = {
 						CreatedOnToolsVersion = 16.4;
 					};
-					777D7FAA2E85B2360087B478 = {
+					77EA8A032E8C7A75003B327F = {
 						CreatedOnToolsVersion = 16.4;
-						TestTargetID = 777D7F9D2E85B2330087B478;
+						TestTargetID = 77EA89F62E8C7A73003B327F;
 					};
-					777D7FB42E85B2360087B478 = {
+					77EA8A0D2E8C7A75003B327F = {
 						CreatedOnToolsVersion = 16.4;
-						TestTargetID = 777D7F9D2E85B2330087B478;
+						TestTargetID = 77EA89F62E8C7A73003B327F;
 					};
 				};
 			};
-			buildConfigurationList = 777D7F992E85B2330087B478 /* Build configuration list for PBXProject "guess_number" */;
+			buildConfigurationList = 77EA89F22E8C7A73003B327F /* Build configuration list for PBXProject "hw_3" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
-				ru,
 			);
-			mainGroup = 777D7F952E85B2330087B478;
+			mainGroup = 77EA89EE2E8C7A73003B327F;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 777D7F9F2E85B2340087B478 /* Products */;
+			productRefGroup = 77EA89F82E8C7A73003B327F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				777D7F9D2E85B2330087B478 /* guess_number */,
-				777D7FAA2E85B2360087B478 /* guess_numberTests */,
-				777D7FB42E85B2360087B478 /* guess_numberUITests */,
+				77EA89F62E8C7A73003B327F /* hw_3 */,
+				77EA8A032E8C7A75003B327F /* hw_3Tests */,
+				77EA8A0D2E8C7A75003B327F /* hw_3UITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		777D7F9C2E85B2330087B478 /* Resources */ = {
+		77EA89F52E8C7A73003B327F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		777D7FA92E85B2360087B478 /* Resources */ = {
+		77EA8A022E8C7A75003B327F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		777D7FB32E85B2360087B478 /* Resources */ = {
+		77EA8A0C2E8C7A75003B327F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -233,21 +232,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		777D7F9A2E85B2330087B478 /* Sources */ = {
+		77EA89F32E8C7A73003B327F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		777D7FA72E85B2360087B478 /* Sources */ = {
+		77EA8A002E8C7A75003B327F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		777D7FB12E85B2360087B478 /* Sources */ = {
+		77EA8A0A2E8C7A75003B327F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -257,20 +256,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		777D7FAD2E85B2360087B478 /* PBXTargetDependency */ = {
+		77EA8A062E8C7A75003B327F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 777D7F9D2E85B2330087B478 /* guess_number */;
-			targetProxy = 777D7FAC2E85B2360087B478 /* PBXContainerItemProxy */;
+			target = 77EA89F62E8C7A73003B327F /* hw_3 */;
+			targetProxy = 77EA8A052E8C7A75003B327F /* PBXContainerItemProxy */;
 		};
-		777D7FB72E85B2360087B478 /* PBXTargetDependency */ = {
+		77EA8A102E8C7A75003B327F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 777D7F9D2E85B2330087B478 /* guess_number */;
-			targetProxy = 777D7FB62E85B2360087B478 /* PBXContainerItemProxy */;
+			target = 77EA89F62E8C7A73003B327F /* hw_3 */;
+			targetProxy = 77EA8A0F2E8C7A75003B327F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		777D7FBD2E85B2360087B478 /* Debug */ = {
+		77EA8A162E8C7A75003B327F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -333,7 +332,7 @@
 			};
 			name = Debug;
 		};
-		777D7FBE2E85B2360087B478 /* Release */ = {
+		77EA8A172E8C7A75003B327F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -389,7 +388,7 @@
 			};
 			name = Release;
 		};
-		777D7FC02E85B2360087B478 /* Debug */ = {
+		77EA8A192E8C7A75003B327F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -408,7 +407,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "lol.guess-number";
+				PRODUCT_BUNDLE_IDENTIFIER = "lol.hw-3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -416,7 +415,7 @@
 			};
 			name = Debug;
 		};
-		777D7FC12E85B2360087B478 /* Release */ = {
+		77EA8A1A2E8C7A75003B327F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -435,7 +434,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "lol.guess-number";
+				PRODUCT_BUNDLE_IDENTIFIER = "lol.hw-3";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -443,7 +442,7 @@
 			};
 			name = Release;
 		};
-		777D7FC32E85B2360087B478 /* Debug */ = {
+		77EA8A1C2E8C7A75003B327F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -452,16 +451,16 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "lol.guess-numberTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "lol.hw-3Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/guess_number.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/guess_number";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/hw_3.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/hw_3";
 			};
 			name = Debug;
 		};
-		777D7FC42E85B2360087B478 /* Release */ = {
+		77EA8A1D2E8C7A75003B327F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -470,87 +469,87 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "lol.guess-numberTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "lol.hw-3Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/guess_number.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/guess_number";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/hw_3.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/hw_3";
 			};
 			name = Release;
 		};
-		777D7FC62E85B2360087B478 /* Debug */ = {
+		77EA8A1F2E8C7A75003B327F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "lol.guess-numberUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "lol.hw-3UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = guess_number;
+				TEST_TARGET_NAME = hw_3;
 			};
 			name = Debug;
 		};
-		777D7FC72E85B2360087B478 /* Release */ = {
+		77EA8A202E8C7A75003B327F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "lol.guess-numberUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "lol.hw-3UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = guess_number;
+				TEST_TARGET_NAME = hw_3;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		777D7F992E85B2330087B478 /* Build configuration list for PBXProject "guess_number" */ = {
+		77EA89F22E8C7A73003B327F /* Build configuration list for PBXProject "hw_3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				777D7FBD2E85B2360087B478 /* Debug */,
-				777D7FBE2E85B2360087B478 /* Release */,
+				77EA8A162E8C7A75003B327F /* Debug */,
+				77EA8A172E8C7A75003B327F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		777D7FBF2E85B2360087B478 /* Build configuration list for PBXNativeTarget "guess_number" */ = {
+		77EA8A182E8C7A75003B327F /* Build configuration list for PBXNativeTarget "hw_3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				777D7FC02E85B2360087B478 /* Debug */,
-				777D7FC12E85B2360087B478 /* Release */,
+				77EA8A192E8C7A75003B327F /* Debug */,
+				77EA8A1A2E8C7A75003B327F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		777D7FC22E85B2360087B478 /* Build configuration list for PBXNativeTarget "guess_numberTests" */ = {
+		77EA8A1B2E8C7A75003B327F /* Build configuration list for PBXNativeTarget "hw_3Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				777D7FC32E85B2360087B478 /* Debug */,
-				777D7FC42E85B2360087B478 /* Release */,
+				77EA8A1C2E8C7A75003B327F /* Debug */,
+				77EA8A1D2E8C7A75003B327F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		777D7FC52E85B2360087B478 /* Build configuration list for PBXNativeTarget "guess_numberUITests" */ = {
+		77EA8A1E2E8C7A75003B327F /* Build configuration list for PBXNativeTarget "hw_3UITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				777D7FC62E85B2360087B478 /* Debug */,
-				777D7FC72E85B2360087B478 /* Release */,
+				77EA8A1F2E8C7A75003B327F /* Debug */,
+				77EA8A202E8C7A75003B327F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 777D7F962E85B2330087B478 /* Project object */;
+	rootObject = 77EA89EF2E8C7A73003B327F /* Project object */;
 }

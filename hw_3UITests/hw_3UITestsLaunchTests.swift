@@ -1,13 +1,13 @@
 //
-//  guess_numberUITestsLaunchTests.swift
-//  guess_numberUITests
+//  hw_3UITestsLaunchTests.swift
+//  hw_3UITests
 //
-//  Created by OstapMamykin on 25.09.2025.
+//  Created by OstapMamykin on 30.09.2025.
 //
 
 import XCTest
 
-final class GuessNumberUITestsLaunchTests: XCTestCase {
+final class hw_3UITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

@@ -1,13 +1,13 @@
 //
-//  guess_numberUITests.swift
-//  guess_numberUITests
+//  hw_3UITests.swift
+//  hw_3UITests
 //
-//  Created by OstapMamykin on 25.09.2025.
+//  Created by OstapMamykin on 30.09.2025.
 //
 
 import XCTest
 
-final class GuessNumberUITests: XCTestCase {
+final class hw_3UITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
