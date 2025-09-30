@@ -148,7 +148,7 @@ struct ResultsView: View {
                         }
                     }
                 } else {
-                    if people.isEmpty && expenses.isEmpty{
+                    if people.isEmpty && expenses.isEmpty {
                         ContentUnavailableView(
                             "Нет данных", systemImage: "person.2.slash", description: Text("Добавьте участников и расходы для расчета"))
                     } else if people.isEmpty {
