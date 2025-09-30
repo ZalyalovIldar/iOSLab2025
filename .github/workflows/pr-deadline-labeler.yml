@@ -1,0 +1,107 @@
+name: PR Deadline Labeler
+
+on:
+  pull_request_target:
+    types: [opened, edited] # переоцениваем при изменении заголовка/описания
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+env:
+  # === НАСТРОЙКА ДЕДЛАЙНОВ ===
+  HOMEWORK_DEADLINES: >
+    {
+      "homework 1": "2025-09-16T23:59:59+03:00",
+      "homework 2": "2025-09-23T23:59:59+03:00",
+      "homework 3": "2025-09-30T23:59:59+03:00",
+      "homework 4": "2025-10-07T23:59:59+03:00"
+    }
+  IN_TIME_LABEL: in time
+  LATE_LABEL: late
+  IN_TIME_COLOR: "0E8A16"   # зелёный
+  LATE_COLOR: "D73A4A"      # красный
+
+jobs:
+  label_pr:
+    name: Label PR by deadline
+    runs-on: ubuntu-latest
+    steps:
+      - name: Label depending on PR open time
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            // 1) Вытаскиваем данные PR
+            const pr = context.payload.pull_request;
+            const title = (pr.title || '').toLowerCase();
+            const body  = (pr.body  || '').toLowerCase();
+            const createdAt = new Date(pr.created_at); // UTC
+            const labelsToRemove = [process.env.IN_TIME_LABEL, process.env.LATE_LABEL];
+
+            // 2) Пытаемся распознать "Homework N" из title/body
+            const m = (title + '\n' + body).match(/(?:homework|hw|дз|task)\s*([0-9]+)/i);
+            if (!m) {
+              core.notice('Homework number not found in PR title/body. Expected like "Homework 2".');
+              return;
+            }
+            const hwKey = `homework ${m[1]}`.toLowerCase();
+
+            // 3) Читаем дедлайны из env (JSON)
+            let deadlines = {};
+            try {
+              deadlines = JSON.parse(process.env.HOMEWORK_DEADLINES || '{}');
+            } catch (e) {
+              core.setFailed('HOMEWORK_DEADLINES is not valid JSON');
+              return;
+            }
+
+            const deadlineStr = deadlines[hwKey];
+            if (!deadlineStr) {
+              core.notice(`No deadline configured for "${hwKey}".`);
+              return;
+            }
+
+            const deadline = new Date(deadlineStr); // учитывает смещение +02:00, если есть
+            if (isNaN(deadline.getTime())) {
+              core.setFailed(`Invalid deadline date for "${hwKey}": ${deadlineStr}`);
+              return;
+            }
+
+            // 4) Решаем метку
+            const onTime = createdAt.getTime() <= deadline.getTime();
+            const addLabel = onTime ? process.env.IN_TIME_LABEL : process.env.LATE_LABEL;
+            const addColor = onTime ? process.env.IN_TIME_COLOR : process.env.LATE_COLOR;
+
+            const {owner, repo} = context.repo;
+            const issue_number = pr.number;
+
+            // 5) Убедимся, что нужные метки есть в репозитории
+            async function ensureLabel(name, color, description) {
+              try {
+                await github.rest.issues.getLabel({owner, repo, name});
+              } catch (e) {
+                if (e.status === 404) {
+                  await github.rest.issues.createLabel({owner, repo, name, color, description});
+                } else {
+                  throw e;
+                }
+              }
+            }
+
+            await ensureLabel(process.env.IN_TIME_LABEL, process.env.IN_TIME_COLOR, 'Opened before or at deadline');
+            await ensureLabel(process.env.LATE_LABEL,    process.env.LATE_COLOR,    'Opened after deadline');
+
+            // 6) Удалим противоположную метку, добавим правильную
+            const current = await github.rest.issues.listLabelsOnIssue({owner, repo, issue_number});
+            for (const lbl of current.data) {
+              if (labelsToRemove.includes(lbl.name) && lbl.name !== addLabel) {
+                try {
+                  await github.rest.issues.removeLabel({owner, repo, issue_number, name: lbl.name});
+                } catch (_) { /* ignore 404 */ }
+              }
+            }
+            await github.rest.issues.addLabels({owner, repo, issue_number, labels: [addLabel]});
+
+            core.info(`PR #${issue_number}: ${hwKey} → created ${createdAt.toISOString()}, deadline ${deadline.toISOString()} → label "${addLabel}"`);

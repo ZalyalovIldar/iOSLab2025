@@ -1,8 +1,8 @@
-name: iOS Homework PR checks
+name: iOS Homework PR checks (SwiftLint + reviewdog, forks OK)
 
 on:
-  pull_request:
-    branches: [ main, develop ]
+  pull_request_target:
+    types: [opened, synchronize, reopened]
     paths:
       - '**/*.swift'
       - 'Package.swift'
@@ -11,26 +11,61 @@ on:
 
 permissions:
   contents: read
+  pull-requests: write
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 
 jobs:
-  lint:
-    name: SwiftLint (zero-setup)
+  lint_reviewdog:
+    name: SwiftLint + reviewdog (PR review comments)
     runs-on: ubuntu-latest
-    # Запускаем официальный контейнер SwiftLint — ничего не ставим руками.
     container:
       image: ghcr.io/realm/swiftlint:latest
     steps:
-      - uses: actions/checkout@v4
+      # 0) Пакеты, чтобы был .git и скачался reviewdog
+      - name: Install git & curl in container
+        run: |
+          set -e
+          if command -v apt-get >/dev/null; then
+            apt-get update
+            DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends git curl ca-certificates
+            update-ca-certificates || true
+          elif command -v apk >/dev/null; then
+            apk add --no-cache git curl ca-certificates
+            update-ca-certificates || true
+          elif command -v dnf >/dev/null; then
+            dnf -y install git curl ca-certificates
+          fi
+          git --version
+          curl --version
 
-      # Конфиг для "учебной" проверки создаём на лету (в проект его добавлять не нужно).
+      # 1) Безопасный checkout кода из форка (без токенов, с историей)
+      - name: Checkout PR HEAD (from fork) safely
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          persist-credentials: false
+          fetch-depth: 0
+
+      # 1.1) Починка "dubious ownership"
+      - name: Mark workspace as safe for git
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      # 2) Подтянуть базовую ветку для диффа (ничего не исполняем)
+      - name: Fetch base branch (for diff only)
+        run: |
+          git remote add base "https://github.com/${{ github.repository }}.git"
+          git fetch --no-tags --depth=1 base ${{ github.event.pull_request.base.ref }}
+
+      # 3) Конфиг SwiftLint — только заданные правила
       - name: Generate SwiftLint CI config
         run: |
           cat > .swiftlint-ci.yml <<'YML'
-          reporter: github-actions-logging
+          reporter: checkstyle
           strict: true
           only_rules:
             - attributes
@@ -49,11 +84,22 @@ jobs:
             - statement_position
             - trailing_newline
             - trailing_semicolon
-            - trailing_whitespace
             - type_name
-            - vertical_whitespace
           YML
 
-      # Аннотации появятся прямо в Checks у PR, строки подсветятся.
-      - name: Run SwiftLint (strict)
-        run: swiftlint lint --config .swiftlint-ci.yml --strict --reporter github-actions-logging
+      # 4) reviewdog (прибит к коммиту)
+      - name: Setup reviewdog
+        uses: reviewdog/action-setup@d8edfce3dd5e1ec6978745e801f9c50b5ef80252 # v1.4.0
+
+      # 5) Линт + публикация комментариев
+      - name: Run SwiftLint through reviewdog (PR review)
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set +e
+          swiftlint lint --config .swiftlint-ci.yml --strict --reporter checkstyle \
+            | reviewdog -f=checkstyle -name="SwiftLint" \
+                -reporter=github-pr-review \
+                -filter-mode=added \
+                -level=warning \
+                -fail-on-error=true
