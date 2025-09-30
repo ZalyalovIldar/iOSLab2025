@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct Expense_splitter_GilmutdinovApp: App {
+struct ExpenseSplitterGilmutdinovApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
