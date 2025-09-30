@@ -126,7 +126,7 @@ struct SettlementResultsView: View {
     private func calculateSettlements() -> [SettlementResult] {
         guard !items.isEmpty else { return [] }
         
-        let totalExpenses = items.reduce(0) { $0 + $1.expenses}
+        let totalExpenses = items.reduce(0) { $0 + $1.expenses }
         let averageExpensesPerPerson = totalExpenses / Double(items.count)
         
         return items.map { item in
@@ -142,8 +142,8 @@ struct SummaryView: View {
     let results: [SettlementResult]
     
     private var totalExpenses: Double {
-        let total = items.reduce(0) { $0 + $1.expenses}
-        return (total * 10).rounded()/10
+        let total = items.reduce(0) { $0 + $1.expenses }
+        return (total * 10).rounded() / 10
     }
     
     private var averageExpense: Double {
@@ -161,9 +161,9 @@ struct SummaryView: View {
                 VStack {
                     Text("Участников: \(items.count)")
                     
-                    Text("Общие расходы: \(totalExpenses, specifier : "%.1f")")
+                    Text("Общие расходы: \(totalExpenses, specifier: "%.1f")")
                     
-                    Text("На одного человека: \(averageExpense, specifier : "%.1f")")
+                    Text("На одного человека: \(averageExpense, specifier: "%.1f")")
                 }
                 .font(.subheadline)
                 
