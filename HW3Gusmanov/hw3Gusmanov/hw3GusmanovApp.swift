@@ -3,7 +3,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct hw3GusmanovApp: App {
+struct HW3GusmanovApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
