@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct AddingExpensesView: View {
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
     @State private var nameOfExpense = ""
     @State private var price = ""
     @State private var isInvalidInput = false

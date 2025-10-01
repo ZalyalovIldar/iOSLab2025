@@ -18,7 +18,7 @@ struct CategoryView: View {
                 Text(category.rawValue.capitalized)
                     .font(.system(size: 21, weight: .bold))
                 Spacer()
-                Image(systemName: category != .total ? "chevron.right": "")
+                Image(systemName: category != .total ? "chevron.right" : "")
                     .foregroundStyle(Color(.systemGray))
             }
             Text(category != .total ? "Total" : "Personal")

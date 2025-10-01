@@ -28,7 +28,7 @@ struct ExpensesHistoryView: View {
                 Text("History  \(Image(systemName: "clock"))")
                     .padding(20)
                 if let selectedUser = expenseViewModel.getSelectedUser(),
-                   let expenses = selectedUser.expenses[category]  {
+                   let expenses = selectedUser.expenses[category] {
                     RoundedRectangle(cornerRadius: 0)
                         .fill(category.color)
                         .frame(width: 370, height: 0.5)

@@ -101,7 +101,7 @@ struct ExpenseView: View {
             LazyVGrid(columns: [GridItem(), GridItem()]) {
                 ForEach(Category.allCases, id: \.self) { category in
                     if category == .total {
-                        CategoryView(category: category,backgroundColor: .secondary,  expenseViewModel: expenseViewModel, )
+                        CategoryView(category: category, backgroundColor: .secondary,  expenseViewModel: expenseViewModel, )
                             .frame(width: 170, height: 100)
                     } else {
                         NavigationLink {
@@ -110,7 +110,7 @@ struct ExpenseView: View {
                             }
                             
                         } label: {
-                            CategoryView(category: category,backgroundColor: .secondary,  expenseViewModel: expenseViewModel, )
+                            CategoryView(category: category, backgroundColor: .secondary,  expenseViewModel: expenseViewModel, )
                                 .frame(width: 170, height: 100)
                             
                         }
@@ -176,4 +176,3 @@ struct ExpenseView: View {
 #Preview {
     ExpenseView(expenseViewModel: ExpenseViewModel(names: ["Laysan", "Agnes"]))
 }
-
