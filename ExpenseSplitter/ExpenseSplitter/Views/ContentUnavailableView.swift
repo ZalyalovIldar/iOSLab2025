@@ -15,6 +15,7 @@ struct ContentUnavailableView: View {
             Text("oops, no added expenses yet")
                 .foregroundStyle(.white.opacity(0.8))
                 .font(.subheadline)
+                .padding(.horizontal, 40)
             Spacer()
         }
     }

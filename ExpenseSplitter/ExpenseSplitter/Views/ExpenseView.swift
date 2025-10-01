@@ -12,84 +12,69 @@ struct ExpenseView: View {
     @State var expenseViewModel: ExpenseViewModel
     @State private var isAddingMemdersShown = false
     @State private var isToolbarExpanded = false
-    @AppStorage("isContentUnvailablePageRequired")
-    var isContentUnvailablePageRequired = false
 
     var body: some View {
         NavigationStack {
-            if isContentUnvailablePageRequired {
-                ContentUnavailableView()
-            } else {
-                ZStack {
-                    Color.black.ignoresSafeArea()
-                    Circle()
-                        .fill(.purple)
-                        .frame(width: 180, height: 180)
-                        .blur(radius: 130)
-                    VStack {
-                        namesScrollView
-                        HStack {
-                            chart
-                                .offset(x: -30)
-                            VStack {
-                                Text("to pay")
-                                    .foregroundStyle(.white)
-                                    .font(.callout)
-                                Text("$\(expenseViewModel.totalToPay(), specifier: "%.2f")")
-                                    .foregroundStyle(.main)
-                                    .font(.system(size: 28, weight: .bold))
-                            }
+            ZStack {
+                Color.black.ignoresSafeArea()
+                Circle()
+                    .fill(.purple)
+                    .frame(width: 180, height: 180)
+                    .blur(radius: 130)
+                VStack {
+                    namesScrollView
+                    HStack {
+                        chart
+                            .offset(x: -30)
+                        VStack {
+                            Text("to pay")
+                                .foregroundStyle(.white)
+                                .font(.callout)
+                            Text("$\(expenseViewModel.totalToPay(), specifier: "%.2f")")
+                                .foregroundStyle(.main)
+                                .font(.system(size: 28, weight: .bold))
                         }
-                        .background {
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(.secondary)
-                                .frame(width: 363)
-                                .glassEffect(.clear.interactive(), in: .rect(cornerRadius: 25))
-                        }
-                        .padding(.top, 10)
-                        categoriesScrollView
                     }
+                    .background {
+                        RoundedRectangle(cornerRadius: 25)
+                            .fill(.secondary)
+                            .frame(width: 363)
+                            .glassEffect(.clear.interactive(), in: .rect(cornerRadius: 25))
+                    }
+                    .padding(.top, 10)
+                    categoriesScrollView
                 }
-                .toolbar {
-                    if isToolbarExpanded {
-//                        ToolbarItem(placement: .topBarTrailing) {
-//                            NavigationLink {
-//                                DeleteMembersView(expenseViewModel: expenseViewModel)
-//                            } label: {
-//                                Image(systemName: "person.2.fill")
-//                                    .foregroundStyle(.white)
-//                            }
-//                        }
-                        
-                        ToolbarItem(placement: .topBarTrailing) {
-                            NavigationLink {
-                                ResultView(expenseViewModel: expenseViewModel)
-                            } label: {
-                                Image(systemName: "creditcard.fill")
-                                    .foregroundStyle(.white)
-                            }
+            }
+            .toolbar {
+                if isToolbarExpanded {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        NavigationLink {
+                            ResultView(expenseViewModel: expenseViewModel)
+                        } label: {
+                            Image(systemName: "creditcard.fill")
+                                .foregroundStyle(.white)
                         }
-                       
-                        ToolbarItem(placement: .topBarTrailing) {
-                            Button {
-                                withAnimation {
-                                    isToolbarExpanded.toggle()
-                                }
-                            } label: {
-                                Image(systemName: "gear")
-                                    .foregroundStyle(.white)
+                    }
+                   
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button {
+                            withAnimation {
+                                isToolbarExpanded.toggle()
                             }
+                        } label: {
+                            Image(systemName: "gear")
+                                .foregroundStyle(.white)
                         }
-                    } else {
-                        ToolbarItem(placement: .topBarTrailing) {
-                            Button {
-                                withAnimation {
-                                    isToolbarExpanded.toggle()
-                                }
-                            } label: {
-                                Image(systemName: "gear")
-                                    .foregroundStyle(.white)
+                    }
+                } else {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button {
+                            withAnimation {
+                                isToolbarExpanded.toggle()
                             }
+                        } label: {
+                            Image(systemName: "gear")
+                                .foregroundStyle(.white)
                         }
                     }
                 }
@@ -112,11 +97,9 @@ struct ExpenseView: View {
                         } label: {
                             CategoryView(category: category, backgroundColor: .secondary,  expenseViewModel: expenseViewModel, )
                                 .frame(width: 170, height: 100)
-                            
                         }
                         .buttonStyle(.plain)
                     }
-                    
                 }
                 .padding(.top, 10)
                 .padding(.bottom, 50)
@@ -125,7 +108,6 @@ struct ExpenseView: View {
             .foregroundStyle(.white)
             .padding()
             .scrollTargetLayout()
-            
         }
     }
     
