@@ -1,5 +1,6 @@
 import Foundation
 import SwiftUI
+import Charts
 
 struct Participant: Identifiable, Codable {
     var id: UUID
@@ -89,6 +90,7 @@ struct ContentView: View {
     @StateObject private var vm = SplitterViewModel()
     @State private var isAddingParticipant = false
     @State private var isImporting = false
+    @State private var isShowingChart = false
     
     var body: some View {
         NavigationStack {
@@ -103,6 +105,7 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     MenuView(
+                        isShowingChart: $isShowingChart,
                         isImporting: $isImporting,
                         exportURL: vm.exportToJSON()
                     )
@@ -115,6 +118,9 @@ struct ContentView: View {
             }
             .sheet(isPresented: $isAddingParticipant) {
                 AddParticipantView().environmentObject(vm)
+            }
+            .sheet(isPresented: $isShowingChart) {
+                ChartView().environmentObject(vm)
             }
             .fileImporter(isPresented: $isImporting, allowedContentTypes: [.json]) { result in
                 if case .success(let url) = result {
@@ -232,11 +238,15 @@ struct BalanceView: View {
 }
 
 struct MenuView: View {
+    @Binding var isShowingChart: Bool
     @Binding var isImporting: Bool
     let exportURL: URL?
     
     var body: some View {
         Menu {
+            Button { isShowingChart = true } label: {
+                Label("Диаграмма", systemImage: "")
+            }
             Button { isImporting = true } label: {
                 Label("Импорт из файла", systemImage: "square.and.arrow.down")
             }
@@ -246,7 +256,7 @@ struct MenuView: View {
                 }
             }
         } label: {
-            Image(systemName: "ellipsis.circle")
+            Image(systemName: "")
         }
     }
 }
@@ -293,6 +303,64 @@ struct AddParticipantView: View {
     }
 }
 
+struct ChartView: View {
+    @EnvironmentObject var vm: SplitterViewModel
+    @Environment(\.dismiss) var dismiss
+    
+    var body: some View {
+        NavigationStack {
+            VStack(spacing: 20) {
+                if vm.participants.isEmpty {
+                    ContentUnavailableView(
+                        "Нет данных",
+                        systemImage: "",
+                        description: Text("Добавьте участников для просмотра диаграммы.")
+                    )
+                } else {
+                    Chart(vm.participants) { participant in
+                        SectorMark(
+                            angle: .value("Расход", participant.amountSpent),
+                            innerRadius: .ratio(0.5),
+                            angularInset: 1.5
+                        )
+                        .foregroundStyle(by: .value("Имя", participant.name))
+                        .annotation(position: .overlay) {
+                            Text(String(format: "%.0f%%", (participant.amountSpent / vm.totalAmount) * 100))
+                                .font(.caption)
+                                .foregroundColor(.white)
+                        }
+                    }
+                    .frame(height: 300)
+                    .padding()
+                    
+                    List {
+                        Section(header: Text("Распределение расходов")) {
+                            ForEach(vm.participants) { participant in
+                                HStack {
+                                    Text(participant.name)
+                                    Spacer()
+                                    VStack(alignment: .trailing) {
+                                        Text(String(format: "%.2f ₽", participant.amountSpent)).bold()
+                                        Text(String(format: "%.1f%%", (participant.amountSpent / vm.totalAmount) * 100))
+                                            .font(.caption)
+                                            .foregroundColor(.secondary)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Диаграмма расходов")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Готово") { dismiss() }
+                }
+            }
+        }
+    }
+}
 
 @main
 struct ExpenseSplitterApp: App {
