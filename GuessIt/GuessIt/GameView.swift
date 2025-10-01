@@ -30,109 +30,122 @@ struct GameView: View {
     let min: Int
     let max: Int
     
+    private func hideKeyboard() {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+    
     var body: some View {
         
-        VStack(spacing: 40) {
+        ScrollView {
             
-            TitleView()
-            
-            VStack(spacing: 20) {
+            VStack(spacing: 25) {
+                
+                TitleView()
+                
+                VStack(spacing: 25) {
+                    
+                    Divider()
+                        .background(Color(.gray))
+                        .padding(.horizontal)
+                    
+                    StatsView(wins: $wins, losses: $losses)
+                    
+                    Divider()
+                        .background(Color(.gray))
+                        .padding(.horizontal)
+                    
+                }
+                
+                TextField("Guess the number from \(min) to \(max)",
+                          text: $userInput)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .clipped(antialiased: true)
+                .keyboardType(.numberPad)
+                .padding(.horizontal)
+                
+                Text("\(gameMessage)")
+                    .font(.headline)
+                    .multilineTextAlignment(.center)
+                
+                Button("Guess the number") {
+                    generateNumber()
+                }
+                .padding()
+                .background(gradient)
+                .foregroundColor(.white)
+                .clipShape(RoundedRectangle(cornerRadius: 40))
                 
                 Divider()
                     .background(Color(.gray))
                     .padding(.horizontal)
                 
-                StatsView(wins: $wins, losses: $losses)
-                
-                Divider()
-                    .background(Color(.gray))
-                    .padding(.horizontal)
-                
-            }
-            
-            TextField("Guess the number from \(min) to \(max)",
-                      text: $userInput)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .clipped(antialiased: true)
-            .keyboardType(.numberPad)
-            .padding(.horizontal)
-            
-            Button("Guess the number") {
-                generateNumber()
+                HStack(spacing: 50) {
+                    
+                    VStack(spacing: 10) {
+                        
+                        Text("Remaining attempts")
+                        
+                        Text("\(maxAttempts)")
+                            .foregroundStyle(Color.white)
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(gradient)
+                                    .foregroundColor(.blue.opacity(0.4))
+                                    .frame(width: 35, height: 35)
+                            )
+                    }
+                    .background(
+                        RoundedRectangle(cornerRadius: 30)
+                            .foregroundColor(.gray.opacity(0.2))
+                            .frame(width: 170, height: 80))
+                    
+                    VStack(spacing: 10) {
+                        
+                        Text("Current attempt")
+                        
+                        Text("\(currentAttempt)")
+                            .foregroundStyle(Color.white)
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(gradient)
+                                    .frame(width: 35, height: 35)
+                            )
+                    }
+                    .background(
+                        RoundedRectangle(cornerRadius: 30)
+                            .foregroundColor(.gray.opacity(0.2))
+                            .frame(width: 170, height: 80))
+                }
             }
             .padding()
-            .background(gradient)
-            .foregroundColor(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 40))
-            
-            HStack(spacing: 50) {
-                
-                VStack(spacing: 10) {
-                    
-                    Text("Remaining attempts")
-                    
-                    Text("\(maxAttempts)")
-                        .foregroundStyle(Color.white)
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(gradient)
-                                .foregroundColor(.blue.opacity(0.4))
-                                .frame(width: 35, height: 35)
-                        )
+            .onTapGesture {
+                hideKeyboard()
+            }
+            .onAppear {
+                targetNumb = Int.random(in: min...max)
+            }
+            .sheet(isPresented: $showingResult) {
+                if let result = gameResult {
+                    ResultView(isWin: result.isWin,
+                               targetNumber: result.targetNumber,
+                               attemptsUsed: result.attemptsUsed,
+                               min: result.min,
+                               max: result.max,
+                               shouldCloseToStart: $shouldCloseToStart)
                 }
-                .background(
-                    RoundedRectangle(cornerRadius: 30)
-                        .foregroundColor(.gray.opacity(0.2))
-                        .frame(width: 170, height: 80))
-                
-                VStack(spacing: 10) {
-                    
-                    Text("Current attempt")
-                    
-                    Text("\(currentAttempt)")
-                        .foregroundStyle(Color.white)
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(gradient)
-                                .frame(width: 35, height: 35)
-                        )
+            }
+            .onChange(of: shouldCloseToStart) {
+                if shouldCloseToStart {
+                    dismiss()
                 }
-                .background(
-                    RoundedRectangle(cornerRadius: 30)
-                        .foregroundColor(.gray.opacity(0.2))
-                        .frame(width: 170, height: 80))
-                
             }
-            Text("\(gameMessage)")
-                .padding()
-                .font(.headline)
-                .multilineTextAlignment(.center)
-            
+            .interactiveDismissDisabled(true)
         }
-        .padding()
-        .onAppear {
-            targetNumb = Int.random(in: min...max)
-        }
-        .sheet(isPresented: $showingResult) {
-            if let result = gameResult {
-                ResultView(isWin: result.isWin,
-                           targetNumber: result.targetNumber,
-                           attemptsUsed: result.attemptsUsed,
-                           min: result.min,
-                           max: result.max,
-                           shouldCloseToStart: $shouldCloseToStart)
-            }
-        }
-        .onChange(of: shouldCloseToStart) {
-            if shouldCloseToStart {
-                dismiss()
-            }
-        }
-        .interactiveDismissDisabled(true)
-        
     }
     
     private func generateNumber() {
+        
+        hideKeyboard()
         
         guard let userGuess = Int(userInput) else {
             gameMessage = "Enter a valid number, please"

@@ -54,7 +54,7 @@ struct StartView: View {
                 
             }
             
-            VStack(spacing: 30) {
+            VStack(spacing: 20) {
                 
                 Text("Select Difficulty")
                     .font(.headline)
@@ -66,6 +66,14 @@ struct StartView: View {
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
+                
+                Text("Attempts: \(selectedDifficulty.attemptCount)")
+                    .foregroundStyle(.blue)
+                    .font(.subheadline)
+                    .fontWeight(.bold)
+                
+                Divider()
+                    .background(Color.gray)
                 
                 Text("Adjust the number range")
                     .font(.headline)
@@ -128,6 +136,11 @@ struct StartView: View {
                     
                 }
                 
+                Text("Range: from \(minValue) to \(maxValue)")
+                    .foregroundStyle(.blue)
+                    .font(.subheadline)
+                    .fontWeight(.bold)
+                
                 Divider()
                     .background(Color.gray)
                 
@@ -141,11 +154,7 @@ struct StartView: View {
                         .fill(gradient)
                         .frame(width: 200, height: 50)
                 )
-                
-                Text("Attempts: \(selectedDifficulty.attemptCount), range: from \(minValue) to \(maxValue)")
-                    .foregroundStyle(Color.gray)
-                    .font(.caption)
-                    .fontWeight(.bold)
+                .padding()
                 
             }
             .padding(.horizontal)
