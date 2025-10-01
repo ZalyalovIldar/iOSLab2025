@@ -73,8 +73,8 @@ struct AddingMemberView: View {
     }
     
     private func validate(_ names: [String]) -> Bool {
-        for i in 0..<textFieldsCounter {
-            if names[i].isEmpty {
+        for index in 0..<textFieldsCounter {
+            if names[index].isEmpty {
                 return false
             }
         }

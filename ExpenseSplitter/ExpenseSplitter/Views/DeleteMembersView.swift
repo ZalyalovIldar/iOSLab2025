@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct DeleteMembersView: View {
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
     @State var expenseViewModel: ExpenseViewModel
     @State var selectedUsersIdsToDelete: [String] = []
     @State var isSelected = [false, false, false, false]
