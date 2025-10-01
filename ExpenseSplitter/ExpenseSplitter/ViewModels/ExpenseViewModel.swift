@@ -18,9 +18,9 @@ class ExpenseViewModel {
     }
 
     init(names: [String]) {
-        for i in 0..<names.count {
-            if names[i] != "" {
-                let user = User(name: names[i])
+        for index in 0..<names.count {
+            if names[index] != "" {
+                let user = User(name: names[index])
                 users.append(user)
             }
         }
@@ -70,15 +70,15 @@ class ExpenseViewModel {
     
     func totalToPay() -> Double {
         var totalToPay = 0.0
-        for i in 0..<users.count {
-            totalToPay += users[i].totalPersonalExpenses
+        for index in 0..<users.count {
+            totalToPay += users[index].totalPersonalExpenses
         }
         return totalToPay / Double(users.count)
     }
     
     func deleteUser(ids: [UUID]) {
-        for i in 0..<ids.count {
-            if let userToDeleteIndex = users.firstIndex(where: { $0.id == ids[i] }) {
+        for index in 0..<ids.count {
+            if let userToDeleteIndex = users.firstIndex(where: { $0.id == ids[index] }) {
                 users.remove(at: userToDeleteIndex)
                 if !users.isEmpty {
                     selectedUserID = users[0].id

@@ -12,7 +12,8 @@ struct ExpenseView: View {
     @State var expenseViewModel: ExpenseViewModel
     @State private var isAddingMemdersShown = false
     @State private var isToolbarExpanded = false
-    @AppStorage("isContentUnvailablePageRequired") var isContentUnvailablePageRequired = false
+    @AppStorage("isContentUnvailablePageRequired")
+    var isContentUnvailablePageRequired = false
 
     var body: some View {
         NavigationStack {
@@ -101,14 +102,13 @@ struct ExpenseView: View {
             LazyVGrid(columns: [GridItem(), GridItem()]) {
                 ForEach(Category.allCases, id: \.self) { category in
                     if category == .total {
-                        CategoryView(category: category, backgroundColor: .secondary,  expenseViewModel: expenseViewModel, )
+                        CategoryView(category: category, backgroundColor: .secondary, expenseViewModel: expenseViewModel, )
                             .frame(width: 170, height: 100)
                     } else {
                         NavigationLink {
                             if category != .total {
                                 ExpensesHistoryView(category: category, expenseViewModel: expenseViewModel)
                             }
-                            
                         } label: {
                             CategoryView(category: category, backgroundColor: .secondary,  expenseViewModel: expenseViewModel, )
                                 .frame(width: 170, height: 100)

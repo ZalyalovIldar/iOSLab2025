@@ -17,5 +17,3 @@ struct TitleView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
-
-

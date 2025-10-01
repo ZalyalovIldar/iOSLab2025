@@ -13,7 +13,8 @@ struct DeleteMembersView: View {
     @State var selectedUsersIdsToDelete: [String] = []
     @State var isSelected = [false, false, false, false]
     @State var userIdsToDelete: [UUID] = []
-    @AppStorage("isContentUnvailablePageRequired") var isContentUnvailablePageRequired = false
+    @AppStorage("isContentUnvailablePageRequired")
+    var isContentUnvailablePageRequired = false
     
     var body: some View {
         NavigationStack {

@@ -44,9 +44,11 @@ struct AddingExpensesView: View {
                     ToolbarItem(placement: .confirmationAction) {
                         Button {
                             validate()
-                            if !isInvalidInput {
-                                expenseViewModel.addExpenseByCategory(expense: Expense(name: nameOfExpense, cost: Double(price)!, category: category), category: category)
-                                dismiss()
+                            if !isInvalidInput  {
+                                if var priceD = Double(price) {
+                                    expenseViewModel.addExpenseByCategory(expense: Expense(name: nameOfExpense, cost: Double(priceD), category: category), category: category)
+                                    dismiss()
+                                }
                             }
                         } label: {
                             Image(systemName: "checkmark")
