@@ -12,7 +12,7 @@ struct AddingMemberView: View {
     @State private var isValid = false 
     @State private var names = ["", "", "", ""]
     @State private var isExpenseViewShown = false
-    @AppStorage("isContentUnvailablePageRequired") var isContentUnvailablePageRequired = false
+    
     
     var body: some View {
         NavigationStack {
@@ -54,7 +54,7 @@ struct AddingMemberView: View {
                 }
                 .toolbar {
                     ToolbarItem(placement: .confirmationAction) {
-                        ToolbarButton(image: "checkmark", disabledCondition: !validate(names)) { isContentUnvailablePageRequired = false
+                        ToolbarButton(image: "checkmark", disabledCondition: !validate(names)) {
                             isExpenseViewShown = true
                         }
                     }

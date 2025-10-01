@@ -52,14 +52,14 @@ struct ExpenseView: View {
                 }
                 .toolbar {
                     if isToolbarExpanded {
-                        ToolbarItem(placement: .topBarTrailing) {
-                            NavigationLink {
-                                DeleteMembersView(expenseViewModel: expenseViewModel)
-                            } label: {
-                                Image(systemName: "person.2.fill")
-                                    .foregroundStyle(.white)
-                            }
-                        }
+//                        ToolbarItem(placement: .topBarTrailing) {
+//                            NavigationLink {
+//                                DeleteMembersView(expenseViewModel: expenseViewModel)
+//                            } label: {
+//                                Image(systemName: "person.2.fill")
+//                                    .foregroundStyle(.white)
+//                            }
+//                        }
                         
                         ToolbarItem(placement: .topBarTrailing) {
                             NavigationLink {

@@ -50,6 +50,8 @@ struct ExpensesHistoryView: View {
                     .listStyle(.plain)
                     .padding(.horizontal, 20)
                     .padding(.vertical, 5)
+                } else {
+                    ContentUnavailableView()
                 }
                 Spacer()
                 HStack {
