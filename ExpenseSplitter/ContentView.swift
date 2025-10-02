@@ -47,7 +47,7 @@ struct ContentView: View {
     @State private var average: Int = 0
     var body: some View {
         NavigationView {
-            VStack{
+            VStack {
                 AddNewParticipantView { newParticipant in
                     participants.append(newParticipant)
                 }
@@ -87,7 +87,7 @@ struct ContentView: View {
                                         .font(.caption2)
                                 }
                             }
-                            .frame(width: min(max(CGFloat(participants.count) * 40, 300),600), height: 200)
+                            .frame(width: min(max(CGFloat(participants.count) * 40, 300),600),height: 200)
                             Spacer(minLength: 40)
                         }
                     }
@@ -97,7 +97,7 @@ struct ContentView: View {
                 
             
                 
-                Button("Рассчитать"){
+                Button("Рассчитать") {
                     calculateTotal()
                 }
                 .buttonStyle(.borderedProminent)
@@ -107,10 +107,12 @@ struct ContentView: View {
                     Text("Итоговая сумма: \(total) ₽, средняя доля: \(average) ₽")
                 }
                 HStack {
-                    Button("Экспорт JSON"){ exportToJSON()}
-                        .buttonStyle(.bordered)
+                    Button("Экспорт JSON") {
+                        exportToJSON()
+                    }
+                    .buttonStyle(.bordered)
                         
-                    Button("Импорт JSON"){
+                    Button("Импорт JSON") {
                         let url = FileManager.default.temporaryDirectory.appendingPathComponent("participants.json")
                         importFromJSON(url: url)
                     }
@@ -157,8 +159,8 @@ struct ContentView: View {
     }
     
     private func calculateTotal() {
-        total = participants.reduce(0) { sum, p in
-            sum + (Int(p.expense) ?? 0)
+        total = participants.reduce(0) { sum, part in
+            sum + (Int(part.expense) ?? 0)
         }
         average = participants.isEmpty ? 0 : total / participants.count
     }
@@ -218,12 +220,8 @@ struct ParticipantRow: View {
         .padding(.vertical, 5)
     }
 }
-
-
-
-
-
 #Preview {
     ContentView()
 }
+
 

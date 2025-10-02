@@ -83,7 +83,7 @@ struct ContentView: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.horizontal)
                         .shadow(radius: 5)
-                        .frame(width:200)
+                        .frame(width: 200)
                         .disabled(gameEnded)
                         .padding(30)
 
