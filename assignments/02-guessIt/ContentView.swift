@@ -8,32 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+
     @State private var userInput: String = ""
     @State private var result: String = ""
     @State private var diceRoll: Int = Int.random(in: 1...100)
-    @State private var replay: Int = 5
-    @State private var wins: Int = 0
-    @State private var loses: Int = 0
+    @State private var replay : Int = 5
+    @State private var wins : Int =  0
+    @State private var loses : Int = 0
     @State private var selectedRange: Int = 100
     let ranges = [100, 200, 300, 400, 500, 600, 700, 800, 900]
-    
+
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing : 20) {
             TextField("Угадай число)", text: $userInput)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad)
                 .padding(.horizontal)
-            
+
             Picker("Выберите диапазон", selection: $selectedRange) {
                 ForEach(ranges, id: \.self) { range in
                     Text("\(range)")
                 }
             }
-            
+
             Text("Диапазон: \(selectedRange)")
                 .foregroundColor(Color.gray)
-            
+
             Button("Проверить") {
                 rollDice()
             }
@@ -42,18 +42,18 @@ struct ContentView: View {
             .foregroundColor(.white)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .disabled(replay == 0)
-            
+
             Text("Результат: \(result)")
                 .padding()
-            
+
             Text("Осталось попыток: \(replay)")
                 .foregroundColor(Color.gray)
-            
+
             Text("Победы: \(wins) Проигрыши: \(loses)")
                 .foregroundColor(Color.gray)
-            
-            
-            if replay == 0 || result.contains("Верно! Загадано \(diceRoll)") {
+
+
+            if replay == 0 || result.contains("Верно! Загадано \(diceRoll)"){
                 Button("Новая игра") {
                     newGame()
                 }
@@ -65,9 +65,9 @@ struct ContentView: View {
         }
         .padding()
     }
-    
+
     private func rollDice() {
-        
+
         guard let userGuess = Int(userInput) else {
             result = "Пожалуйста, введите число"
             return
@@ -84,7 +84,7 @@ struct ContentView: View {
         }
         if replay == 0 && userGuess != diceRoll {
             result = "Проигрыш! Загадано число \(diceRoll)"
-            loses += 1
+                    loses += 1
         }
     }
     private func newGame() {

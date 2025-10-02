@@ -1,8 +1,8 @@
 //
-//  homework2App.swift
-//  homework2
+//  Homework2App.swift
+//  Homework2
 //
-//  Created by Анастасия on 21.09.2025.
+//  Created by Анастасия on 02.10.2025.
 //
 
 import SwiftUI
