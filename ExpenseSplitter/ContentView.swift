@@ -87,7 +87,7 @@ struct ContentView: View {
                                         .font(.caption2)
                                 }
                             }
-                            .frame(width: min(max(CGFloat(participants.count) * 40, 300),600),height: 200)
+                            .frame(width: min(max(CGFloat(participants.count) * 40, 300), 600), height: 200)
                             Spacer(minLength: 40)
                         }
                     }
@@ -223,5 +223,3 @@ struct ParticipantRow: View {
 #Preview {
     ContentView()
 }
-
-

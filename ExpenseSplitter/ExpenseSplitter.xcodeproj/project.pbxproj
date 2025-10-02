@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		5C54A96C2E81FFCD0053933D /* GuessIT_zakir.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuessIT_zakir.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CDA06B92E8C2DEE00845830 /* ExpenseSplitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseSplitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		5C54A96E2E81FFCD0053933D /* GuessIT_zakir */ = {
+		5CDA06BB2E8C2DEE00845830 /* ExpenseSplitter */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = GuessIT_zakir;
+			path = ExpenseSplitter;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		5C54A9692E81FFCD0053933D /* Frameworks */ = {
+		5CDA06B62E8C2DEE00845830 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -29,18 +29,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5C54A9632E81FFCD0053933D = {
+		5CDA06B02E8C2DEE00845830 = {
 			isa = PBXGroup;
 			children = (
-				5C54A96E2E81FFCD0053933D /* GuessIT_zakir */,
-				5C54A96D2E81FFCD0053933D /* Products */,
+				5CDA06BB2E8C2DEE00845830 /* ExpenseSplitter */,
+				5CDA06BA2E8C2DEE00845830 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		5C54A96D2E81FFCD0053933D /* Products */ = {
+		5CDA06BA2E8C2DEE00845830 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5C54A96C2E81FFCD0053933D /* GuessIT_zakir.app */,
+				5CDA06B92E8C2DEE00845830 /* ExpenseSplitter.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,64 +48,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5C54A96B2E81FFCD0053933D /* GuessIT_zakir */ = {
+		5CDA06B82E8C2DEE00845830 /* ExpenseSplitter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5C54A9782E81FFCE0053933D /* Build configuration list for PBXNativeTarget "GuessIT_zakir" */;
+			buildConfigurationList = 5CDA06C52E8C2DEF00845830 /* Build configuration list for PBXNativeTarget "ExpenseSplitter" */;
 			buildPhases = (
-				5C54A9682E81FFCD0053933D /* Sources */,
-				5C54A9692E81FFCD0053933D /* Frameworks */,
-				5C54A96A2E81FFCD0053933D /* Resources */,
+				5CDA06B52E8C2DEE00845830 /* Sources */,
+				5CDA06B62E8C2DEE00845830 /* Frameworks */,
+				5CDA06B72E8C2DEE00845830 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				5C54A96E2E81FFCD0053933D /* GuessIT_zakir */,
+				5CDA06BB2E8C2DEE00845830 /* ExpenseSplitter */,
 			);
-			name = GuessIT_zakir;
+			name = ExpenseSplitter;
 			packageProductDependencies = (
 			);
-			productName = GuessIT_zakir;
-			productReference = 5C54A96C2E81FFCD0053933D /* GuessIT_zakir.app */;
+			productName = ExpenseSplitter;
+			productReference = 5CDA06B92E8C2DEE00845830 /* ExpenseSplitter.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		5C54A9642E81FFCD0053933D /* Project object */ = {
+		5CDA06B12E8C2DEE00845830 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
-					5C54A96B2E81FFCD0053933D = {
+					5CDA06B82E8C2DEE00845830 = {
 						CreatedOnToolsVersion = 16.4;
 					};
 				};
 			};
-			buildConfigurationList = 5C54A9672E81FFCD0053933D /* Build configuration list for PBXProject "GuessIT_zakir" */;
+			buildConfigurationList = 5CDA06B42E8C2DEE00845830 /* Build configuration list for PBXProject "ExpenseSplitter" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 5C54A9632E81FFCD0053933D;
+			mainGroup = 5CDA06B02E8C2DEE00845830;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 5C54A96D2E81FFCD0053933D /* Products */;
+			productRefGroup = 5CDA06BA2E8C2DEE00845830 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5C54A96B2E81FFCD0053933D /* GuessIT_zakir */,
+				5CDA06B82E8C2DEE00845830 /* ExpenseSplitter */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		5C54A96A2E81FFCD0053933D /* Resources */ = {
+		5CDA06B72E8C2DEE00845830 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,7 +115,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		5C54A9682E81FFCD0053933D /* Sources */ = {
+		5CDA06B52E8C2DEE00845830 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -125,7 +125,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		5C54A9762E81FFCE0053933D /* Debug */ = {
+		5CDA06C32E8C2DEF00845830 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -160,6 +160,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 7J752S5X97;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -186,7 +187,7 @@
 			};
 			name = Debug;
 		};
-		5C54A9772E81FFCE0053933D /* Release */ = {
+		5CDA06C42E8C2DEF00845830 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -221,6 +222,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 7J752S5X97;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -239,15 +241,16 @@
 			};
 			name = Release;
 		};
-		5C54A9792E81FFCE0053933D /* Debug */ = {
+		5CDA06C62E8C2DEF00845830 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = GuessIT_zakir/GuessIT_zakir.entitlements;
+				CODE_SIGN_ENTITLEMENTS = ExpenseSplitter/ExpenseSplitter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7J752S5X97;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -260,12 +263,12 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "-1.GuessIT-zakir";
+				PRODUCT_BUNDLE_IDENTIFIER = "-1.ExpenseSplitter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
@@ -277,15 +280,16 @@
 			};
 			name = Debug;
 		};
-		5C54A97A2E81FFCE0053933D /* Release */ = {
+		5CDA06C72E8C2DEF00845830 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = GuessIT_zakir/GuessIT_zakir.entitlements;
+				CODE_SIGN_ENTITLEMENTS = ExpenseSplitter/ExpenseSplitter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7J752S5X97;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -298,12 +302,12 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "-1.GuessIT-zakir";
+				PRODUCT_BUNDLE_IDENTIFIER = "-1.ExpenseSplitter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
@@ -318,25 +322,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5C54A9672E81FFCD0053933D /* Build configuration list for PBXProject "GuessIT_zakir" */ = {
+		5CDA06B42E8C2DEE00845830 /* Build configuration list for PBXProject "ExpenseSplitter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5C54A9762E81FFCE0053933D /* Debug */,
-				5C54A9772E81FFCE0053933D /* Release */,
+				5CDA06C32E8C2DEF00845830 /* Debug */,
+				5CDA06C42E8C2DEF00845830 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5C54A9782E81FFCE0053933D /* Build configuration list for PBXNativeTarget "GuessIT_zakir" */ = {
+		5CDA06C52E8C2DEF00845830 /* Build configuration list for PBXNativeTarget "ExpenseSplitter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5C54A9792E81FFCE0053933D /* Debug */,
-				5C54A97A2E81FFCE0053933D /* Release */,
+				5CDA06C62E8C2DEF00845830 /* Debug */,
+				5CDA06C72E8C2DEF00845830 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 5C54A9642E81FFCD0053933D /* Project object */;
+	rootObject = 5CDA06B12E8C2DEE00845830 /* Project object */;
 }

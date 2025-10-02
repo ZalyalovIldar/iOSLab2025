@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct GuessIT_zakirApp: App {
+struct GuessITzakirApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
