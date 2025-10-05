@@ -52,3 +52,4 @@ class DataManager: ObservableObject {
         person.amount - average
     }
 }
+

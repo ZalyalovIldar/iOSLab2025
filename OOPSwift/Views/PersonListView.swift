@@ -40,7 +40,7 @@ struct PersonListView: View {
                                 .font(.headline)
                                 .foregroundColor(personBalance >= 0 ? .green: .red)
                             
-                            Text(personBalance >= 0 ? "Получит": "Должен")
+                            Text(personBalance >= 0 ? "Получит" : "Должен")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
@@ -53,3 +53,4 @@ struct PersonListView: View {
         }
     }
 }
+

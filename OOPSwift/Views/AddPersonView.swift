@@ -74,3 +74,4 @@ struct AddPersonView: View {
         errorMessage = ""
     }
 }
+

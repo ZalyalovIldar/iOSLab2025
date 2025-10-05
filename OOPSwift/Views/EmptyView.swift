@@ -26,3 +26,4 @@ struct EmptyView: View {
         .padding()
     }
 }
+

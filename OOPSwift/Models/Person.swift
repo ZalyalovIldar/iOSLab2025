@@ -13,3 +13,4 @@ struct Person: Identifiable, Codable {
     var name: String
     var amount: Double
 }
+
