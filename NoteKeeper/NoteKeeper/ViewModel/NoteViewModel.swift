@@ -10,11 +10,22 @@ import SwiftUI
 @Observable
 class NoteViewModel {
     
-    var notes: [Note] = []
+    var notes: [Note] = [] {
+        didSet {
+            saveNotesToUserDefaults()
+        }
+    }
+    
     var newNoteName: String = ""
     var newNoteText: String = ""
     var hasAttemptedSubbmit: Bool = false
     var searchText: String = ""
+    
+    private let notesKey = "notesKey"
+    
+    init() {
+        loadNotesFromUserDefaults()
+    }
     
     func addNote(note: Note) {
         
@@ -76,5 +87,29 @@ class NoteViewModel {
     
     var totalNotesCount: Int {
         notes.count
+    }
+    
+    private func saveNotesToUserDefaults() {
+        do {
+            let encoder = JSONEncoder()
+            let encodedNotes = try encoder.encode(notes)
+            UserDefaults.standard.set(encodedNotes, forKey: notesKey)
+        } catch {
+            print("Failed to save notes to UserDefaults: \(error)")
+        }
+    }
+    
+    private func loadNotesFromUserDefaults() {
+        guard let savedNotes = UserDefaults.standard.data(forKey: notesKey) else {
+            return
+        }
+        do {
+            let decoder = JSONDecoder()
+            let savedNotes = try decoder.decode([Note].self, from: savedNotes)
+            self.notes = savedNotes
+        } catch {
+            print("Failed to load notes from UserDefaults: \(error)")
+            self.notes = []
+        }
     }
 }

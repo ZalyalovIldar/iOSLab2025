@@ -59,6 +59,7 @@ struct NoteListView: View {
             }
             .onDelete(perform: viewModel.deleteNote)
         }
+        .padding()
         .listStyle(.plain)
         .overlay {
             if viewModel.filteredNotes.isEmpty {
@@ -207,6 +208,8 @@ struct AddNewNoteView: View {
                             .frame(width: 95, height: 30)
                     )
             }
+            
+            Divider()
         }
     }
 }
