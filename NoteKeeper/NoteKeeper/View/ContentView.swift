@@ -77,6 +77,62 @@ struct NoteListView: View {
                 }
             }
         }
+        
+        HStack {
+            NotesCountView(viewModel: viewModel)
+            Spacer()
+            ClearAllButton(viewModel: viewModel)
+        }
+        .padding(.horizontal)
+    }
+}
+
+struct NotesCountView: View {
+    
+    @Bindable var viewModel: NoteViewModel
+    
+    var body: some View {
+        
+        Text("Notes count: \(viewModel.filteredNotes.count)")
+            .font(.system(size: 16))
+            .background(
+                RoundedRectangle(cornerRadius: 15)
+                    .fill(Color(.systemGray5))
+                    .frame(width: 120, height: 27)
+            )
+    }
+}
+
+struct ClearAllButton: View {
+    
+    @Bindable var viewModel: NoteViewModel
+    @State var showConfirmation: Bool = false
+    
+    var body: some View {
+        
+        Button {
+            showConfirmation = true
+        } label: {
+            HStack {
+                Image(systemName: "trash")
+                Text("Clear All")
+            }
+            .foregroundStyle(.red)
+            .font(.system(size: 16))
+            .background(
+                RoundedRectangle(cornerRadius: 15)
+                    .fill(Color(.systemGray5))
+                    .frame(width: 115, height: 27)
+            )
+        }
+        .alert("Delete All notes?", isPresented: $showConfirmation) {
+            Button("Cancel", role: .cancel) { }
+            Button("Delete All") {
+                viewModel.deleteAllNotes()
+            }
+        } message: {
+            Text("This will permanently delete all \(viewModel.totalNotesCount) notes. This action cannot be undone.")
+        }
     }
 }
 
@@ -85,6 +141,7 @@ struct NoteRowView: View {
     let note: Note
     
     var body: some View {
+        
         VStack(spacing: 12) {
             
             Text(note.title)
@@ -135,14 +192,11 @@ struct AddNewNoteView: View {
                 Text(error)
                     .foregroundStyle(.red)
                     .font(.caption)
-                
             }
             
             Button {
-                
                 let newNote = Note(title: viewModel.newNoteName, text: viewModel.newNoteText)
                 viewModel.addNote(note: newNote)
-                
             } label: {
                 Text("Add Note")
                     .font(.headline)
