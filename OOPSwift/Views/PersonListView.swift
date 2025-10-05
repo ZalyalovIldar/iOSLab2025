@@ -36,7 +36,7 @@ struct PersonListView: View {
                         VStack(alignment: .trailing) {
                             let personBalance = balanceMoney(person)
                             
-                            Text("\(personBalance >= 0 ? "+" : "")\(personBalance, specifier: "%.2f")₽")
+                            Text("\(personBalance >= 0 ?  "+" : "")\(personBalance, specifier: "%.2f")₽")
                                 .font(.headline)
                                 .foregroundColor(personBalance >= 0 ? .green: .red)
                             
