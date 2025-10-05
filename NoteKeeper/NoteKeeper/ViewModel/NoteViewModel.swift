@@ -14,6 +14,7 @@ class NoteViewModel {
     var newNoteName: String = ""
     var newNoteText: String = ""
     var hasAttemptedSubbmit: Bool = false
+    var searchText: String = ""
     
     func addNote(note: Note) {
         
@@ -61,6 +62,16 @@ class NoteViewModel {
             return "Please, enter some text for the note."
         }
         return nil
+    }
+    
+    var filteredNotes: [Note] {
+        if searchText.isEmpty {
+            return notes
+        } else {
+            return notes.filter { note in
+                note.title.localizedCaseInsensitiveContains(searchText)
+            }
+        }
     }
     
     var totalNotesCount: Int {

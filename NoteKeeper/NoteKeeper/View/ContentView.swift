@@ -12,16 +12,27 @@ struct ContentView: View {
     @State var viewModel = NoteViewModel()
     
     var body: some View {
-        VStack {
+        
+        NavigationStack {
             
-            TitleView()
-            
-            AddNewNoteView(viewModel: viewModel)
-            
-            NoteListView(viewModel: viewModel)
-            
+            VStack {
+                
+                TitleView()
+                
+                AddNewNoteView(viewModel: viewModel)
+                
+                NoteListView(viewModel: viewModel)
+                
+            }
+            .padding()
+            .searchable(
+                text: $viewModel.searchText,
+                prompt: "Search by title"
+            )
         }
-        .padding()
+        .onTapGesture {
+            hideKeyboard()
+        }
     }
 }
 
@@ -33,7 +44,6 @@ struct TitleView: View {
             .font(.largeTitle)
             .fontWeight(.bold)
             .foregroundStyle(Gradient(colors: [.black, .gray]))
-            .shadow(color: .blue.opacity(0.5), radius: 10, x: 2, y: 5)
     }
 }
 
@@ -44,17 +54,35 @@ struct NoteListView: View {
     var body: some View {
         List {
             
-            ForEach($viewModel.notes) { $note in
-                NoteRowView(note: $note)
+            ForEach(viewModel.filteredNotes) { note in
+                NoteRowView(note: note)
             }
             .onDelete(perform: viewModel.deleteNote)
+        }
+        .listStyle(.plain)
+        .overlay {
+            if viewModel.filteredNotes.isEmpty {
+                if viewModel.searchText.isEmpty {
+                    ContentUnavailableView(
+                        "No Notes Created",
+                        systemImage: "note.text.badge.plus",
+                        description: Text("Fill out the form above to create your first note and start organizing your thoughts")
+                    )
+                } else {
+                    ContentUnavailableView(
+                        "No Notes Found",
+                        systemImage: "magnifyingglass",
+                        description: Text("No notes found for '\(viewModel.searchText)'. Try again with a different search term")
+                    )
+                }
+            }
         }
     }
 }
 
 struct NoteRowView: View {
     
-    @Binding var note: Note
+    let note: Note
     
     var body: some View {
         VStack(spacing: 12) {
@@ -79,7 +107,7 @@ struct NoteRowView: View {
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         ),
-                        lineWidth: 2)
+                        lineWidth: 3)
                 )
         )
     }
@@ -98,6 +126,10 @@ struct AddNewNoteView: View {
             
             TextField("Add body", text: $viewModel.newNoteText)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                .submitLabel(.done)
+                .onSubmit {
+                    hideKeyboard()
+                }
             
             if let error = viewModel.formErrorMessage {
                 Text(error)
@@ -123,6 +155,13 @@ struct AddNewNoteView: View {
             }
         }
     }
+}
+
+extension View {
+    
+    func hideKeyboard() {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
 }
 
 #Preview {
