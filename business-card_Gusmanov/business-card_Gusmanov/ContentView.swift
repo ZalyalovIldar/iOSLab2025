@@ -12,6 +12,7 @@ struct ContentView: View {
                     isRussian.toggle()
                 } label: {
                     Image(systemName: "globe")
+                        .foregroundColor(accentColor)
                         .font(.title2)
                 }
                 
@@ -19,6 +20,7 @@ struct ContentView: View {
                 
                 ShareLink(item: shareableContent()) {
                     Image(systemName: "square.and.arrow.up")
+                        .foregroundColor(accentColor)
                         .font(.title2)
                 }
                 
@@ -26,6 +28,7 @@ struct ContentView: View {
                     isDarkMode.toggle()
                 } label: {
                     Image(systemName: isDarkMode ? "sun.max.fill" : "moon.fill")
+                        .foregroundColor(accentColor)
                         .font(.title2)
                 }
             }
@@ -68,8 +71,9 @@ struct ContentView: View {
                     HStack {
                         Image(systemName: "phone.fill")
                         Text(isRussian ? "Позвонить" : "Call")
+                            .fontWeight(.semibold)
                     }
-                    .frame(maxWidth: 100)
+                    .frame(maxWidth: .infinity)
                     .padding()
                     .background(accentColor)
                     .foregroundColor(.white)
@@ -110,8 +114,10 @@ struct ContentView: View {
         return """
         \(name)
         \(title)
+        
         \(isRussian ? "Телефон" : "Phone"): \(phone)
         Email: \(email)
+        
         \(isRussian ? "Визитка создана в приложении" : "Business card created in the app")
         """
     }

@@ -1,5 +1,25 @@
-// ContentView.swift
 import SwiftUI
+
+struct EmptyStateView: View {
+    var body: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "person.2.slash")
+                .font(.system(size: 50))
+                .foregroundColor(.gray)
+            
+            Text("Список участников пуст")
+                .font(.headline)
+                .foregroundColor(.primary)
+            
+            Text("Добавьте первого человека, используя форму выше")
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+        }
+        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+}
 
 struct ContentView: View {
     @State private var people: [Person] = []
@@ -26,17 +46,30 @@ struct ContentView: View {
                 .disabled(name.isEmpty || spend.isEmpty)
                 
                 if people.isEmpty {
-                    Text("Список пуст")
-                        .foregroundColor(.gray)
-                        .padding()
+                    EmptyStateView()
                 } else {
                     List {
                         ForEach(people, id: \.name) { person in
                             HStack {
                                 Text(person.name)
+                                    .fontWeight(.medium)
                                 Spacer()
-                                Text(formatPersonSpendInfo(person: person))
+                                VStack(alignment: .trailing) {
+                                    Text("\(person.spends) руб")
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
+                                }
+                                
+                                Button(action: {
+                                    delete(person)
+                                }) {
+                                    Image(systemName: "trash")
+                                        .foregroundColor(.red)
+                                }
                             }
+                            .padding(.vertical, 4)
+                            .background(person.findColor(personList: people).opacity(0.1))
+                            .cornerRadius(2)
                         }
                     }
                 }
@@ -44,9 +77,11 @@ struct ContentView: View {
                 Spacer()
                 
                 if !people.isEmpty {
-                    Text("Средние траты: \(Person.splitter(personList: people), specifier: "%.2f") руб")
-                        .font(.headline)
-                        .padding()
+                    VStack(spacing: 8) {
+                        Text("Средние траты: \(Person.splitter(personList: people), specifier: "%.2f") руб")
+                            .font(.headline)
+                    }
+                    .padding()
                 }
             }
             .navigationTitle("Учет трат")
@@ -61,19 +96,13 @@ struct ContentView: View {
         name = ""
         spend = ""
     }
-    
-    private func calculateDifference(for person: Person) -> Double {
-        let averageSpend = Person.splitter(personList: people)
-        return Double(person.spends) - averageSpend
-    }
-    
-    private func formatPersonSpendInfo(person: Person) -> String {
-        let difference = calculateDifference(for: person)
-        let differenceString = String(format: "%.2f", difference)
-        return "\(differenceString) руб / \(person.spends) руб"
+
+    private func delete(_ person: Person) {
+        if let i = people.firstIndex(where: { element in element.name == person.name}) {
+            people.remove(at: i)
+        }
     }
 }
-
 #Preview {
-    ContentView()
+    EmptyStateView()
 }
