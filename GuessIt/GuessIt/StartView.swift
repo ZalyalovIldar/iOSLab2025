@@ -1,0 +1,177 @@
+//
+//  StartView.swift
+//  GuessIt
+//
+//  Created by Artur Bagautdinov on 22.09.2025.
+//
+import SwiftUI
+
+struct StartView: View {
+    
+    @State private var selectedDifficulty: Difficulty = .easy
+    @State private var path = NavigationPath()
+    @State private var minValue: Int = 1
+    @State private var maxValue: Int = 100
+    
+    let minLimit: Int = 1
+    let maxLimit: Int = 1000
+    let numberRange = 1...1000
+    
+    @AppStorage("wins")
+    private var wins = 0
+    
+    @AppStorage("losses")
+    private var losses = 0
+    
+    var body: some View {
+    
+        NavigationStack(path: $path) {
+            
+            VStack(spacing: 20) {
+                
+                TitleView()
+                
+                Divider()
+                    .background(Color(.gray))
+                    .padding(.horizontal)
+                
+                StatsView(wins: $wins, losses: $losses)
+                
+                Button("Reset stats") {
+                    wins = 0
+                    losses = 0
+                }
+                .foregroundColor(.white)
+                .background(
+                    RoundedRectangle(cornerRadius: 40)
+                        .fill(gradient)
+                        .frame(width: 110, height: 35)
+                )
+                
+                Divider()
+                    .background(Color(.gray))
+                    .padding(.horizontal)
+                
+            }
+            
+            VStack(spacing: 20) {
+                
+                Text("Select Difficulty")
+                    .font(.headline)
+                    .fontWeight(.bold)
+                
+                Picker("Level", selection: $selectedDifficulty) {
+                    ForEach(Difficulty.allCases) { difficulty in
+                        Text(difficulty.rawValue).tag(difficulty)
+                    }
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                
+                Text("Attempts: \(selectedDifficulty.attemptCount)")
+                    .foregroundStyle(.blue)
+                    .font(.subheadline)
+                    .fontWeight(.bold)
+                
+                Divider()
+                    .background(Color.gray)
+                
+                Text("Adjust the number range")
+                    .font(.headline)
+                    .fontWeight(.bold)
+                
+                HStack(spacing: 30) {
+                    
+                    VStack {
+                        
+                        Text("Min Value")
+                            .font(.subheadline)
+                            .foregroundStyle(Color.blue)
+                            .fontWeight(.bold)
+                        
+                        Picker("Min", selection: $minValue) {
+                            ForEach(numberRange, id: \.self) { number in
+                                Text("\(number)").tag(number)
+                            }
+                            
+                        }
+                        .pickerStyle(.wheel)
+                        .frame(width: 150, height: 150)
+                        .onChange(of: minValue) {
+                            if minValue > maxValue {
+                                minValue = maxValue - 1
+                            }
+                        }
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.gray, lineWidth: 1)
+                        )
+                        
+                    }
+                    
+                    VStack {
+                        
+                        Text("Max Value")
+                            .font(.subheadline)
+                            .foregroundColor(Color.blue)
+                            .fontWeight(.bold)
+                        
+                        Picker("Max", selection: $maxValue) {
+                            ForEach(numberRange, id: \.self) { number in
+                                Text("\(number)").tag(number)
+                            }
+                        }
+                        .pickerStyle(.wheel)
+                        .frame(width: 150, height: 150)
+                        .onChange(of: maxValue) {
+                            if maxValue < minValue {
+                                maxValue = minValue + 1
+                            }
+                        }
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.gray, lineWidth: 1)
+                        )
+                        
+                    }
+                    
+                }
+                
+                Text("Range: from \(minValue) to \(maxValue)")
+                    .foregroundStyle(.blue)
+                    .font(.subheadline)
+                    .fontWeight(.bold)
+                
+                Divider()
+                    .background(Color.gray)
+                
+                Button("Start game") {
+                    let settings = GameSettings(maxAttempts: selectedDifficulty.attemptCount, minNumber: minValue, maxNumber: maxValue)
+                    path.append(settings)
+                }
+                .foregroundStyle(Color.white)
+                .background(
+                    RoundedRectangle(cornerRadius: 30)
+                        .fill(gradient)
+                        .frame(width: 200, height: 50)
+                )
+                .padding()
+                
+            }
+            .padding(.horizontal)
+            .navigationDestination(for: GameSettings.self) { settings in
+                GameView(maxAttempts: settings.maxAttempts, min: settings.minNumber, max: settings.maxNumber)
+                
+            }
+        }
+    }
+}
+
+struct GameSettings: Hashable {
+    let maxAttempts: Int
+    let minNumber: Int
+    let maxNumber: Int
+}
+
+#Preview {
+    StartView()
+}
