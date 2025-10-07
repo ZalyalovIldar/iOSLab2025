@@ -11,7 +11,7 @@ struct MainScreenView: View {
     
     @State var viewModel = NoteViewModel()
     @State var showAddSheet = false
-    @State private var noteToEdit: Note? = nil
+    @State private var noteToEdit: Note?
     
     var body: some View {
         

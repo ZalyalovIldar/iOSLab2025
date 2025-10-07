@@ -102,9 +102,9 @@ class NoteViewModel {
         
         switch sortOption {
         case .byDateNewest:
-            return notesToFilter.sorted(by: { $0.createdDate > $1.createdDate} )
+            return notesToFilter.sorted(by: { $0.createdDate > $1.createdDate})
         case .byDateOldest:
-            return notesToFilter.sorted(by: { $0.createdDate < $1.createdDate} )
+            return notesToFilter.sorted(by: { $0.createdDate < $1.createdDate})
         case .alphabetically:
             return notesToFilter.sorted(by: { $0.title.lowercased() < $1.title.lowercased() })
         case .byLengthLongest:

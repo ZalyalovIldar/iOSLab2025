@@ -57,11 +57,11 @@ struct NoteListView: View {
     }
 }
 
-#Preview("With Notes") {
-    let vm = NoteViewModel()
-    vm.notes = [
+#Preview {
+    let viewModel = NoteViewModel()
+    viewModel.notes = [
         Note(title: "Test 1", text: "Sample note text"),
         Note(title: "Test 2", text: "Another sample note")
     ]
-    return NoteListView(viewModel: vm, noteToEdit: .constant(nil))
+    return NoteListView(viewModel: viewModel, noteToEdit: .constant(nil))
 }

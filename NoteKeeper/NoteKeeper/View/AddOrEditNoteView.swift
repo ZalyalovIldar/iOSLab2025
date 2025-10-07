@@ -12,7 +12,7 @@ struct AddOrEditNoteView: View {
     @Bindable var viewModel: NoteViewModel
     @Binding var isPresented: Bool
     
-    var noteToEdit: Note? = nil
+    var noteToEdit: Note?
     
     var body: some View {
         
