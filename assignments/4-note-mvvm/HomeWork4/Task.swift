@@ -14,6 +14,4 @@ struct Task: Identifiable, Codable {
     var content: String = ""
     var isDone: Bool = false
     let createdDate: Date = Date()
-    
 }
-

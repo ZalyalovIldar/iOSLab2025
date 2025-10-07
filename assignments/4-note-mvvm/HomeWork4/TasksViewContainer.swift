@@ -179,4 +179,3 @@ struct TaskContentView: View {
         TasksViewContainer()
     }
 }
-
