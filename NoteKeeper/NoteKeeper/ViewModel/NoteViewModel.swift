@@ -20,6 +20,7 @@ class NoteViewModel {
     var newNoteText: String = ""
     var hasAttemptedSubbmit: Bool = false
     var searchText: String = ""
+    var sortOption: SortOption = .byDateNewest
     
     private let notesKey = "notesKey"
     
@@ -76,12 +77,21 @@ class NoteViewModel {
     }
     
     var filteredNotes: [Note] {
-        if searchText.isEmpty {
-            return notes
-        } else {
-            return notes.filter { note in
-                note.title.localizedCaseInsensitiveContains(searchText)
-            }
+        let notesToFilter = notes.filter { note in
+            searchText.isEmpty || note.title.localizedCaseInsensitiveContains(searchText)
+        }
+        
+        switch sortOption {
+        case .byDateNewest:
+            return notesToFilter.sorted(by: { $0.createdDate > $1.createdDate} )
+        case .byDateOldest:
+            return notesToFilter.sorted(by: { $0.createdDate < $1.createdDate} )
+        case .alphabetically:
+            return notesToFilter.sorted(by: { $0.title.lowercased() < $1.title.lowercased() })
+        case .byLengthLongest:
+            return notesToFilter.sorted(by: { $0.text.count > $1.text.count })
+        case .byLengthShortest:
+            return notesToFilter.sorted(by: { $0.text.count < $1.text.count })
         }
     }
     
@@ -112,4 +122,13 @@ class NoteViewModel {
             self.notes = []
         }
     }
+}
+
+enum SortOption: String, CaseIterable {
+    case alphabetically = "by alphabet A-Z"
+    case byDateNewest = "by date (Newest)"
+    case byDateOldest = "by date (Oldest)"
+    case byLengthShortest = "by length (Shortest)"
+    case byLengthLongest = "by length (Longest)"
+    
 }

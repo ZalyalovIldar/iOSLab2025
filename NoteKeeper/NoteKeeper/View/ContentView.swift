@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State var viewModel = NoteViewModel()
+    @State var showAddForm = true
     
     var body: some View {
         
@@ -19,7 +20,14 @@ struct ContentView: View {
                 
                 TitleView()
                 
-                AddNewNoteView(viewModel: viewModel)
+                if showAddForm {
+                    AddNewNoteView(viewModel: viewModel)
+                        .transition(.opacity.animation(.easeInOut))
+                }
+                
+                FormButtonView(showAddForm: $showAddForm)
+                
+                SortPickerView(viewModel: viewModel)
                 
                 NoteListView(viewModel: viewModel)
                 
@@ -52,24 +60,29 @@ struct NoteListView: View {
     @Bindable var viewModel: NoteViewModel
     
     var body: some View {
+        
         List {
             
             ForEach(viewModel.filteredNotes) { note in
                 NoteRowView(note: note)
             }
             .onDelete(perform: viewModel.deleteNote)
+            
         }
         .padding()
         .listStyle(.plain)
         .overlay {
             if viewModel.filteredNotes.isEmpty {
+                
                 if viewModel.searchText.isEmpty {
+                    
                     ContentUnavailableView(
                         "No Notes Created",
                         systemImage: "note.text.badge.plus",
                         description: Text("Fill out the form above to create your first note and start organizing your thoughts")
                     )
                 } else {
+                    
                     ContentUnavailableView(
                         "No Notes Found",
                         systemImage: "magnifyingglass",
@@ -80,8 +93,11 @@ struct NoteListView: View {
         }
         
         HStack {
+            
             NotesCountView(viewModel: viewModel)
+            
             Spacer()
+            
             ClearAllButton(viewModel: viewModel)
         }
         .padding(.horizontal)
@@ -107,6 +123,7 @@ struct NotesCountView: View {
 struct ClearAllButton: View {
     
     @Bindable var viewModel: NoteViewModel
+    
     @State var showConfirmation: Bool = false
     
     var body: some View {
@@ -115,8 +132,10 @@ struct ClearAllButton: View {
             showConfirmation = true
         } label: {
             HStack {
+                
                 Image(systemName: "trash")
                 Text("Clear All")
+                
             }
             .foregroundStyle(.red)
             .font(.system(size: 16))
@@ -141,18 +160,41 @@ struct NoteRowView: View {
     
     let note: Note
     
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter
+    }()
+    
     var body: some View {
         
-        VStack(spacing: 12) {
+        VStack() {
             
-            Text(note.title)
-                .font(.headline)
+            VStack(spacing: 12) {
+                
+                Text(note.title)
+                    .font(.headline)
+                    .fontWeight(.bold)
+                
+                Divider()
+                    .background(LinearGradient(colors: [.blue, .purple], startPoint: .leading, endPoint: .trailing))
+                
+                Text(note.text)
+                    .font(.body)
+                
+            }
             
-            Divider()
-                .background(LinearGradient(colors: [.blue, .purple], startPoint: .leading, endPoint: .trailing))
-            
-            Text(note.text)
-                .font(.body)
+            VStack {
+                
+                Divider()
+                
+                Text("Created: \(dateFormatter.string(from: note.createdDate))")
+                    .font(.caption)
+                    .foregroundStyle(.gray)
+                
+            }
+            .padding(.top, 8)
         }
         .padding()
         .background(
@@ -168,6 +210,7 @@ struct NoteRowView: View {
                         lineWidth: 3)
                 )
         )
+        .frame(width: 330)
     }
 }
 
@@ -210,6 +253,58 @@ struct AddNewNoteView: View {
             }
             
             Divider()
+            
+        }
+    }
+}
+
+struct FormButtonView: View {
+    
+    @Binding var showAddForm: Bool
+    
+    var body: some View {
+        
+        VStack(spacing: 6) {
+            
+            Button {
+                withAnimation(.easeInOut) {
+                    showAddForm.toggle()
+                }
+            } label: {
+                Label(showAddForm ? "hide the form" : "add the note", systemImage: showAddForm ? "chevron.up.circle" : "plus.circle")
+                    .font(.headline)
+                    .foregroundColor(.blue)
+            }
+            
+            Divider()
+            
+        }
+    }
+}
+
+struct SortPickerView: View {
+    
+    @Bindable var viewModel: NoteViewModel
+    
+    var body: some View {
+        
+        HStack {
+            
+            Text("Sort:")
+                .font(.subheadline)
+            
+            Picker("Sort by:", selection: $viewModel.sortOption) {
+                ForEach(SortOption.allCases, id: \.self) { option in
+                    Text(option.rawValue)
+                        .tag(option)
+                }
+            }
+            .pickerStyle(.menu)
+            .background(
+                RoundedRectangle(cornerRadius: 20)
+                    .foregroundStyle(.gray.opacity(0.2))
+                    
+            )
         }
     }
 }
