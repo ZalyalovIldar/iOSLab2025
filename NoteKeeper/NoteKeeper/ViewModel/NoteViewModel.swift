@@ -39,6 +39,25 @@ class NoteViewModel {
         clearFields()
     }
     
+    func saveNote(editing noteToEdit: Note? = nil) {
+        guard !newNoteName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+              !newNoteText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+            hasAttemptedSubbmit = true
+            return
+        }
+        
+        if let noteToEdit = noteToEdit,
+           let index = notes.firstIndex(where: { $0.id == noteToEdit.id }) {
+            notes[index].title = newNoteName
+            notes[index].text = newNoteText
+        } else {
+            let newNote = Note(title: newNoteName, text: newNoteText)
+            notes.append(newNote)
+        }
+        
+        clearFields()
+    }
+    
     private func clearFields() {
         newNoteName = ""
         newNoteText = ""
