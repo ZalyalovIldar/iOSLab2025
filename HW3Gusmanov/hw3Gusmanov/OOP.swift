@@ -21,15 +21,15 @@ class Person: Identifiable {
         return Double(sum) / Double(personList.count)
     }
     
-    func Diff(personList: [Person]) -> Double {
+    func differ(personList: [Person]) -> Double {
             let average = Person.splitter(personList: personList)
             return Double(self.spends) - average
         }
     
     func findColor(personList: [Person]) -> Color {
-        let diff = Diff(personList: personList)
+        let diff = differ(personList: personList)
         if diff > 0 { return .green }
-        if diff < 0 { return .red }
+        else if diff < 0 { return .red }
         else { return .white }
     }
 }

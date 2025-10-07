@@ -98,8 +98,8 @@ struct ContentView: View {
     }
 
     private func delete(_ person: Person) {
-        if let i = people.firstIndex(where: { element in element.name == person.name}) {
-            people.remove(at: i)
+        if let iname = people.firstIndex(where: { element in element.name == person.name }) {
+            people.remove(at: iname)
         }
     }
 }
