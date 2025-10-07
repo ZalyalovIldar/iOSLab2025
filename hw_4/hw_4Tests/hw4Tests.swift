@@ -8,7 +8,7 @@
 import Testing
 @testable import hw_4
 
-struct hw4Tests {
+struct Hw4Tests {
 
     @Test
     func example() async throws {
