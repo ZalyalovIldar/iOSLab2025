@@ -8,9 +8,10 @@
 import Testing
 @testable import hw_4
 
-struct hw_4Tests {
+struct hw4Tests {
 
-    @Test func example() async throws {
+    @Test
+    func example() async throws {
         // Write your test here and use APIs like `#expect(...)` to check expected conditions.
     }
 
