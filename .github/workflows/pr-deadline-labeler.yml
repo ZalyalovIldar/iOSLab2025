@@ -15,7 +15,8 @@ env:
     {
       "homework 1": "2025-09-16T23:59:59+03:00",
       "homework 2": "2025-09-23T23:59:59+03:00",
-      "homework 3": "2025-09-30T23:59:59+03:00"
+      "homework 3": "2025-09-30T23:59:59+03:00",
+      "homework 4": "2025-10-07T23:59:59+03:00"
     }
   IN_TIME_LABEL: in time
   LATE_LABEL: late
@@ -40,7 +41,7 @@ jobs:
             const labelsToRemove = [process.env.IN_TIME_LABEL, process.env.LATE_LABEL];
 
             // 2) Пытаемся распознать "Homework N" из title/body
-            const m = (title + '\n' + body).match(/(?:homework|hw|дз)\s*([0-9]+)/i);
+            const m = (title + '\n' + body).match(/(?:homework|hw|дз|task)\s*([0-9]+)/i);
             if (!m) {
               core.notice('Homework number not found in PR title/body. Expected like "Homework 2".');
               return;
