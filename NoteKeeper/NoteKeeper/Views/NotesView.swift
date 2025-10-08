@@ -104,8 +104,7 @@ struct NotesView: View {
         }
     }
     
-    @ViewBuilder
-    private var title: some View {
+    @ViewBuilder private var title: some View {
         Text("Notes")
             .font(.largeTitle)
             .bold()

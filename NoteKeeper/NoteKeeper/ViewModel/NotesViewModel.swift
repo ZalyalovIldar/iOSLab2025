@@ -24,7 +24,7 @@ class NotesViewModel {
         var notesToDisplay = notes
         
         if !searchText.isEmpty {
-            notesToDisplay = notesToDisplay.filter { $0.title.localizedCaseInsensitiveContains(searchText) || $0.text.localizedCaseInsensitiveContains(searchText)}
+            notesToDisplay = notesToDisplay.filter { $0.title.localizedCaseInsensitiveContains(searchText) || $0.text.localizedCaseInsensitiveContains(searchText) }
         }
         
         if sortedByTitle {
@@ -62,7 +62,7 @@ class NotesViewModel {
     }
     
     func deleteNote(_ note: Note) {
-        if let noteToDeleteIndex = notes.firstIndex(where: {$0.id == note.id}) {
+        if let noteToDeleteIndex = notes.firstIndex(where: { $0.id == note.id }) {
             notes.remove(at: noteToDeleteIndex)
         }
     }

@@ -68,8 +68,7 @@ struct PersonalInformationView: View {
             .frame(width: 330, height: 1)
     }
     
-    @ViewBuilder
-    private var shareButton: some View {
+    @ViewBuilder private var shareButton: some View {
         if let url = DataStorage.gitHubAccountLink {
             ShareLink(item: url) {
                 Image(systemName: "square.and.arrow.up").resizable()
