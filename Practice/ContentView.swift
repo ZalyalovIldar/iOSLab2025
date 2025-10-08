@@ -9,7 +9,8 @@ import SwiftUI
 import MessageUI
 
 struct ContentView: View {
-    @AppStorage("isDarkMode") var isDarkMode = false
+    @AppStorage("isDarkMode")
+    var isDarkMode = false
     @State var showShareSheet = false
     
     var body: some View {
