@@ -194,7 +194,8 @@ struct NoteRowView: View {
 }
 
 struct EditNoteView: View {
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
     let note: Note
     let onSave: (String, String) -> Void
     
