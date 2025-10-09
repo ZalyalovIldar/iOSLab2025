@@ -148,4 +148,3 @@ struct BusinessCardView: View {
 #Preview {
     BusinessCardView()
 }
-

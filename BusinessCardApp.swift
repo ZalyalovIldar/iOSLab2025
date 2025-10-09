@@ -28,4 +28,3 @@ struct BusinessCardViewApp_Previews: PreviewProvider {
         }
     }
 }
-
