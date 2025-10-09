@@ -17,17 +17,41 @@ struct TasksViewContainer: View {
         NavigationStack {
             VStack(spacing: 0) {
                 HStack {
-                    Text("Мои заметки")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                    Spacer()
-                    Text("Количество заметок: \(viewModel.notesCount)")
+                    Text("Количество моих заметок: \(viewModel.notesCount)")
                         .font(.caption)
                         .foregroundColor(.white)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
                         .background(Color.blue)
                         .clipShape(Capsule())
+                    
+                    Spacer()
+                    
+                    Menu {
+                        ForEach(TasksViewModel.SortOption.allCases, id: \.self) { option in
+                            Button {
+                                viewModel.chooseSort(option)
+                            } label: {
+                                HStack {
+                                    Text(option.title)
+                                    if viewModel.sortOption == option {
+                                        Image(systemName: "checkmark")
+                                    }
+                                }
+                            }
+                        }
+                    } label: {
+                        HStack {
+                            Image(systemName: "arrow.up.arrow.down")
+                            Text("Сортировка")
+                        }
+                        .font(.caption)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
+                        .background(Color.gray.opacity(0.1))
+                        .foregroundColor(.primary)
+                        .cornerRadius(8)
+                    }
                 }
                 .padding(.horizontal)
                 .padding(.top)
@@ -99,18 +123,30 @@ struct AddNoteView: View {
 }
 
 struct NotesListView: View {
+    @State private var showingEditSheet = false
+    @State private var selectedNote: Note?
     
-    @Bindable var viewModel: TasksViewModel
+    let viewModel: TasksViewModel
     
     var body: some View {
         List {
             ForEach(viewModel.filteredNotes) { note in
-                NoteRowView(note: note)
-                    .padding(.vertical, 4)
+                NoteRowView(note: note) { note in
+                    selectedNote = note
+                    showingEditSheet = true
+                }
+                .padding(.vertical, 4)
             }
             .onDelete(perform: viewModel.removeNote)
         }
         .listStyle(PlainListStyle())
+        .sheet(isPresented: $showingEditSheet) {
+            if let note = selectedNote {
+                EditNoteView(note: note) { newTitle, newContent in
+                    viewModel.updateNote(id: note.id, newTitle: newTitle, newContent: newContent)
+                }
+            }
+        }
         .overlay {
             if viewModel.filteredNotes.isEmpty {
                 ContentUnavailableView(
@@ -125,13 +161,27 @@ struct NotesListView: View {
 
 struct NoteRowView: View {
     let note: Note
+    let onEdit: (Note) -> Void
     
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text(note.title)
-                .font(.headline)
-                .foregroundColor(.primary)
-                .lineLimit(1)
+            HStack {
+                Text(note.title)
+                    .font(.headline)
+                    .foregroundColor(.primary)
+                    .lineLimit(1)
+                
+                Spacer()
+                
+                Button {
+                    onEdit(note)
+                } label: {
+                    Text("Изменить")
+                        .font(.caption)
+                        .foregroundColor(.blue)
+                }
+                .buttonStyle(.plain)
+            }
             
             Text(note.content)
                 .font(.subheadline)
@@ -140,6 +190,50 @@ struct NoteRowView: View {
         }
         .padding(.vertical, 8)
         .contentShape(Rectangle())
+    }
+}
+
+struct EditNoteView: View {
+    @Environment(\.dismiss) private var dismiss
+    let note: Note
+    let onSave: (String, String) -> Void
+    
+    @State private var editedTitle: String
+    @State private var editedContent: String
+    
+    init(note: Note, onSave: @escaping (String, String) -> Void) {
+        self.note = note
+        self.onSave = onSave
+        self._editedTitle = State(initialValue: note.title)
+        self._editedContent = State(initialValue: note.content)
+    }
+    
+    var body: some View {
+        NavigationStack {
+            Form {
+                Section {
+                    TextField("Заголовок", text: $editedTitle)
+                    TextField("Текст заметки", text: $editedContent, axis: .vertical)
+                        .lineLimit(3...6)
+                }
+            }
+            .navigationTitle("Редактировать заметку")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Отмена") {
+                        dismiss()
+                    }
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Готово") {
+                        onSave(editedTitle, editedContent)
+                        dismiss()
+                    }
+                    .disabled(editedTitle.isEmpty)
+                }
+            }
+        }
     }
 }
 
