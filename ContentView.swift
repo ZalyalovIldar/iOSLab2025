@@ -202,7 +202,7 @@ struct ContentView: View {
         }
     }
     
-    private func localized(_ key : String) -> String {
+    private func localized(_ key: String) -> String {
            let dict: [String: [String: String]] = [
                "guessNumber": ["ru": "Угадай число", "en": "Guess the number"],
                "difficulty": ["ru": "Сложность", "en": "Difficulty"],
@@ -240,4 +240,3 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
-

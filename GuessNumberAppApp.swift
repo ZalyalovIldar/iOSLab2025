@@ -15,4 +15,3 @@ struct GuessNumberAppApp: App {
         }
     }
 }
-
