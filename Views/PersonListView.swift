@@ -37,7 +37,7 @@ struct PersonListView: View {
                             
                             Text("\(personBalance >= 0 ? " + " : "")\(personBalance, specifier: "%.2f")₽")
                                 .font(.headline)
-                                .foregroundColor(personBalance >= 0 ? .green: .red)
+                                .foregroundColor(personBalance >= 0 ? .green : .red)
                             
                             Text(personBalance >= 0 ? "Получит" : "Должен")
                                 .font(.caption)
