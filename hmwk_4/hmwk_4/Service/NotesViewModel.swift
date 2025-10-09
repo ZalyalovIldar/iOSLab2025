@@ -42,12 +42,12 @@ class NotesViewModel {
     var filterNotes: [Note] {
         var result = notes
         if !searchText .trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            result = result.filter {$0.title.localizedCaseInsensitiveContains(searchText)}
+            result = result.filter { $0.title.localizedCaseInsensitiveContains(searchText) }
         }
         
         switch sortOrder {
         case .titleAsc:
-            result.sort { $0.title.localizedCaseInsensitiveCompare($1.title) == .orderedAscending}
+            result.sort { $0.title.localizedCaseInsensitiveCompare($1.title) == .orderedAscending }
         case .dateDesc:
             result.sort { $0.date > $1.date }
         case .none:
@@ -64,13 +64,18 @@ class NotesViewModel {
     
     func loadNotes() {
         if let data = UserDefaults.standard.data(forKey: "notes") {
-            let saved = try! JSONDecoder().decode([Note].self, from: data)
-            notes = saved
+            do {
+                let saved = try JSONDecoder().decode([Note].self, from: data)
+                self.notes = saved
+            } catch {
+                print("Ошибка при загрузке заметок: \(error)")
+            }
         }
+
     }
     
     func update(note: Note, newTitle: String, newContent: String) {
-        if let index = notes.firstIndex(where: { $0.id == note.id}) {
+        if let index = notes.firstIndex(where: { $0.id == note.id }) {
             notes[index].title = newTitle
             notes[index].content = newContent
         }

@@ -31,4 +31,3 @@ struct AddNoteView: View {
 #Preview {
     AddNoteView(viewModel: NotesViewModel())
 }
-

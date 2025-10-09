@@ -36,4 +36,3 @@ struct NoteRowView: View {
 #Preview {
     NoteRowView(note: Note(title: "Пример заметки", content: "Тестовый текст"))
 }
-

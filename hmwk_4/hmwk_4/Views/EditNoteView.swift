@@ -14,7 +14,8 @@ struct EditNoteView: View {
     
     @State private var titleText: String
     @State private var contentText: String
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
 
     init(viewModel: NotesViewModel, note: Note) {
         self._viewModel = Bindable(wrappedValue: viewModel)
@@ -47,4 +48,3 @@ struct EditNoteView: View {
         }
     }
 }
-
