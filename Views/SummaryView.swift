@@ -44,4 +44,3 @@ struct SummaryView: View {
         .cornerRadius(10)
     }
 }
-
