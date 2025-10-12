@@ -65,7 +65,12 @@ class NoteViewModel {
     }
     
     func deleteNote(at offsets: IndexSet) {
-            notes.remove(atOffsets: offsets)
+        let notesToDelete = offsets.map { filteredNotes[$0] }
+        for note in notesToDelete {
+            if let index = notes.firstIndex(where: { $0.id == note.id }) {
+                notes.remove(at: index)
+            }
+        }
     }
     
     func deleteAllNotes() {
