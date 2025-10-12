@@ -78,6 +78,7 @@ class NotesViewModel {
         if let index = notes.firstIndex(where: { $0.id == note.id }) {
             notes[index].title = newTitle
             notes[index].content = newContent
+            saveNotes()
         }
     }
     

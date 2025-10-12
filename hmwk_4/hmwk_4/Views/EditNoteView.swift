@@ -18,11 +18,11 @@ struct EditNoteView: View {
     private var dismiss
 
     init(viewModel: NotesViewModel, note: Note) {
-        self._viewModel = Bindable(wrappedValue: viewModel)
-        self.note = note
-        _titleText = State(initialValue: note.title)
-        _contentText = State(initialValue: note.content)
-    }
+           self.viewModel = viewModel
+           self.note = note
+           _titleText = State(initialValue: note.title)
+           _contentText = State(initialValue: note.content)
+       }
     
     var body: some View {
         Form {
