@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		3CC9CE382EE102A000C1B83A /* RecipeGrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeGrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CC238DC2EE104DA00B30816 /* RecipeGrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeGrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		3CC9CE3A2EE102A000C1B83A /* RecipeGrid */ = {
+		3CC238DE2EE104DA00B30816 /* RecipeGrid */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = RecipeGrid;
 			sourceTree = "<group>";
@@ -19,7 +19,7 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		3CC9CE352EE102A000C1B83A /* Frameworks */ = {
+		3CC238D92EE104DA00B30816 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -29,18 +29,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3CC9CE2F2EE102A000C1B83A = {
+		3CC238D32EE104DA00B30816 = {
 			isa = PBXGroup;
 			children = (
-				3CC9CE3A2EE102A000C1B83A /* RecipeGrid */,
-				3CC9CE392EE102A000C1B83A /* Products */,
+				3CC238DE2EE104DA00B30816 /* RecipeGrid */,
+				3CC238DD2EE104DA00B30816 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		3CC9CE392EE102A000C1B83A /* Products */ = {
+		3CC238DD2EE104DA00B30816 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3CC9CE382EE102A000C1B83A /* RecipeGrid.app */,
+				3CC238DC2EE104DA00B30816 /* RecipeGrid.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,64 +48,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3CC9CE372EE102A000C1B83A /* RecipeGrid */ = {
+		3CC238DB2EE104DA00B30816 /* RecipeGrid */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3CC9CE432EE102A200C1B83A /* Build configuration list for PBXNativeTarget "RecipeGrid" */;
+			buildConfigurationList = 3CC238E72EE104DB00B30816 /* Build configuration list for PBXNativeTarget "RecipeGrid" */;
 			buildPhases = (
-				3CC9CE342EE102A000C1B83A /* Sources */,
-				3CC9CE352EE102A000C1B83A /* Frameworks */,
-				3CC9CE362EE102A000C1B83A /* Resources */,
+				3CC238D82EE104DA00B30816 /* Sources */,
+				3CC238D92EE104DA00B30816 /* Frameworks */,
+				3CC238DA2EE104DA00B30816 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				3CC9CE3A2EE102A000C1B83A /* RecipeGrid */,
+				3CC238DE2EE104DA00B30816 /* RecipeGrid */,
 			);
 			name = RecipeGrid;
 			packageProductDependencies = (
 			);
 			productName = RecipeGrid;
-			productReference = 3CC9CE382EE102A000C1B83A /* RecipeGrid.app */;
+			productReference = 3CC238DC2EE104DA00B30816 /* RecipeGrid.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		3CC9CE302EE102A000C1B83A /* Project object */ = {
+		3CC238D42EE104DA00B30816 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2610;
 				LastUpgradeCheck = 2610;
 				TargetAttributes = {
-					3CC9CE372EE102A000C1B83A = {
+					3CC238DB2EE104DA00B30816 = {
 						CreatedOnToolsVersion = 26.1.1;
 					};
 				};
 			};
-			buildConfigurationList = 3CC9CE332EE102A000C1B83A /* Build configuration list for PBXProject "RecipeGrid" */;
+			buildConfigurationList = 3CC238D72EE104DA00B30816 /* Build configuration list for PBXProject "RecipeGrid" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 3CC9CE2F2EE102A000C1B83A;
+			mainGroup = 3CC238D32EE104DA00B30816;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 3CC9CE392EE102A000C1B83A /* Products */;
+			productRefGroup = 3CC238DD2EE104DA00B30816 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3CC9CE372EE102A000C1B83A /* RecipeGrid */,
+				3CC238DB2EE104DA00B30816 /* RecipeGrid */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		3CC9CE362EE102A000C1B83A /* Resources */ = {
+		3CC238DA2EE104DA00B30816 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,7 +115,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		3CC9CE342EE102A000C1B83A /* Sources */ = {
+		3CC238D82EE104DA00B30816 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -125,7 +125,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		3CC9CE412EE102A200C1B83A /* Debug */ = {
+		3CC238E52EE104DB00B30816 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -189,7 +189,7 @@
 			};
 			name = Debug;
 		};
-		3CC9CE422EE102A200C1B83A /* Release */ = {
+		3CC238E62EE104DB00B30816 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -246,7 +246,7 @@
 			};
 			name = Release;
 		};
-		3CC9CE442EE102A200C1B83A /* Debug */ = {
+		3CC238E82EE104DB00B30816 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -278,7 +278,7 @@
 			};
 			name = Debug;
 		};
-		3CC9CE452EE102A200C1B83A /* Release */ = {
+		3CC238E92EE104DB00B30816 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -313,25 +313,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3CC9CE332EE102A000C1B83A /* Build configuration list for PBXProject "RecipeGrid" */ = {
+		3CC238D72EE104DA00B30816 /* Build configuration list for PBXProject "RecipeGrid" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3CC9CE412EE102A200C1B83A /* Debug */,
-				3CC9CE422EE102A200C1B83A /* Release */,
+				3CC238E52EE104DB00B30816 /* Debug */,
+				3CC238E62EE104DB00B30816 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3CC9CE432EE102A200C1B83A /* Build configuration list for PBXNativeTarget "RecipeGrid" */ = {
+		3CC238E72EE104DB00B30816 /* Build configuration list for PBXNativeTarget "RecipeGrid" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3CC9CE442EE102A200C1B83A /* Debug */,
-				3CC9CE452EE102A200C1B83A /* Release */,
+				3CC238E82EE104DB00B30816 /* Debug */,
+				3CC238E92EE104DB00B30816 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 3CC9CE302EE102A000C1B83A /* Project object */;
+	rootObject = 3CC238D42EE104DA00B30816 /* Project object */;
 }
