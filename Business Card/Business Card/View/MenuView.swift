@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct MenuView: View {
     @Environment(\.colorScheme)
     private var colorScheme
     
     private var menu = DataStorage()
+    
+    @State private var vm = ModelView()
     
     var body: some View {
         ZStack {
@@ -31,10 +34,24 @@ struct MenuView: View {
     
     private var shortenedBio: some View {
         VStack {
-            Image(.profile)
-                .resizable()
-                .frame(width: 130, height: 140)
-                .clipShape(.circle)
+//            Image(.profile)
+//                .resizable()
+//                .frame(width: 130, height: 140)
+//                .clipShape(.circle)
+            PhotosPicker(selection: $vm.photoSelection, matching: .images) {
+                if let selectedImage = vm.selectedImage {
+                    Image(uiImage: selectedImage)
+                        .resizable()
+                        .frame(width: 130, height: 140)
+                        .clipShape(.circle)
+                } else {
+                    Text("Pick profile photo")
+                        .frame(width: 130, height: 140)
+                        .clipShape(.circle)
+                }
+                
+            }
+            
             Text("Laysan Minlebaeva")
                 .font(.title)
                 .bold()

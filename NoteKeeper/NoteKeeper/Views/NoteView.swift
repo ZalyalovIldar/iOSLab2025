@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-//TODO: disable button, share!!!
 
 struct NoteView: View {
     @State var noteViewModel: NotesViewModel
