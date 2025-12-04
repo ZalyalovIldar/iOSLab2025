@@ -9,7 +9,6 @@
 import SwiftUI
 
 @main
-// swiftlint:disable:next type_name
 struct IOS_LAB_HW5App: App {
     var body: some Scene {
         WindowGroup {

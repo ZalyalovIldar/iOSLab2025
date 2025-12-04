@@ -54,4 +54,3 @@ struct RecipeDetailView: View {
         .navigationBarTitleDisplayMode(.inline) //заголовок в компактном режиме
     }
 }
-
