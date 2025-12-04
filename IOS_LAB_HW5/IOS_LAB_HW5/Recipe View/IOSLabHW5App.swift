@@ -9,7 +9,7 @@
 import SwiftUI
 
 @main
-struct IOS_LAB_HW5App: App {
+struct IOSLabHW5App: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
