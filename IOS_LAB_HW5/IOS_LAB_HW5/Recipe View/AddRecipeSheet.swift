@@ -7,7 +7,8 @@
 import SwiftUI
 
 struct AddRecipeSheet: View {
-    @Environment(\.dismiss) var dismiss //для закрытия модального окна
+    @Environment(\.dismiss)
+    var dismiss //для закрытия модального окна
     
     @State private var title = ""
     @State private var imageName = ""
@@ -66,3 +67,4 @@ struct AddRecipeSheet: View {
         }
     }
 }
+

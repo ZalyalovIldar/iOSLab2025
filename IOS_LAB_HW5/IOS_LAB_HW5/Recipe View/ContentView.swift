@@ -128,9 +128,9 @@ struct ContentView: View {
             }
             .sheet(item: $editingRecipe) { recipe in
                 AddRecipeSheet(recipe: recipe) { updatedRecipe in
-                    for i in 0..<recipes.count {
-                        if recipes[i].id == updatedRecipe.id {
-                            recipes[i] = updatedRecipe
+                    for index in 0..<recipes.count {
+                        if recipes[index].id == updatedRecipe.id {
+                            recipes[index] = updatedRecipe
                             break
                         }
                     }
@@ -167,3 +167,4 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+

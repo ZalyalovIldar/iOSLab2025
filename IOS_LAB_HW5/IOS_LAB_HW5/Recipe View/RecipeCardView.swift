@@ -47,3 +47,4 @@ struct RecipeCardView: View {
         .cornerRadius(12)
     }
 }
+
