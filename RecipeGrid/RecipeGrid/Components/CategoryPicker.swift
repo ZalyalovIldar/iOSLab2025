@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct CategoryPicker: View {
+    @Binding var selectedCategory: FoodCategory
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Picker("", selection: $selectedCategory) {
+            ForEach(FoodCategory.allCases) { category in
+                Text(category.rawValue.capitalized)
+                    .tag(category)
+            }
+        }
+        .pickerStyle(.segmented)
     }
-}
-
-#Preview {
-    CategoryPicker()
 }

@@ -11,7 +11,8 @@ import SwiftUI
 struct RecipeGridApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RecipesView()
+                .preferredColorScheme(.dark)
         }
     }
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Image: View {
+struct ImageView: View {
     let recipe: Recipe
     let folderName: String
     

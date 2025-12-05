@@ -8,11 +8,32 @@
 import SwiftUI
 
 struct RecipeRowView: View {
+    let recipe: Recipe
+    
+    private var folderName = "recipe_images"
+    
+    init(recipe: Recipe) {
+        self.recipe = recipe
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            ImageView(recipe: recipe, folderName: folderName)
+            Text(recipe.title)
+                .font(.title3.bold())
+                .lineLimit(2)
+                .padding(.vertical)
+                .padding(.horizontal, 2)
+        }
+        .foregroundStyle(.white)
+        .padding()
+        .glassEffect(.clear, in: .rect(cornerRadius: 25))
     }
 }
 
 #Preview {
-    RecipeRowView()
+    ZStack {
+        Color.black.ignoresSafeArea()
+        RecipeRowView(recipe: Recipe.mockRecipes.first!)
+    }
 }

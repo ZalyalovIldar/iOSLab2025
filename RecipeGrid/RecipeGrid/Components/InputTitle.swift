@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct InputTitle: View {
+    let title: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(title)
+            .font(.title2.bold())
+            .padding(.top)
     }
 }
 
 #Preview {
-    InputTitle()
+    InputTitle(title: "Title")
 }
