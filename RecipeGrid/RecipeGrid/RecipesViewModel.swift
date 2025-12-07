@@ -10,6 +10,14 @@ import Foundation
 @Observable
 final class RecipesViewModel {
     
+    enum SortOption {
+        case none
+        case alphabetical
+        case category
+    }
+    
+    var sortOption: SortOption = .none
+    
     var items: [Recipe] = [
         
         Recipe(
@@ -95,10 +103,21 @@ final class RecipesViewModel {
 }
     
     var filteredItems: [Recipe] {
-        guard !searchText.isEmpty else { return items }
-        return items.filter {
-            $0.title.localizedCaseInsensitiveContains(searchText) ||
-            $0.category.localizedCaseInsensitiveContains(searchText)
+        var result = items
+        
+        if !searchText.isEmpty {
+            result = result.filter {
+                $0.title.localizedCaseInsensitiveContains(searchText) ||
+                $0.category.localizedCaseInsensitiveContains(searchText)
+            }
+        }
+        switch sortOption {
+        case .none:
+            return result
+        case .alphabetical:
+            return result.sorted { $0.title.localizedCompare($1.title) == .orderedAscending }
+        case .category:
+            return result.sorted { $0.category.localizedCompare($1.category) == .orderedAscending }
         }
     }
     
@@ -106,4 +125,3 @@ final class RecipesViewModel {
         items.removeAll()
     }
 }
-

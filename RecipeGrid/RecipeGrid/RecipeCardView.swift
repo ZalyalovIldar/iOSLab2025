@@ -18,6 +18,8 @@ struct RecipeCardView: View {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color(.systemGray6))
                     .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
+                    .padding(10)
+                
                 cardImage
                     .padding(18)
             }
@@ -62,9 +64,13 @@ struct RecipeCardView: View {
         private var cardImage: some View {
             switch recipe.imageType {
             case .symbol:
-                Image(systemName: recipe.imageName)
-                    .resizable()
-                    .scaledToFit()
+                if recipe.imageName != "" {
+                    Image(systemName: recipe.imageName)
+                        .resizable()
+                        .scaledToFit()
+                } else {
+                    PlaceholderImageView()
+                }
                 
             case .photo:
                 if let uiImage = RecipeImageStorage.shared.load(fileName: recipe.imageName) {
@@ -73,16 +79,14 @@ struct RecipeCardView: View {
                         .scaledToFit()
                         .frame(maxWidth: 120, maxHeight: 70)
                         .clipShape(RoundedRectangle(cornerRadius: 8))
-                } else {
-                    Image(systemName: "photo")
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundColor(.secondary)
                 }
+            case .none:
+                PlaceholderImageView()
+
             }
         }
 }
 
 #Preview {
-    RecipeCardView(recipe: Recipe(title: "Spaghetti", imageName: "fork.knife", summary: "Classic Italian pasta dish with tomato sauce.", category: "Main", imageType: .symbol))
+    RecipeCardView(recipe: Recipe(title: "Spaghetti", imageName: "", summary: "Classic Italian pasta dish with tomato sauce.", category: "Main", imageType: .symbol))
 }

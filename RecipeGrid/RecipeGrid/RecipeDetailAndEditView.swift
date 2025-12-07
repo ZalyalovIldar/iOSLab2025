@@ -24,85 +24,35 @@ struct RecipeDetailAndEditView: View {
     @State private var selectedItem: PhotosPickerItem?
     
     var body: some View {
-        
-        ScrollView {
-            VStack(spacing: 20) {
-                
-                RecipeImageView(recipe: recipe)
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 18)
-                            .fill(Color(.systemGray6))
-                            .shadow(radius: 4)
-                    )
-                    .padding(.top)
-
-                
-                VStack(alignment: .leading, spacing: 16) {
-                    Text("Edit Recipe")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .padding(.bottom, 8)
-                    
-                    VStack(alignment: .leading) {
-                        Text("Title")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                        TextField("Title", text: $recipe.title)
-                            .textFieldStyle(.roundedBorder)
-                    }
-                    
-                    VStack(alignment: .leading) {
-                        Text("Summary")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                        TextField("Summary", text: $recipe.summary, axis: .vertical)
-                            .textFieldStyle(.roundedBorder)
-                    }
-                    
-                    VStack(alignment: .leading) {
-                        Text("Category")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                        TextField("Category", text: $recipe.category)
-                            .textFieldStyle(.roundedBorder)
-                    }
-                }
-                .padding()
-                .background(
-                    RoundedRectangle(cornerRadius: 14)
-                        .fill(Color(.systemBackground))
-                        .shadow(color: .black.opacity(0.06), radius: 6, x: 0, y: 2)
-                )
-                .padding(.horizontal)
-                
-                VStack {
-                    Button("Edit Image") {
-                        showConfirmationDialog = true
-                    }
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 25)
-                            .fill(Color(.systemBlue))
-                            .shadow(color: .black.opacity(0.3), radius: 6, x: 0, y: 2)
-                    )
-                    .foregroundColor(.white)
-                    .confirmationDialog("Choose source", isPresented: $showConfirmationDialog, titleVisibility: .visible) {
+        GeometryReader { geo in
+            let isLandscape = geo.size.width > geo.size.height
+            
+            ScrollView {
+                if isLandscape {
+                    HStack(alignment: .top, spacing: 20) {
+                        imageBlock
+                            .frame(width: geo.size.width * 0.35)
                         
-                        Button("Make a photo") {
-                            showCamera = true
+                        VStack(spacing: 20) {
+                            formBlock
+                            editImageButton
                         }
-                
-                        Button("Choose SF Symbol") {
-                            showSymbolPicker = true
-                        }
+                        .frame(maxWidth: .infinity, alignment: .top)
                     }
+                    .padding()
+                } else {
+                    VStack(spacing: 20) {
+                        imageBlock
+                        formBlock
+                        editImageButton
+                    }
+                    .padding()
                 }
             }
+            .navigationTitle("Recipe Details")
+            .background(Color(.systemGroupedBackground).ignoresSafeArea())
         }
-        .navigationTitle("Recipe Details")
-        .background(Color(.systemGroupedBackground).ignoresSafeArea())
-        .sheet(isPresented: $showCamera, onDismiss: saveImage) {
+        .fullScreenCover(isPresented: $showCamera, onDismiss: saveImage) {
             ImagePicker(image: $takenPhoto, sourceType: .camera)
         }
         .sheet(isPresented: $showSymbolPicker) {
@@ -129,6 +79,83 @@ struct RecipeDetailAndEditView: View {
         }
     }
     
+    private var imageBlock: some View {
+        RecipeImageView(recipe: recipe)
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 18)
+                    .fill(Color(.systemGray6))
+                    .shadow(radius: 4)
+            )
+            .padding(.top)
+    }
+    
+    private var formBlock: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text("Edit Recipe")
+                .font(.title2)
+                .fontWeight(.bold)
+                .padding(.bottom, 8)
+            
+            VStack(alignment: .leading) {
+                Text("Title")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                TextField("Title", text: $recipe.title)
+                    .textFieldStyle(.roundedBorder)
+            }
+            
+            VStack(alignment: .leading) {
+                Text("Summary")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                TextField("Summary", text: $recipe.summary, axis: .vertical)
+                    .textFieldStyle(.roundedBorder)
+            }
+            
+            VStack(alignment: .leading) {
+                Text("Category")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                TextField("Category", text: $recipe.category)
+                    .textFieldStyle(.roundedBorder)
+            }
+        }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 14)
+                .fill(Color(.systemBackground))
+                .shadow(color: .black.opacity(0.06), radius: 6, x: 0, y: 2)
+        )
+    }
+    
+    private var editImageButton: some View {
+        Button("Edit Image") {
+            showConfirmationDialog = true
+        }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 25)
+                .fill(Color(.systemBlue))
+                .shadow(color: .black.opacity(0.3), radius: 6, x: 0, y: 2)
+        )
+        .foregroundColor(.white)
+        .confirmationDialog("Choose source", isPresented: $showConfirmationDialog, titleVisibility: .visible) {
+            Button("Make a photo") {
+                showCamera = true
+            }
+            
+            Button("Choose SF Symbol") {
+                showSymbolPicker = true
+            }
+            
+            Button("No image") {
+                recipe.imageType = .none
+                recipe.imageName = ""
+            }
+        }
+    }
+    
     private func saveImage() {
         guard let takenPhoto else { return }
         
@@ -138,9 +165,7 @@ struct RecipeDetailAndEditView: View {
             print("Image not saved: \(error)")
         }
     }
-
 }
-
 
 #Preview {
     @Previewable @State var recipe = Recipe(title: "Spaghetti", imageName: "fork.knife", summary: "A classic Italian pasta dish.", category: "Main", imageType: .symbol)

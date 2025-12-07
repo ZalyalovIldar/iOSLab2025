@@ -16,24 +16,27 @@ struct RecipeImageView: View {
         Group {
             switch imageType {
             case .symbol:
-                Image(systemName: imageName)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 120, height: 120)
-
+                if imageName != "" {
+                    Image(systemName: imageName)
+                        .resizable()
+                        .scaledToFit()
+                } else {
+                    PlaceholderImageView()
+                }
+                
             case .photo:
                 if let uiImage = RecipeImageStorage.shared.load(fileName: imageName) {
                     Image(uiImage: uiImage)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 120, height: 120)
                         .cornerRadius(12)
-                } else {
-                    Text("Image not uploaded yet")
-                        .foregroundColor(.secondary)
                 }
+            case .none:
+                PlaceholderImageView()
+                
             }
         }
+        .frame(width: 120, height: 120)
     }
 }
 
@@ -42,4 +45,8 @@ extension RecipeImageView {
         self.imageType = recipe.imageType
         self.imageName = recipe.imageName
     }
+}
+
+#Preview {
+    RecipeImageView(recipe: Recipe.init(title: "Test", imageName: "", summary: "Test", category: "Test", imageType: .symbol))
 }

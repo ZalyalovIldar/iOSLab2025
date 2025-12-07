@@ -19,6 +19,7 @@ struct Recipe: Identifiable, Hashable {
 enum RecipeImageType: String, Codable {
     case symbol
     case photo
+    case none
 }
 
 extension Recipe {
