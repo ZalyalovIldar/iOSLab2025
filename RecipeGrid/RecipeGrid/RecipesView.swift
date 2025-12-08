@@ -21,26 +21,35 @@ struct RecipesView: View {
                 ]
                 
                 ScrollView {
-                    LazyVGrid(columns: columns) {
-                        ForEach(viewModel.filteredItems, id: \.id) { item in
-                            if let index = viewModel.items.firstIndex(where: { $0.id == item.id }) {
-                                NavigationLink(destination: RecipeDetailAndEditView(recipe: $viewModel.items[index])) {
-                                    RecipeCardView(recipe: viewModel.items[index])
-                                        .contextMenu {
-                                            Button(role: .destructive) {
-                                                viewModel.remove(item)
-                                            } label: {
-                                                Text("Delete")
+                    if viewModel.filteredItems.isEmpty {
+                        EmptyStateView(
+                            title: "No Recipes Found",
+                            message: "Try adding a new recipe or adjusting your search.",
+                            systemImage: "book.closed"
+                        )
+                        .padding(.top, 60)
+                    } else {
+                        LazyVGrid(columns: columns) {
+                            ForEach(viewModel.filteredItems, id: \.id) { item in
+                                if let index = viewModel.items.firstIndex(where: { $0.id == item.id }) {
+                                    NavigationLink(destination: RecipeDetailAndEditView(recipe: $viewModel.items[index])) {
+                                        RecipeCardView(recipe: viewModel.items[index])
+                                            .contextMenu {
+                                                Button(role: .destructive) {
+                                                    viewModel.remove(item)
+                                                } label: {
+                                                    Text("Delete")
+                                                }
                                             }
-                                        }
+                                    }
+                                    .buttonStyle(.plain)
                                 }
-                                .buttonStyle(.plain)
                             }
                         }
+                        .padding()
                     }
-                    .padding()
-                    .navigationTitle("Recipes")
                 }
+                .navigationTitle("Recipes")
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         Menu {

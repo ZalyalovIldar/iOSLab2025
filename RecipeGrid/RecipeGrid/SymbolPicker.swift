@@ -33,11 +33,8 @@ struct SymbolPicker: View {
         "leaf",
         "leaf.fill",
         "applelogo",
-        "apple.logo",
         "fish",
         "fish.fill",
-        "pawprint",
-        "pawprint.fill",
         
         "flame",
         "flame.fill",
