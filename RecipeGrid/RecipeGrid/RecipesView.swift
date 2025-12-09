@@ -13,26 +13,36 @@ struct RecipesView: View {
     @State private var showAddSheet = false
     
     var body: some View {
+        
         NavigationStack {
+            
             GeometryReader { geo in
+                
                 let isLandscape = geo.size.width > geo.size.height
+                
                 let columns = [
                     GridItem(.adaptive(minimum: isLandscape ? 220 : 140), spacing: 16)
                 ]
                 
                 ScrollView {
+                    
                     if viewModel.filteredItems.isEmpty {
+                        
                         EmptyStateView(
                             title: "No Recipes Found",
                             message: "Try adding a new recipe or adjusting your search.",
-                            systemImage: "book.closed"
+                            systemImage: "book.closed",
+                            isLandscape: isLandscape
                         )
                         .padding(.top, 60)
                     } else {
+                        
                         LazyVGrid(columns: columns) {
+                            
                             ForEach(viewModel.filteredItems, id: \.id) { item in
                                 if let index = viewModel.items.firstIndex(where: { $0.id == item.id }) {
-                                    NavigationLink(destination: RecipeDetailAndEditView(recipe: $viewModel.items[index])) {
+                                    
+                                    NavigationLink(destination: RecipeDetailView(recipe: $viewModel.items[index])) {
                                         RecipeCardView(recipe: viewModel.items[index])
                                             .contextMenu {
                                                 Button(role: .destructive) {
@@ -43,25 +53,27 @@ struct RecipesView: View {
                                             }
                                     }
                                     .buttonStyle(.plain)
+
                                 }
                             }
                         }
                         .padding()
                     }
                 }
+                .background(Color(.systemGray5).opacity(0.3))
                 .navigationTitle("Recipes")
                 .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Menu {
-                            Picker("Sort by", selection: $viewModel.sortOption) {
-                                Text("Default").tag(RecipesViewModel.SortOption.none)
-                                Text("A → Z").tag(RecipesViewModel.SortOption.alphabetical)
-                                Text("Category").tag(RecipesViewModel.SortOption.category)
+                    
+                    ToolbarItem(placement: .topBarLeading) {
+                            Menu {
+                                categorySection
+                                sortSection
+                                resetSection
+                            } label: {
+                                Label("Filters", systemImage: "line.3.horizontal.decrease.circle")
                             }
-                        } label: {
-                            Image(systemName: "arrow.up.arrow.down.circle")
                         }
-                    }
+                    
                     ToolbarItem(placement: .topBarTrailing) {
                         Button {
                             showAddSheet.toggle()
@@ -77,6 +89,57 @@ struct RecipesView: View {
         }
         .searchable(text: $viewModel.searchText, prompt: "Search Recipes")
     }
+    
+    private var categorySection: some View {
+        
+        Group {
+            
+            Text("Category")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            
+            Picker("Category", selection: $viewModel.selectedCategory) {
+                
+                Text("All").tag(String?.none)
+                
+                ForEach(viewModel.categories, id: \.self) { category in
+                    Text(category).tag(String?(category))
+                }
+            }
+        }
+    }
+
+    private var sortSection: some View {
+        
+        Group {
+            
+            Text("Sort by")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            
+            Section("Sort by") {
+                Picker("Sort by", selection: $viewModel.sortOption) {
+                    Text("Default").tag(RecipesViewModel.SortOption.none)
+                    Text("A → Z").tag(RecipesViewModel.SortOption.alphabetical)
+                    Text("Category").tag(RecipesViewModel.SortOption.category)
+                }
+            }
+        }
+    }
+
+    private var resetSection: some View {
+        
+        Section {
+            
+            Button(role: .destructive) {
+                viewModel.selectedCategory = nil
+                viewModel.sortOption = .none
+            } label: {
+                Text("Reset Filters")
+            }
+        }
+    }
+
 }
 
 #Preview {

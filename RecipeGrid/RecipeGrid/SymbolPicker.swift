@@ -27,7 +27,6 @@ struct SymbolPicker: View {
         "wineglass.fill",
         "birthday.cake",
         "birthday.cake.fill",
-        
         "carrot",
         "carrot.fill",
         "leaf",
@@ -35,7 +34,6 @@ struct SymbolPicker: View {
         "applelogo",
         "fish",
         "fish.fill",
-        
         "flame",
         "flame.fill",
         "timer",
@@ -47,26 +45,22 @@ struct SymbolPicker: View {
         "thermometer.medium",
         "chart.bar",
         "chart.pie",
-        
         "basket",
         "basket.fill",
         "cart",
         "cart.fill",
         "shippingbox",
         "shippingbox.fill",
-        
         "frying.pan",
         "frying.pan.fill",
         "stove",
         "stove.fill",
         "oven",
         "oven.fill",
-        
         "drop",
         "drop.fill",
         "drop.triangle",
         "drop.triangle.fill",
-        
         "heart",
         "heart.fill",
         "star",
@@ -74,15 +68,18 @@ struct SymbolPicker: View {
         "sparkles"
     ]
 
-    
     private let columns = [GridItem(.adaptive(minimum: 60))]
     
     var body: some View {
         
         NavigationStack {
+            
             ScrollView {
+                
                 LazyVGrid(columns: columns, spacing: 20) {
+                    
                     ForEach(symbols, id: \.self) { name in
+                        
                         Button {
                             onSelect(name)
                             dismiss()

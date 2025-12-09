@@ -8,7 +8,7 @@
 import SwiftUI
 import PhotosUI
 
-struct RecipeDetailAndEditView: View {
+struct RecipeEditView: View {
     
     @Binding var recipe: Recipe
     
@@ -21,36 +21,59 @@ struct RecipeDetailAndEditView: View {
     @State private var originalSummary: String = ""
     @State private var originalCategory: String = ""
     
-    @State private var selectedItem: PhotosPickerItem?
+    @Environment(\.dismiss)
+    private var dismiss
     
     var body: some View {
+        
         GeometryReader { geo in
+            
             let isLandscape = geo.size.width > geo.size.height
             
-            ScrollView {
-                if isLandscape {
-                    HStack(alignment: .top, spacing: 20) {
-                        imageBlock
-                            .frame(width: geo.size.width * 0.35)
+            NavigationStack {
+                
+                ScrollView {
+                    
+                    if isLandscape {
+                        
+                        HStack(alignment: .top, spacing: 20) {
+                            
+                            imageBlock
+                                .frame(width: geo.size.width * 0.35)
+                            
+                            VStack(spacing: 20) {
+                                formBlock
+                                editImageButton
+                            }
+                            .frame(maxWidth: .infinity, alignment: .top)
+                        }
+                        .padding()
+                    } else {
                         
                         VStack(spacing: 20) {
+                            imageBlock
                             formBlock
                             editImageButton
                         }
-                        .frame(maxWidth: .infinity, alignment: .top)
+                        .padding()
                     }
-                    .padding()
-                } else {
-                    VStack(spacing: 20) {
-                        imageBlock
-                        formBlock
-                        editImageButton
-                    }
-                    .padding()
                 }
+                .navigationTitle("Edit Recipe")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button("Cancel") {
+                            dismiss()
+                        }
+                    }
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("Done") {
+                            dismiss()
+                        }
+                    }
+                }
+                .background(Color(.systemGroupedBackground).ignoresSafeArea())
             }
-            .navigationTitle("Recipe Details")
-            .background(Color(.systemGroupedBackground).ignoresSafeArea())
         }
         .fullScreenCover(isPresented: $showCamera, onDismiss: saveImage) {
             ImagePicker(image: $takenPhoto, sourceType: .camera)
@@ -78,8 +101,8 @@ struct RecipeDetailAndEditView: View {
             }
         }
     }
-    
     private var imageBlock: some View {
+        
         RecipeImageView(recipe: recipe)
             .padding()
             .background(
@@ -91,6 +114,7 @@ struct RecipeDetailAndEditView: View {
     }
     
     private var formBlock: some View {
+        
         VStack(alignment: .leading, spacing: 16) {
             Text("Edit Recipe")
                 .font(.title2)
@@ -98,25 +122,31 @@ struct RecipeDetailAndEditView: View {
                 .padding(.bottom, 8)
             
             VStack(alignment: .leading) {
+                
                 Text("Title")
                     .font(.caption)
                     .foregroundColor(.secondary)
+                
                 TextField("Title", text: $recipe.title)
                     .textFieldStyle(.roundedBorder)
             }
             
             VStack(alignment: .leading) {
+                
                 Text("Summary")
                     .font(.caption)
                     .foregroundColor(.secondary)
+                
                 TextField("Summary", text: $recipe.summary, axis: .vertical)
                     .textFieldStyle(.roundedBorder)
             }
             
             VStack(alignment: .leading) {
+                
                 Text("Category")
                     .font(.caption)
                     .foregroundColor(.secondary)
+                
                 TextField("Category", text: $recipe.category)
                     .textFieldStyle(.roundedBorder)
             }
@@ -130,6 +160,7 @@ struct RecipeDetailAndEditView: View {
     }
     
     private var editImageButton: some View {
+        
         Button("Edit Image") {
             showConfirmationDialog = true
         }
@@ -168,8 +199,11 @@ struct RecipeDetailAndEditView: View {
 }
 
 #Preview {
-    @Previewable @State var recipe = Recipe(title: "Spaghetti", imageName: "fork.knife", summary: "A classic Italian pasta dish.", category: "Main", imageType: .symbol)
-    NavigationStack {
-        RecipeDetailAndEditView(recipe: $recipe)
-    }
+    RecipeEditView(recipe: .constant(Recipe(
+        title: "Sample Recipe",
+        imageName: "",
+        summary: "A short summary.",
+        category: "Main",
+        imageType: .none
+    )))
 }

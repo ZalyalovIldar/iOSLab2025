@@ -16,81 +16,25 @@ final class RecipesViewModel {
         case category
     }
     
+    private let storageKey = "recipes_storage"
+    
+    var selectedCategory: String? = nil
+    
     var sortOption: SortOption = .none
     
-    var items: [Recipe] = [
-        
-        Recipe(
-            title: "Spaghetti Carbonara",
-            imageName: "fork.knife",
-            summary: "Creamy pasta with pancetta and parmesan.",
-            category: "Main",
-            imageType: .symbol
-        ),
-        Recipe(
-            title: "Apple Pie",
-            imageName: "applelogo",
-            summary: "Classic dessert with spiced apples.",
-            category: "Dessert",
-            imageType: .symbol
-        ),
-        Recipe(
-            title: "Caesar Salad",
-            imageName: "leaf",
-            summary: "Romaine lettuce with Caesar dressing and croutons.",
-            category: "Salad",
-            imageType: .symbol
-        ),
-        Recipe(
-            title: "Tomato Soup",
-            imageName: "drop.fill",
-            summary: "Smooth tomato soup with a hint of basil.",
-            category: "Soup",
-            imageType: .symbol
-        ),
-        Recipe(
-            title: "Grilled Cheese",
-            imageName: "flame.fill",
-            summary: "Buttery grilled bread with melted cheese.",
-            category: "Snack",
-            imageType: .symbol
-        ),
-        Recipe(
-            title: "Chicken Curry",
-            imageName: "hare.fill",
-            summary: "Savory chicken in a spicy curry sauce.",
-            category: "Main",
-            imageType: .symbol
-        ),
-        Recipe(
-            title: "Pancakes",
-            imageName: "circle.grid.hex",
-            summary: "Fluffy pancakes with maple syrup.",
-            category: "Breakfast",
-            imageType: .symbol
-        ),
-        Recipe(
-            title: "Avocado Toast",
-            imageName: "avocado",
-            summary: "Toasted bread topped with smashed avocado.",
-            category: "Breakfast",
-            imageType: .symbol
-        ),
-        Recipe(
-            title: "Chocolate Mousse",
-            imageName: "cube.fill",
-            summary: "Rich and airy chocolate dessert.",
-            category: "Dessert",
-            imageType: .symbol
-        ),
-        Recipe(
-            title: "Greek Salad",
-            imageName: "sparkles",
-            summary: "Crisp veggies, feta, and olives.",
-            category: "Salad",
-            imageType: .symbol
-        ),
-    ]
+    var items: [Recipe] = [] {
+        didSet { save() }
+    }
+    
+    init() {
+        load()
+    }
+    
+    var categories: [String] {
+        let set = Set(items.map { $0.category })
+        return Array(set).sorted()
+    }
+    
     var searchText: String = ""
     
     func add(_ recipe: Recipe) {
@@ -98,10 +42,15 @@ final class RecipesViewModel {
     }
     
     func remove(_ recipe: Recipe) {
-    guard let index = items.firstIndex(where: { $0.id == recipe.id }) else { return }
-    items.remove(at: index)
-}
-    
+
+        if recipe.imageType == .photo, !recipe.imageName.isEmpty {
+            RecipeImageStorage.shared.delete(fileName: recipe.imageName)
+        }
+        
+        guard let index = items.firstIndex(where: { $0.id == recipe.id }) else { return }
+        items.remove(at: index)
+    }
+
     var filteredItems: [Recipe] {
         var result = items
         
@@ -111,6 +60,11 @@ final class RecipesViewModel {
                 $0.category.localizedCaseInsensitiveContains(searchText)
             }
         }
+        
+        if let selectedCategory {
+            result = result.filter { $0.category == selectedCategory }
+        }
+        
         switch sortOption {
         case .none:
             return result
@@ -119,6 +73,27 @@ final class RecipesViewModel {
         case .category:
             return result.sorted { $0.category.localizedCompare($1.category) == .orderedAscending }
         }
+    }
+    
+    private func save() {
+        let encoder = JSONEncoder()
+        if let data = try? encoder.encode(items) {
+            UserDefaults.standard.set(data, forKey: storageKey)
+        }
+    }
+    
+    private func load() {
+        let defaults = UserDefaults.standard
+        let decoder = JSONDecoder()
+        
+        if let data = defaults.data(forKey: storageKey),
+           let decoded = try? decoder.decode([Recipe].self, from: data) {
+            self.items = decoded
+        } else {
+            self.items = []
+        }
+        self.sortOption = .none
+        self.selectedCategory = nil
     }
     
     func removeAll() {

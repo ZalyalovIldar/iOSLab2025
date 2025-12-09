@@ -12,9 +12,11 @@ struct RecipeCardView: View {
     let recipe: Recipe
     
     var body: some View {
+        
         VStack(alignment: .leading, spacing: 10) {
 
             ZStack {
+                
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color(.systemGray6))
                     .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
@@ -32,6 +34,7 @@ struct RecipeCardView: View {
                 .padding(.bottom, 2)
             
             if !recipe.summary.isEmpty {
+                
                 Text(recipe.summary)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
@@ -61,30 +64,33 @@ struct RecipeCardView: View {
     }
     
     @ViewBuilder
-        private var cardImage: some View {
-            switch recipe.imageType {
-            case .symbol:
-                if recipe.imageName != "" {
-                    Image(systemName: recipe.imageName)
-                        .resizable()
-                        .scaledToFit()
-                } else {
-                    PlaceholderImageView()
-                }
-                
-            case .photo:
-                if let uiImage = RecipeImageStorage.shared.load(fileName: recipe.imageName) {
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: 120, maxHeight: 70)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
-                }
-            case .none:
+    private var cardImage: some View {
+        
+        switch recipe.imageType {
+            
+        case .symbol:
+            if recipe.imageName != "" {
+                Image(systemName: recipe.imageName)
+                    .resizable()
+                    .scaledToFit()
+            } else {
                 PlaceholderImageView()
-
             }
+            
+        case .photo:
+            if let uiImage = RecipeImageStorage.shared.load(fileName: recipe.imageName) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: 120, maxHeight: 70)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+            }
+            
+        case .none:
+            PlaceholderImageView()
+            
         }
+    }
 }
 
 #Preview {

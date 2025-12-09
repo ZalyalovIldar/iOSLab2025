@@ -29,4 +29,9 @@ struct RecipeImageStorage {
         let url = documentsURL.appendingPathComponent(fileName)
         return UIImage(contentsOfFile: url.path())
     }
+    
+    func delete(fileName: String) {
+        let url = documentsURL.appendingPathComponent(fileName)
+        try? FileManager.default.removeItem(at: url)
+    }
 }

@@ -13,8 +13,11 @@ struct RecipeImageView: View {
     let imageName: String
 
     var body: some View {
+        
         Group {
+            
             switch imageType {
+                
             case .symbol:
                 if imageName != "" {
                     Image(systemName: imageName)
@@ -31,6 +34,7 @@ struct RecipeImageView: View {
                         .scaledToFit()
                         .cornerRadius(12)
                 }
+                
             case .none:
                 PlaceholderImageView()
                 
