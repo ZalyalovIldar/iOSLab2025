@@ -13,7 +13,6 @@ struct SymbolPicker: View {
     var onSelect: (String) -> Void
     
     private let symbols = [
-        
         "fork.knife",
         "fork.knife.circle",
         "fork.knife.circle.fill",
@@ -65,7 +64,23 @@ struct SymbolPicker: View {
         "heart.fill",
         "star",
         "star.fill",
-        "sparkles"
+        "sparkles",
+        "bag",
+        "bag.fill",
+        "bag.circle",
+        "bag.circle.fill",
+        "thermometer.sun",
+        "thermometer.snowflake",
+        "tray",
+        "tray.fill",
+        "hare",
+        "hare.fill",
+        "leaf.arrow.circlepath",
+        "cube",
+        "cube.fill",
+        "shippingbox.circle",
+        "shippingbox.circle.fill",
+        "bubbles.and.sparkles"
     ]
 
     private let columns = [GridItem(.adaptive(minimum: 60))]

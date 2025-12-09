@@ -24,11 +24,14 @@ struct RecipeEditView: View {
     @Environment(\.dismiss)
     private var dismiss
     
+    @Environment(\.verticalSizeClass)
+    private var verticalSizeClass
+    
     var body: some View {
         
         GeometryReader { geo in
             
-            let isLandscape = geo.size.width > geo.size.height
+            let isLandscape = verticalSizeClass == .compact
             
             NavigationStack {
                 
@@ -39,7 +42,6 @@ struct RecipeEditView: View {
                         HStack(alignment: .top, spacing: 20) {
                             
                             imageBlock
-                                .frame(width: geo.size.width * 0.35)
                             
                             VStack(spacing: 20) {
                                 formBlock
@@ -104,6 +106,7 @@ struct RecipeEditView: View {
     private var imageBlock: some View {
         
         RecipeImageView(recipe: recipe)
+            .frame(maxWidth: 120, maxHeight: 70)
             .padding()
             .background(
                 RoundedRectangle(cornerRadius: 18)

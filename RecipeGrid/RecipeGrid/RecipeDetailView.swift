@@ -22,6 +22,7 @@ struct RecipeDetailView: View {
                 RecipeImageView(recipe: recipe)
                     .frame(maxWidth: .infinity)
                     .frame(height: 260)
+                    .padding()
                     .background(
                         RoundedRectangle(cornerRadius: 18)
                             .fill(Color(.systemGray6))

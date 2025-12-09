@@ -12,6 +12,8 @@ struct RecipesView: View {
     @State private var viewModel = RecipesViewModel()
     @State private var showAddSheet = false
     
+    @State private var highlightedID: UUID? = nil
+    
     var body: some View {
         
         NavigationStack {
@@ -23,6 +25,12 @@ struct RecipesView: View {
                 let columns = [
                     GridItem(.adaptive(minimum: isLandscape ? 220 : 140), spacing: 16)
                 ]
+                
+                let filtered = viewModel.filteredItems
+                
+                let filteredIndices = filtered.compactMap { item in
+                    viewModel.items.firstIndex(where: { $0.id == item.id })
+                }
                 
                 ScrollView {
                     
@@ -39,25 +47,43 @@ struct RecipesView: View {
                         
                         LazyVGrid(columns: columns) {
                             
-                            ForEach(viewModel.filteredItems, id: \.id) { item in
-                                if let index = viewModel.items.firstIndex(where: { $0.id == item.id }) {
+                            ForEach(filteredIndices, id: \.self) { index in
+                                
+                                let item = viewModel.items[index]
+                                let isHighlighted = (item.id == highlightedID)
+                                
+                                NavigationLink(destination: RecipeDetailView(recipe: $viewModel.items[index])) {
                                     
-                                    NavigationLink(destination: RecipeDetailView(recipe: $viewModel.items[index])) {
-                                        RecipeCardView(recipe: viewModel.items[index])
-                                            .contextMenu {
-                                                Button(role: .destructive) {
-                                                    viewModel.remove(item)
-                                                } label: {
-                                                    Text("Delete")
-                                                }
+                                    RecipeCardView(recipe: item)
+                                        .scaleEffect(isHighlighted ? 1.05 : 1.0)
+                                        .shadow(
+                                            color: isHighlighted ? Color.blue.opacity(0.6) : Color.black.opacity(0.1),
+                                            radius: isHighlighted ? 10 : 4,
+                                            x: 0,
+                                            y: 2
+                                        )
+                                        .contextMenu {
+                                            Button(role: .destructive) {
+                                                withAnimation(.smooth) {
+                                                        viewModel.remove(item)
+                                                    }
+                                            } label: {
+                                                Text("Delete")
                                             }
-                                    }
-                                    .buttonStyle(.plain)
-
+                                        }
                                 }
+                                .buttonStyle(.plain)
                             }
                         }
                         .padding()
+                    }
+                }
+                .onChange(of: viewModel.lastAddedRecipeID) {
+                    
+                    highlightedID = viewModel.lastAddedRecipeID
+                    
+                    withAnimation(.spring(response: 3, dampingFraction: 0.7)) {
+                        highlightedID = nil
                     }
                 }
                 .background(Color(.systemGray5).opacity(0.3))

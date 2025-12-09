@@ -40,7 +40,6 @@ struct RecipeImageView: View {
                 
             }
         }
-        .frame(width: 120, height: 120)
     }
 }
 

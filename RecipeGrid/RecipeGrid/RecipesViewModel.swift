@@ -37,8 +37,11 @@ final class RecipesViewModel {
     
     var searchText: String = ""
     
+    var lastAddedRecipeID: UUID? = nil
+    
     func add(_ recipe: Recipe) {
         items.insert(recipe, at: 0)
+        lastAddedRecipeID = recipe.id
     }
     
     func remove(_ recipe: Recipe) {

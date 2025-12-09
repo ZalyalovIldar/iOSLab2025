@@ -35,13 +35,16 @@ struct CreateRecipeView: View {
     @Environment(\.dismiss)
     private var dismiss
     
+    @Environment(\.verticalSizeClass)
+    private var verticalSizeClass
+    
     var body: some View {
         
         NavigationStack {
             
             GeometryReader { geo in
                 
-                let isLandscape = geo.size.width > geo.size.height
+                let isLandscape = verticalSizeClass == .compact
                 
                 ScrollView {
                     
@@ -72,6 +75,13 @@ struct CreateRecipeView: View {
                         .padding()
                     }
                 }
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button("Cancel") {
+                            dismiss()
+                        }
+                    }
+                }
                 .background(Color(.systemGray5).opacity(0.3))
                 .navigationTitle(Text("Create Recipe"))
             }
@@ -98,6 +108,7 @@ struct CreateRecipeView: View {
                         .fill(Color(.systemGray6))
                         .shadow(radius: 4)
                 )
+                .frame(width: 120, height: 120)
                 .padding(.top)
             
             Button("Edit Image") {
@@ -167,9 +178,7 @@ struct CreateRecipeView: View {
     private var saveButton: some View {
         
         Button {
-            withAnimation(.interpolatingSpring(stiffness: 150, damping: 15)) {
-                viewModel.add(recipe)
-            }
+            viewModel.add(recipe)
             dismiss()
         } label: {
             Text("Save Recipe")

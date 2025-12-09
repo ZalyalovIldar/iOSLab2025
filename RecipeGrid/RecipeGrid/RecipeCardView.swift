@@ -73,8 +73,10 @@ struct RecipeCardView: View {
                 Image(systemName: recipe.imageName)
                     .resizable()
                     .scaledToFit()
+                    .frame(maxWidth: 120, maxHeight: 70)
             } else {
                 PlaceholderImageView()
+                    .frame(maxWidth: 120, maxHeight: 70)
             }
             
         case .photo:
@@ -88,7 +90,7 @@ struct RecipeCardView: View {
             
         case .none:
             PlaceholderImageView()
-            
+                .frame(maxWidth: 120, maxHeight: 70)
         }
     }
 }
