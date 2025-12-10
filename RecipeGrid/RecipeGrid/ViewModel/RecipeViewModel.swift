@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 @Observable
 final class RecipeViewModel {
@@ -30,6 +31,10 @@ final class RecipeViewModel {
             recipes = sortByTitle()
         }
         return recipes
+    }
+    
+    init() {
+        getRecipes()
     }
     
     func getRecipes() {
@@ -66,7 +71,6 @@ final class RecipeViewModel {
     private func save() {
         if let data = try? JSONEncoder().encode(recipes) {
             UserDefaults.standard.set(data, forKey: userDefaultsKey)
-
         }
     }
 }

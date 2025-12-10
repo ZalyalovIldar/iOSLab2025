@@ -40,23 +40,26 @@ struct CreateRecipeView: View {
             ZStack {
                 Color.black.ignoresSafeArea()
                 
-                VStack(alignment: .leading) {
-                    titleInput
-                    summaryInput
-                    categoryChoice
-                    photoPicker
-                    Spacer()
-                }
-                .foregroundStyle(.white)
-                .padding(.horizontal)
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        CancelButton()
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        titleInput
+                        summaryInput
+                        categoryChoice
+                        photoPicker
+                        Spacer()
                     }
-                    ToolbarItem(placement: .topBarTrailing) {
-                        saveButton
+                    .foregroundStyle(.white)
+                    .padding(.horizontal)
+                    .toolbar {
+                        ToolbarItem(placement: .topBarLeading) {
+                            CancelButton()
+                        }
+                        ToolbarItem(placement: .topBarTrailing) {
+                            saveButton
+                        }
                     }
                 }
+                .scrollIndicators(.hidden)
             }
             .onAppear {
                 if let recipe,
@@ -79,7 +82,7 @@ struct CreateRecipeView: View {
         InputTitle(title: "Summary")
         ZStack {
             RoundedRectangle(cornerRadius: 20)
-                .fill(.black)
+                .fill(.clear)
                 .glassEffect(.clear, in: .rect(cornerRadius: 20))
             TextEditor(text: $summary)
                 .scrollContentBackground(.hidden)

@@ -74,13 +74,14 @@ struct RecipesView: View {
                         RecipeDetailView(recipeViewModel: recipeViewModel, recipeId: recipe.id)
                     } label: {
                         RecipeRowView(recipe: recipe)
-                            .padding(10)
+                            .padding(5)
                     }
                 }
             }
         }
         .scrollIndicators(.hidden)
         .padding(.top, 10)
+        .padding(.horizontal, 10)
     }
     
     private var searchBar: some View {

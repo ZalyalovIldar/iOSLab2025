@@ -1,8 +1,8 @@
 //
-//  PhotoManager.swift
-//  RecipeGrid
+//  PhotoSelectionViewModel.swift
+//  MovieBrowser
 //
-//  Created by Ляйсан on 4/12/25.
+//  Created by Ляйсан on 7/12/25.
 //
 
 import Foundation
@@ -12,17 +12,19 @@ import PhotosUI
 @Observable
 final class PhotoSelectionViewModel {
     var image: UIImage? = nil
-    var photoSelection: PhotosPickerItem? = nil {
+    var selection: PhotosPickerItem? = nil {
         didSet {
-            setImage(selection: photoSelection)
+            setImage(selection: self.selection)
         }
     }
     
-    private func setImage(selection: PhotosPickerItem?) {
+    func setImage(selection: PhotosPickerItem?) {
         guard let selection else { return }
+        
         Task {
             let data = try? await selection.loadTransferable(type: Data.self)
             guard let data, let image = UIImage(data: data) else { return }
+            
             await MainActor.run {
                 self.image = image
             }

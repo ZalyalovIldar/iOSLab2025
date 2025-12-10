@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct MovieBrowserApp: App {
+    @State private var movieViewModel = MovieViewModel()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MoviesView(movieViewModel: movieViewModel)
+                .preferredColorScheme(.dark)
         }
     }
 }

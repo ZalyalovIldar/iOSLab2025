@@ -21,7 +21,7 @@ struct RecipeRowView: View {
             ImageView(recipe: recipe, folderName: folderName)
             Text(recipe.title)
                 .font(.title3.bold())
-                .lineLimit(2)
+                .lineLimit(1)
                 .padding(.vertical)
                 .padding(.horizontal, 2)
         }
