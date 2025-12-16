@@ -26,12 +26,6 @@ struct RecipesView: View {
                     GridItem(.adaptive(minimum: isLandscape ? 220 : 140), spacing: 16)
                 ]
                 
-                let filtered = viewModel.filteredItems
-                
-                let filteredIndices = filtered.compactMap { item in
-                    viewModel.items.firstIndex(where: { $0.id == item.id })
-                }
-                
                 ScrollView {
                     
                     if viewModel.filteredItems.isEmpty {
@@ -46,35 +40,46 @@ struct RecipesView: View {
                     } else {
                         
                         LazyVGrid(columns: columns) {
-                            
-                            ForEach(filteredIndices, id: \.self) { index in
-                                
-                                let item = viewModel.items[index]
-                                let isHighlighted = (item.id == highlightedID)
-                                
-                                NavigationLink(destination: RecipeDetailView(recipe: $viewModel.items[index])) {
-                                    
-                                    RecipeCardView(recipe: item)
-                                        .scaleEffect(isHighlighted ? 1.05 : 1.0)
-                                        .shadow(
-                                            color: isHighlighted ? Color.blue.opacity(0.6) : Color.black.opacity(0.1),
-                                            radius: isHighlighted ? 10 : 4,
-                                            x: 0,
-                                            y: 2
+
+                            ForEach(viewModel.items) { item in
+                                if viewModel.filteredItems.contains(where: { $0.id == item.id }) {
+
+                                    let isHighlighted = (item.id == highlightedID)
+
+                                    NavigationLink(
+                                        destination: RecipeDetailView(
+                                            recipe: $viewModel.items[
+                                                viewModel.items.firstIndex(where: { $0.id == item.id })!
+                                            ]
                                         )
-                                        .contextMenu {
-                                            Button(role: .destructive) {
-                                                withAnimation(.smooth) {
-                                                        viewModel.remove(item)
-                                                    }
-                                            } label: {
-                                                Text("Delete")
+                                    ) {
+                                        RecipeCardView(recipe: item)
+                                            .scaleEffect(isHighlighted ? 1.05 : 1.0)
+                                            .shadow(
+                                                color: isHighlighted
+                                                    ? Color.blue.opacity(0.6)
+                                                    : Color.black.opacity(0.1),
+                                                radius: isHighlighted ? 10 : 4,
+                                                x: 0,
+                                                y: 2
+                                            )
+                                            .contextMenu {
+                                                Button(role: .destructive) {
+                                                    
+                                                    viewModel.remove(item)
+                                                    
+                                                } label: {
+                                                    Text("Delete")
+                                                }
                                             }
-                                        }
+                                    }
+                                    .buttonStyle(.plain)
+                                    .transition(.scale.combined(with: .opacity))
                                 }
-                                .buttonStyle(.plain)
                             }
                         }
+                        .padding()
+
                         .padding()
                     }
                 }
@@ -86,7 +91,16 @@ struct RecipesView: View {
                         highlightedID = nil
                     }
                 }
-                .background(Color(.systemGray5).opacity(0.3))
+                .background(
+                    LinearGradient(
+                        colors: [
+                            Color.gray.opacity(0.08),
+                            Color.blue.opacity(0.1)
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
                 .navigationTitle("Recipes")
                 .toolbar {
                     
@@ -96,7 +110,15 @@ struct RecipesView: View {
                                 sortSection
                                 resetSection
                             } label: {
-                                Label("Filters", systemImage: "line.3.horizontal.decrease.circle")
+                                Image(systemName: "line.3.horizontal.decrease.circle")
+                                    .foregroundStyle(
+                                        LinearGradient(
+                                            colors: [.blue, .purple],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        ),
+                                    )
+                                    .font(.title2)
                             }
                         }
                     
@@ -105,6 +127,14 @@ struct RecipesView: View {
                             showAddSheet.toggle()
                         } label: {
                             Image(systemName: "plus.circle.fill")
+                                .foregroundStyle(
+                                    LinearGradient(
+                                        colors: [.blue, .purple],
+                                        startPoint: .topLeading,
+                                        endPoint: .bottomTrailing
+                                    ),
+                                )
+                                .font(.title2)
                         }
                     }
                 }

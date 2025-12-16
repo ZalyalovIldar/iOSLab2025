@@ -24,16 +24,32 @@ struct RecipeDetailView: View {
                     .frame(height: 260)
                     .padding()
                     .background(
-                        RoundedRectangle(cornerRadius: 18)
-                            .fill(Color(.systemGray6))
-                            .shadow(radius: 4)
+                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                            .fill(
+                                LinearGradient(
+                                    colors: [
+                                        Color.blue.opacity(0.12),
+                                        Color.purple.opacity(0.1),
+                                        Color.pink.opacity(0.08)
+                                    ],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                            )
+                            .shadow(
+                                color: .purple.opacity(0.35),
+                                radius: 12,
+                                x: 0,
+                                y: 8
+                            )
                     )
-                    .padding()
-                
+                    .padding(.horizontal)
+                    .padding(.top)
+
                 Text(recipe.title)
                     .font(.title)
                     .fontWeight(.bold)
-                    .padding(.horizontal)
+                    .padding(.horizontal, 24)
                 
                 Text(recipe.category)
                     .font(.caption)
@@ -45,7 +61,7 @@ struct RecipeDetailView: View {
                         Capsule()
                             .fill(Color.blue.opacity(0.1))
                     )
-                    .padding(.horizontal)
+                    .padding(.horizontal, 24)
                 
                 if !recipe.summary.isEmpty {
                     
@@ -65,7 +81,7 @@ struct RecipeDetailView: View {
                             .fill(Color(.systemBackground))
                             .shadow(color: .black.opacity(0.06), radius: 6, x: 0, y: 2)
                     )
-                    .padding(.horizontal)
+                    .padding(.horizontal, 20)
                 }
                 
                 Spacer(minLength: 20)

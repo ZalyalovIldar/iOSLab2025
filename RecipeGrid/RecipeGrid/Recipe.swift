@@ -31,6 +31,8 @@ struct Recipe: Identifiable, Hashable, Codable {
         self.category = category
         self.imageType = imageType
     }
+    
+    static let empty = Recipe(title: "", imageName: "", summary: "", category: "", imageType: .none)
 }
 
 enum RecipeImageType: String, Codable {

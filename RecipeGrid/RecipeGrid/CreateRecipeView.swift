@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct CreateRecipeView: View {
     
     @Bindable var viewModel: RecipesViewModel
@@ -82,7 +80,7 @@ struct CreateRecipeView: View {
                         }
                     }
                 }
-                .background(Color(.systemGray5).opacity(0.3))
+                .background(Color(.systemGroupedBackground))
                 .navigationTitle(Text("Create Recipe"))
             }
             .fullScreenCover(isPresented: $showCamera, onDismiss: saveImage) {
@@ -100,31 +98,36 @@ struct CreateRecipeView: View {
     private var imageBlock: some View {
         
         VStack(spacing: 12) {
-            
+
             RecipeImageView(recipe: recipe)
-                .padding()
+                .padding(14)
+                .frame(width: 130, height: 130)
                 .background(
-                    RoundedRectangle(cornerRadius: 18)
-                        .fill(Color(.systemGray6))
-                        .shadow(radius: 4)
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(
+                            LinearGradient(
+                                colors: [
+                                    Color.blue.opacity(0.12),
+                                    Color.purple.opacity(0.1),
+                                    Color.pink.opacity(0.08)
+                                ],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
+                        .shadow(color: .black.opacity(0.08), radius: 10, x: 0, y: 6)
                 )
-                .frame(width: 120, height: 120)
-                .padding(.top)
-            
-            Button("Edit Image") {
+                .padding(.top, 6)
+
+            Button {
                 showConfirmationDialog = true
+            } label: {
+                Label("Edit Image", systemImage: "pencil")
             }
             .buttonStyle(.bordered)
             .confirmationDialog("Choose source", isPresented: $showConfirmationDialog, titleVisibility: .visible) {
-                
-                Button("Make a photo") {
-                    showCamera = true
-                }
-                
-                Button("Choose SF Symbol") {
-                    showSymbolPicker = true
-                }
-                
+                Button("Make a photo") { showCamera = true }
+                Button("Choose SF Symbol") { showSymbolPicker = true }
                 Button("No image") {
                     recipe.imageType = .none
                     recipe.imageName = ""
@@ -135,43 +138,32 @@ struct CreateRecipeView: View {
     
     private var formBlock: some View {
         
-        VStack(alignment: .leading, spacing: 16) {
-            
-            VStack(alignment: .leading) {
-                
-                Text("Title")
-                    .font(.subheadline)
-                    .foregroundColor(.primary)
-                
-                TextField("Title", text: $recipe.title)
+        VStack(alignment: .leading, spacing: 14) {
+
+            Group {
+                Text("Title").font(.subheadline).foregroundColor(.secondary)
+                TextField("e.g. Carbonara", text: $recipe.title)
                     .textFieldStyle(.roundedBorder)
             }
-            
-            VStack(alignment: .leading) {
-                
-                Text("Summary")
-                    .font(.subheadline)
-                    .foregroundColor(.primary)
-                
-                TextField("Summary", text: $recipe.summary, axis: .vertical)
+
+            Group {
+                Text("Summary").font(.subheadline).foregroundColor(.secondary)
+                TextField("Short description…", text: $recipe.summary, axis: .vertical)
+                    .lineLimit(3, reservesSpace: true)
                     .textFieldStyle(.roundedBorder)
             }
-            
-            VStack(alignment: .leading) {
-                
-                Text("Category")
-                    .font(.subheadline)
-                    .foregroundColor(.primary)
-                
-                TextField("Category", text: $recipe.category)
+
+            Group {
+                Text("Category").font(.subheadline).foregroundColor(.secondary)
+                TextField("e.g. Pasta", text: $recipe.category)
                     .textFieldStyle(.roundedBorder)
             }
         }
-        .padding()
+        .padding(16)
         .background(
-            RoundedRectangle(cornerRadius: 18)
-                .fill(Color(.systemGray6))
-                .shadow(radius: 4)
+            RoundedRectangle(cornerRadius: 20)
+                .fill(Color(.secondarySystemGroupedBackground))
+                .shadow(color: .black.opacity(0.06), radius: 10, x: 0, y: 6)
         )
     }
     
@@ -182,6 +174,9 @@ struct CreateRecipeView: View {
             dismiss()
         } label: {
             Text("Save Recipe")
+                .fontWeight(.semibold)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 12)
         }
         .buttonStyle(.borderedProminent)
         .disabled(!isFormValid)

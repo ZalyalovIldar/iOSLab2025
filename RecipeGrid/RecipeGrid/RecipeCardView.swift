@@ -17,11 +17,20 @@ struct RecipeCardView: View {
 
             ZStack {
                 
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color(.systemGray6))
-                    .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(
+                        LinearGradient(
+                            colors: [
+                                Color.blue.opacity(0.1),
+                                Color.purple.opacity(0.12)
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .shadow(color: .purple.opacity(0.25), radius: 6, x: 0, y: 4)
                     .padding(10)
-                
+
                 cardImage
                     .padding(18)
             }
@@ -58,6 +67,7 @@ struct RecipeCardView: View {
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .stroke(Color(.systemGray4), lineWidth: 3)
                 .fill(Color(.systemBackground))
                 .shadow(color: .black.opacity(0.08), radius: 2, x: 0, y: 1)
         )

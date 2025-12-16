@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 @Observable
 final class RecipesViewModel {
@@ -101,5 +102,18 @@ final class RecipesViewModel {
     
     func removeAll() {
         items.removeAll()
+    }
+    
+    func binding(for id: UUID) -> Binding<Recipe> {
+        Binding(
+            get: {
+                self.items.first(where: { $0.id == id }) ?? Recipe.empty
+            },
+            set: { updated in
+                if let i = self.items.firstIndex(where: { $0.id == id }) {
+                    self.items[i] = updated
+                }
+            }
+        )
     }
 }
