@@ -87,4 +87,3 @@ struct MoviesListView: View {
 #Preview {
     MoviesListView(viewModel: MoviesViewModel())
 }
-

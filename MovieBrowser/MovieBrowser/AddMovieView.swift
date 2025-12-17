@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct AddMovieView: View {
-    @Bindable
-    var viewModel: MoviesViewModel
-    @Environment(\.dismiss)
-    var dismiss
+    @Bindable var viewModel: MoviesViewModel
+    @Environment(\.dismiss) var dismiss
     
     @State private var title: String = ""
     @State private var genre: String = ""
@@ -93,8 +91,3 @@ struct AddMovieView: View {
         }
     }
 }
-
-#Preview {
-    AddMovieView(viewModel: MoviesViewModel())
-}
-
