@@ -24,4 +24,3 @@ struct Movie: Identifiable, Hashable, Codable {
         self.posterSymbol = posterSymbol
     }
 }
-
