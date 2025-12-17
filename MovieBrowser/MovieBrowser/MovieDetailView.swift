@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MovieDetailView: View {
-    @Binding var movie: Movie
+    @Binding
+    var movie: Movie
     let viewModel: MoviesViewModel
     
     var body: some View {
