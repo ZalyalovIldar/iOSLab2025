@@ -40,25 +40,18 @@ struct RecipesView: View {
                     } else {
                         
                         LazyVGrid(columns: columns) {
-
-                            ForEach(viewModel.items) { item in
-                                if viewModel.filteredItems.contains(where: { $0.id == item.id }) {
+                            
+                            ForEach(viewModel.filteredItems) { item in
+                                
+                                if let index = viewModel.items.firstIndex(where: { $0.id == item.id }) {
 
                                     let isHighlighted = (item.id == highlightedID)
 
-                                    NavigationLink(
-                                        destination: RecipeDetailView(
-                                            recipe: $viewModel.items[
-                                                viewModel.items.firstIndex(where: { $0.id == item.id })!
-                                            ]
-                                        )
-                                    ) {
+                                    NavigationLink(destination: RecipeDetailView(recipe: $viewModel.items[index])) {
                                         RecipeCardView(recipe: item)
                                             .scaleEffect(isHighlighted ? 1.05 : 1.0)
                                             .shadow(
-                                                color: isHighlighted
-                                                    ? Color.blue.opacity(0.6)
-                                                    : Color.black.opacity(0.1),
+                                                color: isHighlighted ? Color.blue.opacity(0.6) : Color.black.opacity(0.1),
                                                 radius: isHighlighted ? 10 : 4,
                                                 x: 0,
                                                 y: 2
@@ -78,8 +71,6 @@ struct RecipesView: View {
                                 }
                             }
                         }
-                        .padding()
-
                         .padding()
                     }
                 }
