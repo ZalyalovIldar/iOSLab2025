@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct MovieBrowserApp: App {
-    @State private var viewModel = MoviesViewModel() //храним состояние если изменяется то обновляем экран
+    @State private var viewModel = MoviesViewModel()
     
     var body: some Scene {
         WindowGroup {

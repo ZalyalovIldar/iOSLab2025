@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct MovieDetailView: View {
-    @Binding var movie: Movie //для чтения редактирования и сохранения
-    let viewModel: MoviesViewModel //для метода update
+    @Binding var movie: Movie
+    let viewModel: MoviesViewModel
     
     var body: some View {
         Form {
-            Section("Постер") {
+            Section("Poster") {
                 HStack {
                     Spacer()
                     Image(systemName: movie.posterSymbol)
@@ -23,7 +23,7 @@ struct MovieDetailView: View {
                 }
                 .padding()
                 
-                Picker("Символ постера", selection: $movie.posterSymbol) {
+                Picker("Poster Symbol", selection: $movie.posterSymbol) {
                     Text("Film").tag("film.fill")
                     Text("Eye").tag("eye.fill")
                     Text("Sparkles").tag("sparkles")
@@ -35,27 +35,43 @@ struct MovieDetailView: View {
                 }
             }
             
-            Section("Заголовок") {
-                TextField("Заголовок", text: $movie.title)
+            Section("Title") {
+                TextField("Title", text: $movie.title)
             }
             
-            Section("Жанр") {
-                TextField("Жанр", text: $movie.genre)
+            Section("Genre") {
+                TextField("Genre", text: $movie.genre)
             }
             
-            Section("Описание") {
-                TextField("Описание", text: $movie.description, axis: .vertical)
+            Section("Description") {
+                TextField("Description", text: $movie.description, axis: .vertical)
                     .lineLimit(5...10)
             }
             
-            Section("Год выпуска") {
+            Section("Release Year") {
                 Stepper("\(movie.releaseYear)", value: $movie.releaseYear, in: 1900...2025)
             }
         }
-        .navigationTitle("Редактировать фильм")
+        .navigationTitle("Edit Movie")
         .navigationBarTitleDisplayMode(.inline)
-        .onChange(of: movie) { oldValue, newValue in //срабатывает при изменении
-            viewModel.updateMovie(newValue) //обновление после редактирования без отдельного save
+        .onChange(of: movie) { oldValue, newValue in
+            viewModel.updateMovie(newValue)
         }
     }
 }
+
+#Preview {
+    NavigationStack {
+        MovieDetailView(
+            movie: .constant(Movie(
+                title: "The Matrix",
+                genre: "Sci-Fi",
+                description: "A computer hacker learns about the true nature of reality.",
+                releaseYear: 1999,
+                posterSymbol: "eye.fill"
+            )),
+            viewModel: MoviesViewModel()
+        )
+    }
+}
+

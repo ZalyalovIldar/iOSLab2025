@@ -6,54 +6,55 @@
 //
 
 import Foundation
-import Observation //для отслеживания
+import Observation
 
-enum SortOption: String, CaseIterable { //для сортировки
+enum SortOption: String, CaseIterable {
     case title = "По названию"
     case year = "По году"
     case none = "Без сортировки"
 }
 
-@Observable //отслеживаемый класс
+@Observable
 final class MoviesViewModel {
     var movies: [Movie] = []
     var searchText: String = ""
-    var sortOption: SortOption = .none //по умолчанию без сортировки
+    var sortOption: SortOption = .none
     
-    private let moviesKey = "savedMovies" //ключ для сохранения в userdefaults
+    private let moviesKey = "savedMovies"
     
     init() {
-        loadMovies() //загружаем существующие фильмы
+        loadMovies()
+        // Загружаем дефолтные фильмы только если нет сохраненных (отключено)
     }
     
-    var filteredAndSortedMovies: [Movie] { //вычисляемое свойство
-        var result = movies //создаем копию чтобы не менять основной массив в фильтрации
+    var filteredAndSortedMovies: [Movie] {
+        var result = movies
         
         // Поиск
         if !searchText.isEmpty {
             result = result.filter { movie in
-                movie.title.localizedCaseInsensitiveContains(searchText) //поиск без учета регистра
+                movie.title.localizedCaseInsensitiveContains(searchText)
             }
         }
         
         // Сортировка
         switch sortOption {
         case .title:
-            result.sort { $0.title < $1.title } //по алфавиту
+            result.sort { $0.title < $1.title }
         case .year:
-            result.sort { $0.releaseYear > $1.releaseYear } //по году
-        case .none: //по умолчанию без сортировки
+            result.sort { $0.releaseYear > $1.releaseYear }
+        case .none:
             break
         }
         
-        return result //возвращаем результат
+        return result
     }
     
-    func addMovie(title: String, genre: String, description: String, releaseYear: Int, posterSymbol: String = "film.fill") { //функиця добавления фильма
-        let trimmedTitle = title.trimmingCharacters(in: .whitespacesAndNewlines) //убираем пробелы и переноси строк
-        guard !trimmedTitle.isEmpty else { return } //проверка на пустоту титла
+    func addMovie(title: String, genre: String, description: String, releaseYear: Int, posterSymbol: String = "film.fill") {
+        let trimmedTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmedTitle.isEmpty else { return }
         
-        let newMovie = Movie( //создаем фильм
+        let newMovie = Movie(
             title: trimmedTitle,
             genre: genre,
             description: description,
@@ -61,33 +62,35 @@ final class MoviesViewModel {
             posterSymbol: posterSymbol
         )
         
-        movies.insert(newMovie, at: 0) //добавляем в список в позицию с индексом 0 чтобы новый фильм был сверху
-        saveMovies() //сохраняем
+        movies.insert(newMovie, at: 0)
+        saveMovies()
     }
     
-    func removeMovie(at offsets: IndexSet) { //функция удаления по индексу
+    func removeMovie(at offsets: IndexSet) {
         movies.remove(atOffsets: offsets)
         saveMovies()
     }
     
-    func updateMovie(_ movie: Movie) { //находит фильм по индексу и обновляет
+    func updateMovie(_ movie: Movie) {
         if let index = movies.firstIndex(where: { $0.id == movie.id }) {
             movies[index] = movie
             saveMovies()
         }
     }
     
+    // MARK: - UserDefaults
     
-    private func saveMovies() { //сохранение
-        if let encoded = try? JSONEncoder().encode(movies) { //попытка преобразовать фильм в json
-            UserDefaults.standard.set(encoded, forKey: moviesKey) //сохранение данных под ключ
+    private func saveMovies() {
+        if let encoded = try? JSONEncoder().encode(movies) {
+            UserDefaults.standard.set(encoded, forKey: moviesKey)
         }
     }
     
-    private func loadMovies() { //загрузка
-        if let data = UserDefaults.standard.data(forKey: moviesKey), //получаем данные по ключу
-           let decoded = try? JSONDecoder().decode([Movie].self, from: data) { //попытка превратить json в массив Movie
-            movies = decoded //присваиваем загруженные фильмы
+    private func loadMovies() {
+        if let data = UserDefaults.standard.data(forKey: moviesKey),
+           let decoded = try? JSONDecoder().decode([Movie].self, from: data) {
+            movies = decoded
         }
     }
 }
+

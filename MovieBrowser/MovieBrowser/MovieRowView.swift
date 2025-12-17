@@ -9,12 +9,12 @@ import SwiftUI
 
 struct MovieRowView: View {
     let movie: Movie
-    @State private var isAppeared = false //для появления
+    @State private var isAppeared = false
     
     var body: some View {
         HStack(spacing: 12) {
-            
-            Image(systemName: movie.posterSymbol)// Постер
+            // Постер
+            Image(systemName: movie.posterSymbol)
                 .font(.system(size: 40))
                 .foregroundStyle(.blue)
                 .frame(width: 50, height: 50)
@@ -49,9 +49,34 @@ struct MovieRowView: View {
         .opacity(isAppeared ? 1 : 0)
         .offset(x: isAppeared ? 0 : -20)
         .onAppear {
-            withAnimation(.easeOut(duration: 0.4).delay(0.1)) { //начинается быстро, замедляется в конце длительность 0.4с также задержка перед началом
+            withAnimation(.easeOut(duration: 0.4).delay(0.1)) {
                 isAppeared = true
             }
         }
     }
 }
+
+#Preview {
+    List {
+        MovieRowView(movie: Movie(
+            title: "The Matrix",
+            genre: "Sci-Fi",
+            description: "A computer hacker learns about the true nature of reality.",
+            releaseYear: 1999,
+            posterSymbol: "eye.fill"
+        ))
+    }
+}
+
+#Preview {
+    List {
+        MovieRowView(movie: Movie(
+            id: UUID(),
+            title: "The Matrix",
+            genre: "Sci-Fi",
+            description: "A computer hacker learns about the true nature of reality.",
+            releaseYear: 1999
+        ))
+    }
+}
+

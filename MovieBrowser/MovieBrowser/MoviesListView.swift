@@ -34,7 +34,7 @@ struct MoviesListView: View {
                 }
                 
                 // Список фильмов
-                Section("Фильмы") {
+                Section("Movies") {
                     ForEach(viewModel.filteredAndSortedMovies) { movie in
                         NavigationLink(value: movie) {
                             MovieRowView(movie: movie)
@@ -54,7 +54,7 @@ struct MoviesListView: View {
                     }
                 }
             }
-            .navigationTitle("Фильмы")
+            .navigationTitle("Movies")
             .navigationDestination(for: Movie.self) { movie in
                 MovieDetailView(
                     movie: binding(for: movie),
@@ -76,10 +76,15 @@ struct MoviesListView: View {
         }
     }
     
-    private func binding(for movie: Movie) -> Binding<Movie> { //функция принимает параметр movie возвращает привязку
+    private func binding(for movie: Movie) -> Binding<Movie> {
         Binding(
-            get: { viewModel.movies.first(where: { $0.id == movie.id }) ?? movie }, //возвращает актуальный фильм
-            set: { viewModel.updateMovie($0) } //вызывает update и обновляет массив
+            get: { viewModel.movies.first(where: { $0.id == movie.id }) ?? movie },
+            set: { viewModel.updateMovie($0) }
         )
     }
 }
+
+#Preview {
+    MoviesListView(viewModel: MoviesViewModel())
+}
+
