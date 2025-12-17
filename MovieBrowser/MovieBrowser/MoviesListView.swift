@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct MoviesListView: View {
-    @Bindable
-    var viewModel: MoviesViewModel
+    @Bindable var viewModel: MoviesViewModel
     @State private var isShowingAddMovie = false
     @State private var path = NavigationPath()
     
