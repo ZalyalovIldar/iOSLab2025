@@ -12,7 +12,7 @@ struct RecipesView: View {
     @State private var viewModel = RecipesViewModel()
     @State private var showAddSheet = false
     
-    @State private var highlightedID: UUID? = nil
+    @State private var highlightedID: UUID?
     
     var body: some View {
         

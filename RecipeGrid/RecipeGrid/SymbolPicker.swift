@@ -9,7 +9,9 @@ import SwiftUI
 
 struct SymbolPicker: View {
     
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
+    
     var onSelect: (String) -> Void
     
     private let symbols = [
@@ -128,4 +130,3 @@ struct SymbolPicker: View {
 #Preview {
     SymbolPicker(onSelect: { _ in })
 }
-

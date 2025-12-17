@@ -19,7 +19,7 @@ final class RecipesViewModel {
     
     private let storageKey = "recipes_storage"
     
-    var selectedCategory: String? = nil
+    var selectedCategory: String?
     
     var sortOption: SortOption = .none
     
@@ -38,7 +38,7 @@ final class RecipesViewModel {
     
     var searchText: String = ""
     
-    var lastAddedRecipeID: UUID? = nil
+    var lastAddedRecipeID: UUID?
     
     func add(_ recipe: Recipe) {
         items.insert(recipe, at: 0)
@@ -110,8 +110,8 @@ final class RecipesViewModel {
                 self.items.first(where: { $0.id == id }) ?? Recipe.empty
             },
             set: { updated in
-                if let i = self.items.firstIndex(where: { $0.id == id }) {
-                    self.items[i] = updated
+                if let ind = self.items.firstIndex(where: { $0.id == id }) {
+                    self.items[ind] = updated
                 }
             }
         )

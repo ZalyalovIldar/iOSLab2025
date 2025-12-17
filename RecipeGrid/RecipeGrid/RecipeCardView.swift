@@ -73,8 +73,7 @@ struct RecipeCardView: View {
         )
     }
     
-    @ViewBuilder
-    private var cardImage: some View {
+    @ViewBuilder private var cardImage: some View {
         
         switch recipe.imageType {
             
