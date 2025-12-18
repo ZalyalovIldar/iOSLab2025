@@ -22,7 +22,11 @@ struct WeatherResponse: Decodable {
         let windspeed: Double
     }
 
-    let current_weather: CurrentWeather
+    let currentWeather: CurrentWeather
+
+    enum CodingKeys: String, CodingKey {
+        case currentWeather = "current_weather"
+    }
 }
 
 /// Погода для конкретного города

@@ -38,7 +38,7 @@ struct WeatherService {
 
                 let decoder = JSONDecoder()
                 let weatherResponse = try decoder.decode(WeatherResponse.self, from: data)  //`преобразуем data в WeatherResponse.self
-                let current = weatherResponse.current_weather //присваем текущую погоду
+                let current = weatherResponse.currentWeather //присваем текущую погоду
 
                 return CityWeather(
                     city: city,
