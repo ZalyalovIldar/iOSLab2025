@@ -22,3 +22,4 @@ struct Crypto: Codable, Identifiable {//json id
         case image
     }
 }
+
