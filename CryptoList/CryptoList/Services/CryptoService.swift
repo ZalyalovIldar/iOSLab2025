@@ -29,4 +29,3 @@ class RealCryptoService: CryptoService { //выполняет протокол �
         return try decoder.decode([Crypto].self, from: data) //переводим json(data) в массив crypto и возвращаем результат
     }
 }
-
