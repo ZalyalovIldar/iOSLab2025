@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// Основной список городов
+// основной список городов
 struct CityListView: View {
     @State private var viewModel = WeatherViewModel()
 
