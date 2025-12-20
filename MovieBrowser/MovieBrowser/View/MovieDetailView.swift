@@ -14,15 +14,7 @@ struct MovieDetailView: View {
     @State private var originalTitle: String = ""
     @State private var originalGenre: String = ""
     @State private var originalYear: Int = 0
-    private let allowedRange = 1900...2100
-    
-    private let yearFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.minimum = 1900
-        formatter.maximum = 2100
-        formatter.allowsFloats = false
-        return formatter
-    }()
+    private let allowedRange = 1800...2100
     
     var body: some View {
         Form {
@@ -52,9 +44,7 @@ struct MovieDetailView: View {
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                     
-                    TextField("e.g. 2010",
-                              value: $movie.releaseYear,
-                              formatter: yearFormatter)
+                    TextField("e.g. 2010", text: yearBinding)
                     .keyboardType(.numberPad)
                     .textFieldStyle(.roundedBorder)
                 }
@@ -117,6 +107,22 @@ struct MovieDetailView: View {
                 movie.releaseYear = originalYear
             }
         }
+    }
+    
+    private var yearBinding: Binding<String> {
+        Binding(
+            get: {
+                movie.releaseYear == 0 ? "" : String(movie.releaseYear)
+            },
+            set: { newValue in
+                if newValue.isEmpty {
+                    movie.releaseYear = 0
+                } else if let value = Int(newValue),
+                          (allowedRange).contains(value) {
+                    movie.releaseYear = value
+                }
+            }
+        )
     }
 }
 
