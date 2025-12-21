@@ -57,5 +57,4 @@ struct DataStorage {
     static var gitHubAccountLink: URL? {
         URL(string: "https://github.com/Lyasan-byte")
     }
-    
 }

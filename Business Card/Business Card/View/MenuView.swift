@@ -14,7 +14,7 @@ struct MenuView: View {
     
     private var menu = DataStorage()
     
-    @State private var vm = ModelView()
+    @State private var viewModel = ModelView()
     
     var body: some View {
         ZStack {
@@ -34,12 +34,8 @@ struct MenuView: View {
     
     private var shortenedBio: some View {
         VStack {
-//            Image(.profile)
-//                .resizable()
-//                .frame(width: 130, height: 140)
-//                .clipShape(.circle)
-            PhotosPicker(selection: $vm.photoSelection, matching: .images) {
-                if let selectedImage = vm.selectedImage {
+            PhotosPicker(selection: $viewModel.photoSelection, matching: .images) {
+                if let selectedImage = viewModel.selectedImage {
                     Image(uiImage: selectedImage)
                         .resizable()
                         .frame(width: 130, height: 140)
@@ -49,7 +45,6 @@ struct MenuView: View {
                         .frame(width: 130, height: 140)
                         .clipShape(.circle)
                 }
-                
             }
             
             Text("Laysan Minlebaeva")
@@ -91,7 +86,6 @@ struct MenuView: View {
         }
     }
 }
-
 
 #Preview {
     MenuView()

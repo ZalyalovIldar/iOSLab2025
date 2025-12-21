@@ -11,14 +11,14 @@ import PhotosUI
 
 @Observable
 class ModelView {
-    var selectedImage: UIImage? = nil
-    var photoSelection: PhotosPickerItem? = nil {
+    var selectedImage: UIImage?
+    var photoSelection: PhotosPickerItem? {
         didSet {
             setImage(selection: photoSelection)
         }
     }
     
-    private func setImage(selection: PhotosPickerItem?)  {
+    private func setImage(selection: PhotosPickerItem?) {
         guard let selection else { return }
         Task {
             do {
@@ -31,8 +31,5 @@ class ModelView {
                 print(error)
             }
         }
-        
     }
 }
-
-
