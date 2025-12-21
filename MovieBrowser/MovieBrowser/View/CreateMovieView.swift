@@ -9,7 +9,8 @@ import SwiftUI
 import PhotosUI
 
 struct CreateMovieView: View {
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
     @Bindable var movieViewModel: MovieViewModel
     
     @State private var photoViewModel = PhotoSelectionViewModel()

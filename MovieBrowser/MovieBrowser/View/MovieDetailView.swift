@@ -9,7 +9,8 @@ import SwiftUI
 import PhotosUI
 
 struct MovieDetailView: View {
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
     @Binding var movie: Movie
     @Bindable var movieViewModel: MovieViewModel
     
