@@ -33,7 +33,7 @@ final class MovieViewModel {
         return allMovies
     }
     
-    private var userDefaultsKey =  "movies"
+    private var userDefaultsKey = "movies"
     private var imagesFolderName = "movie_images"
     
     init() {
