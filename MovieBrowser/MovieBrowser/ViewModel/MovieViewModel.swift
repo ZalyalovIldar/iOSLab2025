@@ -62,7 +62,7 @@ final class MovieViewModel {
     }
     
     func updatePoster(image: UIImage, imageName: String, movieId: String) {
-        if let index = movies.firstIndex(where: { $0.id == movieId}) {
+        if let index = movies.firstIndex(where: { $0.id == movieId }) {
             movies[index].imageName = imageName
             saveImage(image: image, imageName: imageName)
             saveMovies()

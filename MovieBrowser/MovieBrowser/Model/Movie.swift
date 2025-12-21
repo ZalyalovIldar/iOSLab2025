@@ -46,4 +46,3 @@ struct Movie: Identifiable, Hashable, Codable {
         Movie(title: "Whiplash", genre: .drama, description: "A promising young drummer enrolls at a cut-throat music conservatory where his dreams of greatness are mentored by an instructor who will stop at nothing to realize a student's potential.", releaseYear: 2014, imageName: "whiplash")
     ]
 }
-
