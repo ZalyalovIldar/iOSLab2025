@@ -28,7 +28,7 @@ final class MovieViewModel {
         }
         
         if isSortedByTitle {
-            allMovies = movies.sorted { $0.title < $1.title }
+            allMovies = allMovies.sorted { $0.title < $1.title }
         }
         return allMovies
     }

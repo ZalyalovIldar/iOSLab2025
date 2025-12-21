@@ -18,13 +18,14 @@ struct EmptyStateView: View {
         VStack {
             Image(systemName: imageName)
                 .font(.largeTitle)
+                .foregroundStyle(.lightGrey)
+                .padding(5)
             Text(title)
                 .font(.title2.bold())
                 .foregroundStyle(.white)
             Text(subTitle)
                 .font(.subheadline)
                 .foregroundStyle(.lightGrey)
-            
             Button {
                 action()
             } label: {
@@ -36,12 +37,10 @@ struct EmptyStateView: View {
             .buttonStyle(.glassProminent)
             .tint(.lightVine)
             .padding(10)
-
         }
-        
     }
 }
 
 #Preview {
-    EmptyStateView(title: "No Movies", subTitle: "Tap plus button to add a movie", imageName: "popcorn", buttonLabel: "No",action: {})
+    EmptyStateView(title: "No Movies", subTitle: "Tap plus button to add a movie", imageName: "popcorn", buttonLabel: "New Movies", action: {})
 }

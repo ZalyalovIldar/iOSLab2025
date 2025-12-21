@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct RecipesView: View {
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
+    
     @State private var recipeViewModel = RecipeViewModel()
     @State private var isAddRecipeSheetShown = false
    
@@ -39,7 +41,7 @@ struct RecipesView: View {
                                         Text("Sort by")
                                     }
                                 }
-                            } label:  {
+                            } label: {
                                 Image(systemName: "line.3.horizontal.decrease")
                             }
                         }

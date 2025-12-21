@@ -11,8 +11,8 @@ import PhotosUI
 
 @Observable
 final class PhotoSelectionViewModel {
-    var image: UIImage? = nil
-    var photoSelection: PhotosPickerItem? = nil {
+    var image: UIImage?
+    var photoSelection: PhotosPickerItem? {
         didSet {
             setImage(selection: photoSelection)
         }

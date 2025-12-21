@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Genre:  String, Identifiable, Hashable, CaseIterable, Codable {
+enum Genre: String, Identifiable, Hashable, CaseIterable, Codable {
     case comedy
     case drama
     case fantasy
@@ -16,7 +16,7 @@ enum Genre:  String, Identifiable, Hashable, CaseIterable, Codable {
     var id: String { rawValue }
 }
 
-struct Movie: Identifiable, Codable {
+struct Movie: Identifiable, Hashable, Codable {
     let id: String
     var title: String
     var genre: Genre

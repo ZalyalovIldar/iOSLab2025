@@ -11,22 +11,30 @@ struct MoviesView: View {
     @Bindable var movieViewModel: MovieViewModel
     
     @State private var isAddingMoviesSheetShown = false
+    @State private var path = NavigationPath()
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
            ZStack {
                background
                
-               VStack(alignment: .leading) {
-                   title
-                       .padding()
-                   movies
-                       .padding(.horizontal, 10)
-                   Spacer()
+               if movieViewModel.movies.isEmpty {
+                   emptyState
+               } else {
+                   VStack(alignment: .leading) {
+                       title
+                           .padding()
+                       movies
+                           .padding(.horizontal, 10)
+                       Spacer()
+                   }
                }
            }
            .sheet(isPresented: $isAddingMoviesSheetShown) {
                CreateMovieView(movieViewModel: movieViewModel)
+           }
+           .navigationDestination(for: Movie.self) { movie in
+               MovieDetailView(movie: binding(for: movie), movieViewModel: movieViewModel)
            }
            .toolbar {
                ToolbarItem(placement: .topBarLeading) {
@@ -51,6 +59,24 @@ struct MoviesView: View {
                }
            }
         }
+        
+    }
+    
+    private func binding(for movie: Movie) -> Binding<Movie> {
+        return Binding(get: {
+            movieViewModel.movies.first { $0.id == movie.id } ?? movie
+        }, set: { newValue in
+            if let index = movieViewModel.movies.firstIndex(where: { $0.id == newValue.id }) {
+                movieViewModel.movies[index] = newValue
+                movieViewModel.saveMovies()
+            }
+        })
+    }
+    
+    private var emptyState: some View {
+        EmptyStateView(title: "No Movies", subTitle: "Tap the button below to add movie", imageName: "popcorn", buttonLabel: "New Movies") {
+            isAddingMoviesSheetShown = true
+        }
     }
     
     private var background: some View {
@@ -66,18 +92,11 @@ struct MoviesView: View {
         ScrollView {
             LazyVGrid(columns: [GridItem(), GridItem()]) {
                 ForEach(movieViewModel.filteredMovies) { movie in
-                    NavigationLink {
-                        MovieDetailView(movie: Binding(get: {
-                            movieViewModel.movies.first { $0.id == movie.id } ?? movie
-                        }, set: { newValue in
-                            if let index = movieViewModel.movies.firstIndex(where: { $0.id == movie.id }) {
-                                movieViewModel.movies[index] = newValue
-                            }
-                        }), movieViewModel: movieViewModel)
-                    } label: {
-                        MovieRowView(movie: movie, movieViewModel: movieViewModel)
-                            .padding(5)
-                    }
+                    MovieRowView(movie: movie, movieViewModel: movieViewModel)
+                           .padding(5)
+                           .onTapGesture {
+                               path.append(movie)
+                           }
                 }
             }
         }
