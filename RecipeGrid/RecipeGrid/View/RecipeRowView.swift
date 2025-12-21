@@ -34,6 +34,6 @@ struct RecipeRowView: View {
 #Preview {
     ZStack {
         Color.black.ignoresSafeArea()
-        RecipeRowView(recipe: Recipe.mockRecipes.first!)
+        RecipeRowView(recipe: Recipe.mockRecipes.first ?? Recipe(title: "", imageName: "", summary: "", category: FoodCategory.appetizer))
     }
 }

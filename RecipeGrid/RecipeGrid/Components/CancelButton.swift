@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct CancelButton: View {
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
     
     var body: some View {
         Button {

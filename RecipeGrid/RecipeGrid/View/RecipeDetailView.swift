@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct RecipeDetailView: View {
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
     @Bindable var recipeViewModel: RecipeViewModel
     
     @State private var isEditSheetShown = false
