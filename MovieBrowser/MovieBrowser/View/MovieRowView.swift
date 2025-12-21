@@ -13,7 +13,12 @@ struct MovieRowView: View {
     
     var body: some View {
         
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 10) {
+            
+            poster
+                .frame(height: 120)
+                .frame(maxWidth: .infinity, alignment: .center)
+            
             Text(movie.title)
                 .font(.headline)
                 .foregroundStyle(.white)
@@ -21,6 +26,7 @@ struct MovieRowView: View {
                 .multilineTextAlignment(.leading)
             
             HStack {
+                
                 Text(movie.genre)
                     .font(.caption)
                     .fontWeight(.bold)
@@ -39,16 +45,39 @@ struct MovieRowView: View {
             }
         }
         .padding()
-        .frame(maxWidth: .infinity, minHeight: 130, alignment: .topLeading)
+        .frame(maxWidth: .infinity, minHeight: 180, alignment: .topLeading)
         .background(
             Color.cardGradient
-            .overlay(
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .strokeBorder(.white.opacity(0.15), lineWidth: 1)
-            )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .strokeBorder(.white.opacity(0.15), lineWidth: 1)
+                )
         )
         .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
         .shadow(radius: 8, y: 4)
+    }
+    
+    @ViewBuilder
+    private var poster: some View {
+        
+        switch movie.posterType {
+        case .sfSymbol:
+            Image(systemName: movie.posterName)
+                .font(.system(size: 40))
+                .foregroundStyle(.white.opacity(0.9))
+        case .photo:
+            if let data = movie.posterImageData,
+               let uiImage = UIImage(data: data) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .scaledToFit()
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            } else {
+                Image(systemName: "photo")
+                    .font(.system(size: 32))
+                    .foregroundStyle(.white.opacity(0.7))
+            }
+        }
     }
 }
 
@@ -57,7 +86,9 @@ struct MovieRowView: View {
         title: "Inception",
         genre: "Sci-Fi",
         description: "A mind-bending thriller.",
-        releaseYear: 2010
+        releaseYear: 2010,
+        posterType: .sfSymbol,
+        posterName: "film"
     ))
     .padding()
     .background(.black)

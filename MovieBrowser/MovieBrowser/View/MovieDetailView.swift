@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct MovieDetailView: View {
     
@@ -14,10 +15,16 @@ struct MovieDetailView: View {
     @State private var originalTitle: String = ""
     @State private var originalGenre: String = ""
     @State private var originalYear: Int = 0
+    
     private let allowedRange = 1800...2100
+    private let years: [Int] = Array(1900...Calendar.current.component(.year, from: Date())).reversed()
+    
+    @State private var selectedItem: PhotosPickerItem?
     
     var body: some View {
+        
         Form {
+            
             Section {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Title")
@@ -30,6 +37,7 @@ struct MovieDetailView: View {
                 .padding(.vertical, 4)
                 
                 VStack(alignment: .leading, spacing: 8) {
+                    
                     Text("Genre")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
@@ -39,24 +47,65 @@ struct MovieDetailView: View {
                 }
                 .padding(.vertical, 4)
                 
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Release Year")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                    
-                    TextField("e.g. 2010", text: yearBinding)
-                    .keyboardType(.numberPad)
-                    .textFieldStyle(.roundedBorder)
+                Picker("Release year", selection: $movie.releaseYear) {
+                    ForEach(years, id: \.self) { year in
+                        Text(String(year)).tag(year)
+                    }
                 }
-                .padding(.vertical, 4)
-                
+                .pickerStyle(.menu)
+                .padding(.horizontal, 20)
             } header: {
                 Label("Movie Info", systemImage: "info.circle")
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.white)
+            }
+            
+            Section {
+                Picker("Poster type", selection: $movie.posterType) {
+                    Text("SF Symbol").tag(PosterType.sfSymbol)
+                    Text("Photo").tag(PosterType.photo)
+                }
+                .pickerStyle(.segmented)
+                
+                if movie.posterType == .sfSymbol {
+                    TextField("e.g. film, popcorn.fill", text: $movie.posterName)
+                        .textInputAutocapitalization(.never)
+                        .textFieldStyle(.roundedBorder)
+                } else {
+                    PhotosPicker(selection: $selectedItem, matching: .images) {
+                        HStack {
+                            Image(systemName: "photo.on.rectangle")
+                            Text("Choose photo")
+                        }
+                    }
+                }
+                
+                HStack {
+                    
+                    Spacer()
+                    posterPreview
+                        .font(.system(size: 40))
+                        .padding(.vertical, 4)
+                    Spacer()
+                }
+                if movie.posterType == .photo,
+                   movie.posterImageData != nil {
+                    Button("Remove photo") {
+                        movie.posterImageData = nil
+                    }
+                    .font(.callout)
+                    .foregroundColor(.red)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(.top, 4)
+                }
+
+            } header: {
+                Label("Poster", systemImage: "photo")
+                    .foregroundStyle(.white)
             }
             
             Section {
                 VStack(alignment: .leading, spacing: 8) {
+                    
                     Text("Description")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
@@ -80,12 +129,22 @@ struct MovieDetailView: View {
                 
             } header: {
                 Label("Details", systemImage: "text.alignleft")
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.white)
+            }
+        }
+        .onChange(of: selectedItem) { _, newItem  in
+            guard let newItem else { return }
+            Task {
+                if let data = try? await newItem.loadTransferable(type: Data.self) {
+                    await MainActor.run {
+                        movie.posterImageData = data
+                    }
+                }
             }
         }
         .scrollContentBackground(.hidden)
         .background(
-            Color.backgroundColor
+            Color.cardGradient
         )
         .navigationTitle(movie.title.isEmpty ? "Movie Details" : movie.title)
         .navigationBarTitleDisplayMode(.inline)
@@ -109,20 +168,25 @@ struct MovieDetailView: View {
         }
     }
     
-    private var yearBinding: Binding<String> {
-        Binding(
-            get: {
-                movie.releaseYear == 0 ? "" : String(movie.releaseYear)
-            },
-            set: { newValue in
-                if newValue.isEmpty {
-                    movie.releaseYear = 0
-                } else if let value = Int(newValue),
-                          (allowedRange).contains(value) {
-                    movie.releaseYear = value
-                }
+    @ViewBuilder
+    private var posterPreview: some View {
+        switch movie.posterType {
+        case .sfSymbol:
+            Image(systemName: movie.posterName.isEmpty ? "questionmark.square.dashed" : movie.posterName)
+                .font(.system(size: 120))
+        case .photo:
+            if let data = movie.posterImageData,
+               let uiImage = UIImage(data: data) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .scaledToFill()
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+            } else {
+                Image(systemName: "photo")
+                    .font(.system(size: 120))
+                    .foregroundStyle(.secondary)
             }
-        )
+        }
     }
 }
 
@@ -130,7 +194,12 @@ struct MovieDetailView: View {
     @Previewable @State var previewMovie = Movie(
         title: "The Matrix",
         genre: "Action",
-        description: "A computer hacker learns about the true nature of reality in a dystopian future.", releaseYear: 1999
+        description: "A computer hacker learns about the true nature of reality in a dystopian future.",
+        releaseYear: 1999,
+        posterType: .sfSymbol,
+        posterName: "film"
     )
-    return MovieDetailView(movie: $previewMovie)
+    return NavigationStack {
+        MovieDetailView(movie: $previewMovie)
+    }
 }

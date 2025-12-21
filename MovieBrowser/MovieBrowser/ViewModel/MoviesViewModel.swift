@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 @Observable
 final class MoviesViewModel {
     
@@ -18,19 +16,20 @@ final class MoviesViewModel {
         case year
     }
     
-    var movies: [Movie] = [
-        .init(title: "Inception",
-              genre: "Sci-Fi",
-              description: "A thief who steals corporate secrets through dream-sharing technology.",
-              releaseYear: 2010),
-        .init(title: "The Dark Knight",
-              genre: "Action",
-              description: "Batman faces the Joker in Gotham City.",
-              releaseYear: 2008)
-    ]
+    private let storageKey = "movies_storage"
+    
+    var movies: [Movie] = [] {
+        didSet { save() }
+    }
     
     var searchText: String = ""
     var sortOption: SortOption = .none
+    
+    var lastAddedMovieID: UUID?
+    
+    init() {
+        load()
+    }
     
     var filteredMovies: [Movie] {
         var result = movies
@@ -71,12 +70,17 @@ final class MoviesViewModel {
     }
     
     func add(movie: Movie) {
-        movies.append(movie)
+        withAnimation(.spring(response: 0.45, dampingFraction: 0.85)) {
+            movies.insert(movie, at: 0)
+            lastAddedMovieID = movie.id
+        }
     }
     
     func remove(_ movie: Movie) {
-        if let index = movies.firstIndex(of: movie) {
-            movies.remove(at: index)
+        withAnimation(.easeIn) {
+            if let index = movies.firstIndex(of: movie) {
+                movies.remove(at: index)
+            }
         }
     }
     
@@ -92,5 +96,25 @@ final class MoviesViewModel {
                 }
             }
         )
+    }
+    
+    private func save() {
+        let encoder = JSONEncoder()
+        if let data = try? encoder.encode(movies) {
+            UserDefaults.standard.set(data, forKey: storageKey)
+        }
+    }
+    
+    private func load() {
+        let defaults = UserDefaults.standard
+        let decoder = JSONDecoder()
+        
+        if let data = defaults.data(forKey: storageKey),
+           let decoded = try? decoder.decode([Movie].self, from: data) {
+            self.movies = decoded
+        }
+        
+        sortOption = .none
+        searchText = ""
     }
 }
