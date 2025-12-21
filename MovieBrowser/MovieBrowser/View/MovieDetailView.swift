@@ -168,8 +168,7 @@ struct MovieDetailView: View {
         }
     }
     
-    @ViewBuilder
-    private var posterPreview: some View {
+    @ViewBuilder private var posterPreview: some View {
         switch movie.posterType {
         case .sfSymbol:
             Image(systemName: movie.posterName.isEmpty ? "questionmark.square.dashed" : movie.posterName)

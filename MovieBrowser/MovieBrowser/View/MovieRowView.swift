@@ -57,8 +57,7 @@ struct MovieRowView: View {
         .shadow(radius: 8, y: 4)
     }
     
-    @ViewBuilder
-    private var poster: some View {
+    @ViewBuilder private var poster: some View {
         
         switch movie.posterType {
         case .sfSymbol:

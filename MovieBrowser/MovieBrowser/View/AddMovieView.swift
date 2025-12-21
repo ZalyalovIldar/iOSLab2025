@@ -148,8 +148,7 @@ struct AddMovieView: View {
          : posterImageData != nil)
     }
     
-    @ViewBuilder
-    private var posterPreview: some View {
+    @ViewBuilder private var posterPreview: some View {
         switch posterType {
         case .sfSymbol:
             Image(systemName: posterName.isEmpty ? "questionmark.square.dashed" : posterName)

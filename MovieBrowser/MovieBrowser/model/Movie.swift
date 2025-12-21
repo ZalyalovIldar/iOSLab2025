@@ -20,6 +20,5 @@ struct Movie: Identifiable, Hashable, Codable {
     var releaseYear: Int
     var posterType: PosterType = .sfSymbol
     var posterName: String = "film"
-    var posterImageData: Data? = nil
+    var posterImageData: Data?
 }
-
