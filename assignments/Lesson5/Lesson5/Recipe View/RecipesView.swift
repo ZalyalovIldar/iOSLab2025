@@ -102,8 +102,7 @@ struct RecipesView: View {
         }
     }
     
-    @ViewBuilder
-    private var bodyContent: some View {
+    @ViewBuilder private var bodyContent: some View {
         switch viewModel.screenState {
         case .loading:
             ProgressView()

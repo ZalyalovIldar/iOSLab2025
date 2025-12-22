@@ -13,7 +13,8 @@ struct RecipeDetailView: View {
     
     @State private var showEdit = false
     @State private var showDeleteAlert = false
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.dismiss)
+    private var dismiss
     
     var body: some View {
         ScrollView {

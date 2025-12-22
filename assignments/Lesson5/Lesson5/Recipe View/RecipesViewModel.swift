@@ -29,7 +29,7 @@ final class RecipesViewModel {
     private var errorString: String?
     var searchText: String = ""
     var sortOption: SortOption = .dateAdded
-    var selectedCategory: String? = nil
+    var selectedCategory: String?
     
     private let recipeService: RecipeService
     private let recipesKey = "saved_recipes"
