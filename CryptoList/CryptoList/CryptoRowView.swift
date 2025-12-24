@@ -19,6 +19,7 @@ struct CryptoRowView: View {
                 image
                     .resizable()
                     .scaledToFit()
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
             } placeholder: {
                 ProgressView()
             }
@@ -27,7 +28,7 @@ struct CryptoRowView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(crypto.name)
                     .font(.headline)
-                Text("\(crypto.symbol) \(crypto.currentPrice, specifier: "%.2f")$")
+                Text("\(crypto.symbol) \(crypto.formattedPriceUSD)")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }

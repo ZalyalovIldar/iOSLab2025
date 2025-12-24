@@ -11,6 +11,7 @@ struct EmptyStateView: View {
     
     let title: String
     let subtitle: String
+    var onRetry: () -> Void
     
     var body: some View {
         
@@ -22,9 +23,11 @@ struct EmptyStateView: View {
             Text(subtitle)
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
+            Button("Retry", action: onRetry)
+                .buttonStyle(.borderedProminent)
         }
     }
 }
 #Preview {
-    
+    EmptyStateView(title: "No cryptoconcurrencies", subtitle: "Try reloading or check the API", onRetry: {})
 }

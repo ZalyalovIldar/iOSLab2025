@@ -27,9 +27,9 @@ final class CryptosViewModel {
         self.service = service
     }
     
-    func load() async {
+    func load(forceReload: Bool = false) async {
         do {
-            cryptos = try await service.obtainCryptos()
+            cryptos = try await service.obtainCryptos(forceReload: forceReload)
             state = cryptos.isEmpty ? .empty : .content
         }
         catch NetworkError.decodingFailed {
@@ -40,11 +40,52 @@ final class CryptosViewModel {
             cryptos = []
             state = .error("Bad status code: \(code)")
         }
+        catch NetworkError.invalidURL {
+            cryptos = []
+            state = .error("Invalid API URL")
+        }
         catch {
             cryptos = []
             state = .error("Unexpected error")
         }
-                
+    }
+    
+    enum SortOption: String, CaseIterable, Identifiable {
+        case none
+        case priceDesc
+        case priceAsc
+        case nameAsc
+        case nameDesc
+        
+        var id: String { rawValue }
+        
+        var title: String {
+            switch self {
+            case .priceDesc:  return "Price: High → Low"
+            case .priceAsc:   return "Price: Low → High"
+            case .nameAsc:    return "Name A–Z"
+            case .nameDesc:   return "Name Z–A"
+            case .none:       return "No sorting"
+            }
+        }
+    }
+    
+    var sortOption: SortOption = .none
+    
+    var sortedCryptos: [Crypto] {
+        switch sortOption {
+        case .priceAsc:
+            return cryptos.sorted { $0.currentPrice < $1.currentPrice }
+        case .priceDesc:
+            return cryptos.sorted { $0.currentPrice > $1.currentPrice }
+            
+        case .nameAsc:
+            return cryptos.sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending }
+        case .nameDesc:
+            return cryptos.sorted { $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedDescending }
+        case .none:
+            return cryptos
+        }
     }
     
 }

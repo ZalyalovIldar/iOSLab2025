@@ -19,6 +19,20 @@ struct CryptosListView: View {
                 .task {
                     await viewModel.load()
                 }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Menu {
+                            Picker("Sort", selection: $viewModel.sortOption) {
+                                ForEach(CryptosViewModel.SortOption.allCases) { option in
+                                    Text(option.title)
+                                        .tag(option)
+                                }
+                            }
+                        } label: {
+                            Image(systemName: "arrow.up.arrow.down")
+                        }
+                    }
+                }
         }
         
     }
@@ -29,23 +43,25 @@ struct CryptosListView: View {
             ProgressView()
                 .frame(maxWidth: .infinity, minHeight: 200)
         case .empty:
-            EmptyStateView(title: "No cryptoconcurrencies", subtitle: "Try reloading or check the API")
+            EmptyStateView(title: "No cryptoconcurrencies", subtitle: "Try reloading or check the API") {
+                Task { await viewModel.load(forceReload: true) }
+            }
         case .content:
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 10) {
-                    ForEach(viewModel.cryptos) { crypto in
+                    ForEach(viewModel.sortedCryptos) { crypto in
                         CryptoRowView(crypto: crypto)
                     }
                 }
                 .padding()
             }
             .refreshable {
-                Task { await viewModel.load() }
+                Task { await viewModel.load(forceReload: true) }
             }
             
         case .error(let message):
             ErrorView(message: message) {
-                Task { await viewModel.load() }
+                Task { await viewModel.load(forceReload: true) }
             }
         }
     }

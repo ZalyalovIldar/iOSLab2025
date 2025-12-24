@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CryptoService {
-    func obtainCryptos() async throws -> [Crypto]
+    func obtainCryptos(forceReload: Bool) async throws -> [Crypto]
 }
 
 enum NetworkError: Error, Equatable {
@@ -26,11 +26,22 @@ class realCryptoService: CryptoService {
         JSONDecoder()
     }()
     
+    private var cachedCryptos: [Crypto]?
+    private var cacheDate: Date?
+    private let cacheRefreshTime: TimeInterval = 60
+    
     init(urlSession: URLSession = .shared) {
         self.urlSession = urlSession
     }
     
-    func obtainCryptos() async throws -> [Crypto] {
+    func obtainCryptos(forceReload: Bool) async throws -> [Crypto] {
+        
+        if !forceReload,
+           let cached = cachedCryptos,
+           let date = cacheDate,
+           Date().timeIntervalSince(date) < cacheRefreshTime {
+            return cached
+        }
         
         guard let url = URL(string: cryptosURL) else {
             throw NetworkError.invalidURL
@@ -49,7 +60,10 @@ class realCryptoService: CryptoService {
         }
         
         do {
-            return try decoder.decode([Crypto].self, from: data)
+            let result = try decoder.decode([Crypto].self, from: data)
+            cachedCryptos = result
+            cacheDate = Date()
+            return result
         }
         catch {
             throw NetworkError.decodingFailed

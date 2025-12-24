@@ -23,4 +23,35 @@ extension Crypto {
         case currentPrice = "current_price"
         case image
     }
+    
+    private static let largePriceFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencyCode = "USD"
+        formatter.currencySymbol = "$"
+        formatter.usesGroupingSeparator = true
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        return formatter
+    }()
+    
+    private static let smallPriceFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencyCode = "USD"
+        formatter.currencySymbol = "$"
+        formatter.usesGroupingSeparator = true
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 10
+        return formatter
+    }()
+    
+    var formattedPriceUSD: String {
+        let formatter = currentPrice >= 1
+        ? Self.largePriceFormatter
+        : Self.smallPriceFormatter
+        
+        return formatter.string(from: NSNumber(value: currentPrice))
+        ?? "$0.00"
+    }
 }
