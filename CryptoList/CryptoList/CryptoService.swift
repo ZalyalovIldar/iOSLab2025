@@ -18,7 +18,7 @@ enum NetworkError: Error, Equatable {
     case decodingFailed
 }
 
-class realCryptoService: CryptoService {
+class RealCryptoService: CryptoService {
     
     private let cryptosURL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd"
     private let urlSession: URLSession
@@ -64,8 +64,7 @@ class realCryptoService: CryptoService {
             cachedCryptos = result
             cacheDate = Date()
             return result
-        }
-        catch {
+        } catch {
             throw NetworkError.decodingFailed
         }
     }

@@ -31,20 +31,16 @@ final class CryptosViewModel {
         do {
             cryptos = try await service.obtainCryptos(forceReload: forceReload)
             state = cryptos.isEmpty ? .empty : .content
-        }
-        catch NetworkError.decodingFailed {
+        } catch NetworkError.decodingFailed {
             cryptos = []
             state = .error("Failed to decode data")
-        }
-        catch let NetworkError.badStatusCode(code) {
+        } catch let NetworkError.badStatusCode(code) {
             cryptos = []
             state = .error("Bad status code: \(code)")
-        }
-        catch NetworkError.invalidURL {
+        } catch NetworkError.invalidURL {
             cryptos = []
             state = .error("Invalid API URL")
-        }
-        catch {
+        } catch {
             cryptos = []
             state = .error("Unexpected error")
         }

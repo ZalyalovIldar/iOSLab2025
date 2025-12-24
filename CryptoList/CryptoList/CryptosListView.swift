@@ -123,5 +123,5 @@ struct CryptosListView: View {
 }
 
 #Preview {
-    CryptosListView(viewModel: CryptosViewModel(service: realCryptoService()))
+    CryptosListView(viewModel: CryptosViewModel(service: RealCryptoService()))
 }

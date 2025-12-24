@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct CryptoListApp: App {
     
-    @State private var viewModel = CryptosViewModel(service: realCryptoService())
+    @State private var viewModel = CryptosViewModel(service: RealCryptoService())
     
     var body: some Scene {
         WindowGroup {
