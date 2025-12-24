@@ -69,7 +69,7 @@ struct TopGainerCardView: View {
             }
         }
         .padding(12)
-        .frame(width: 180)
+        .frame(width: 210)
         .background(
             RoundedRectangle(cornerRadius: 14)
                 .fill(Color.blue.opacity(0.08))
@@ -83,7 +83,7 @@ struct TopGainerCardView: View {
         id: "1",
         name: "Bitcoin",
         symbol: "BTC",
-        currentPrice: 50000.00,
+        currentPrice: 0.0000000001,
         image: "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400",
         priceChangePercentage24h: 2.3456))
 }
