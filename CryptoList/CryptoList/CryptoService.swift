@@ -28,7 +28,7 @@ class realCryptoService: CryptoService {
     
     private var cachedCryptos: [Crypto]?
     private var cacheDate: Date?
-    private let cacheRefreshTime: TimeInterval = 60
+    private let cacheRefreshTime: TimeInterval = 5 * 60
     
     init(urlSession: URLSession = .shared) {
         self.urlSession = urlSession

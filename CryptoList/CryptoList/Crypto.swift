@@ -13,6 +13,7 @@ struct Crypto: Identifiable, Codable {
     let symbol: String
     let currentPrice: Double
     let image: String
+    let priceChangePercentage24h: Double?
 }
 
 extension Crypto {
@@ -22,6 +23,7 @@ extension Crypto {
         case symbol
         case currentPrice = "current_price"
         case image
+        case priceChangePercentage24h = "price_change_percentage_24h"
     }
     
     private static let largePriceFormatter: NumberFormatter = {

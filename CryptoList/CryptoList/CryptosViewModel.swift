@@ -88,4 +88,11 @@ final class CryptosViewModel {
         }
     }
     
+    var topGainers: [Crypto] {
+        cryptos
+            .filter { ($0.priceChangePercentage24h ?? 0) > 0 }
+            .sorted { ($0.priceChangePercentage24h ?? 0) > ($1.priceChangePercentage24h ?? 0) }
+            .prefix(10)
+            .map { $0 }
+    }
 }

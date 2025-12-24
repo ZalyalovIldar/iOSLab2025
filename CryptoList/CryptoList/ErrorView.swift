@@ -13,9 +13,12 @@ struct ErrorView: View {
     var onRetry: () -> Void
     
     var body: some View {
+        
         VStack(spacing: 10) {
+            
             Text(message)
                 .font(.headline)
+            
             Button("Retry", action: onRetry)
                 .buttonStyle(.borderedProminent)
         }
