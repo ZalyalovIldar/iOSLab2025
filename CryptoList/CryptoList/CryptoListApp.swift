@@ -2,16 +2,18 @@
 //  CryptoListApp.swift
 //  CryptoList
 //
-//  Created by Ляйсан on 21/12/25.
+//  Created by Ляйсан
 //
 
 import SwiftUI
 
 @main
 struct CryptoListApp: App {
+    @State var coinViewModel = CoinViewModel(service: CoinsServiceImplementation())
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CryptoListView(coinViewModel: coinViewModel)
         }
     }
 }
