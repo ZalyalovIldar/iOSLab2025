@@ -84,7 +84,7 @@ struct CryptoListView: View {
     
     private var list: some View {
         List {
-            ForEach(selectedSection == .coins ?   coinViewModel.sortedCoins : coinViewModel.topGainersCoins) { coin in
+            ForEach(selectedSection == .coins ? coinViewModel.sortedCoins : coinViewModel.topGainersCoins) { coin in
                 CoinRowView(coin: coin)
             }
         }
@@ -114,7 +114,7 @@ struct CryptoListView: View {
     
     private var sortByPriceLabel: some View {
         HStack {
-            Image(systemName: coinViewModel.isSortedByPrice  ? "checkmark" : "")
+            Image(systemName: coinViewModel.isSortedByPrice ? "checkmark" : "")
             Text("Price")
         }
     }

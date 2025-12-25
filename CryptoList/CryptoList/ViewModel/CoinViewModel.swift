@@ -12,7 +12,7 @@ final class CoinViewModel {
     let service: CoinsService
     
     var coins: [Coin] = []
-    var alert: AlertItem? = nil
+    var alert: AlertItem?
     var isLoading = false
     var isSortedByPrice = false
     
@@ -85,4 +85,3 @@ final class CoinViewModel {
         }
     }
 }
-
