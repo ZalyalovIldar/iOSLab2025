@@ -63,4 +63,3 @@ struct CryptoRowView: View {
         String(format: "%.2f%%", value)
     }
 }
-
