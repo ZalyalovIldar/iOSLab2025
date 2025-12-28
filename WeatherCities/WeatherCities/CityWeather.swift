@@ -35,12 +35,12 @@ extension CityWeather {
     var codeDescription: String {
         switch weatherCode {
         case 0: return "Clear"
-        case 1,2,3: return "Partly cloudy"
-        case 45,48: return "Fog"
-        case 51,53,55: return "Drizzle"
-        case 61,63,65: return "Rain"
-        case 71,73,75: return "Snow"
-        case 80,81,82: return "Showers"
+        case 1, 2, 3: return "Partly cloudy"
+        case 45, 48: return "Fog"
+        case 51, 53, 55: return "Drizzle"
+        case 61, 63, 65: return "Rain"
+        case 71, 73, 75: return "Snow"
+        case 80, 81, 82: return "Showers"
         case 95: return "Thunderstorm"
         default: return "Code \(weatherCode)"
         }
@@ -49,12 +49,12 @@ extension CityWeather {
     var symbolName: String {
         switch weatherCode {
         case 0: return "sun.max"
-        case 1,2,3: return "cloud.sun"
-        case 45,48: return "cloud.fog"
-        case 51,53,55: return "cloud.drizzle"
-        case 61,63,65: return "cloud.rain"
-        case 71,73,75: return "cloud.snow"
-        case 80,81,82: return "cloud.heavyrain"
+        case 1, 2, 3: return "cloud.sun"
+        case 45, 48: return "cloud.fog"
+        case 51, 53, 55: return "cloud.drizzle"
+        case 61, 63, 65: return "cloud.rain"
+        case 71, 73, 75: return "cloud.snow"
+        case 80, 81, 82: return "cloud.heavyrain"
         case 95: return "cloud.bolt.rain"
         default: return "questionmark.circle"
         }
