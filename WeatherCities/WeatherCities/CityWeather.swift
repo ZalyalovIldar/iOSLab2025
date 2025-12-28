@@ -9,9 +9,9 @@ import Foundation
 import SwiftUI
 
 struct CityWeather: Identifiable, Hashable {
+    
     var id: String { city.id }
     let city: City
-
     let temperatureC: Double
     let windSpeedKmh: Double
     let windDirectionDeg: Double

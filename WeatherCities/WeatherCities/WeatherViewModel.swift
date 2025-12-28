@@ -43,10 +43,8 @@ final class WeatherViewModel {
         do {
             let result = try await fetchAllWeathersParallel(for: cities)
             cityWeather = result
-            await MainActor.run {
-                withAnimation(.easeInOut(duration: 0.25)) {
-                    state = result.isEmpty ? .empty : .content
-                }
+            withAnimation(.easeInOut(duration: 0.25)) {
+                state = result.isEmpty ? .empty : .content
             }
         } catch NetworkError.decodingFailed {
             state = .error("Failed to decode data")

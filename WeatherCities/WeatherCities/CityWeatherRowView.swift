@@ -12,6 +12,7 @@ struct CityWeatherRowView: View {
     let item: CityWeather
 
     var body: some View {
+        
         HStack(spacing: 12) {
 
             Image(systemName: item.symbolName)
@@ -19,29 +20,27 @@ struct CityWeatherRowView: View {
                 .frame(width: 36)
 
             VStack(alignment: .leading, spacing: 4) {
+                
                 Text(item.city.name)
                     .font(.headline)
-
-                HStack(spacing: 8) {
-                    Text(item.codeDescription)
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                }
+            
+                Text(item.codeDescription)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
             }
 
             Spacer()
             
             VStack(alignment: .trailing, spacing: 4) {
+                
                 Text(item.temperatureText)
                     .font(.headline)
                     .foregroundStyle(item.temperatureColor)
                     .monospacedDigit()
                 
-                HStack(spacing: 4) {
-                    Text("💨 \(item.windText) \(item.compassDirection)")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                }
+                Text("💨 \(item.windText) \(item.compassDirection)")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
             }
         }
         .padding(.horizontal, 16)
@@ -49,10 +48,28 @@ struct CityWeatherRowView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .fill(.blue.opacity(0.08))
+                .fill(cardGradient)
                 .stroke(.gray.opacity(0.35), lineWidth: 1)
+                .shadow(
+                    color: .black.opacity(0.12),
+                    radius: 8,
+                    x: 0,
+                    y: 4
+                )
         )
     }
+}
+
+private var cardGradient: LinearGradient {
+    LinearGradient(
+        colors: [
+            Color(red: 1.00, green: 1.00, blue: 1.00),
+            Color(red: 0.96, green: 0.99, blue: 1.00),
+            Color(red: 0.92, green: 0.97, blue: 1.00)
+        ],
+        startPoint: .topLeading,
+        endPoint: .bottomTrailing
+    )
 }
 
 #Preview {
