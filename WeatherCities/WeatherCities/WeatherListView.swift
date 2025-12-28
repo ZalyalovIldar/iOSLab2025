@@ -30,8 +30,12 @@ struct WeatherListView: View {
                     }
                     .onChange(of: viewModel.state) { _, newValue in
                         guard newValue == .content else { return }
-                        withAnimation(.easeOut(duration: 0.2)) { glowOn = true }
-                        withAnimation(.easeIn(duration: 0.35).delay(0.15)) { glowOn = false }
+                        withAnimation(.easeOut(duration: 0.3)) {
+                            glowOn = true
+                        }
+                        withAnimation(.easeIn(duration: 0.5).delay(0.5)) {
+                            glowOn = false
+                        }
                     }
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
