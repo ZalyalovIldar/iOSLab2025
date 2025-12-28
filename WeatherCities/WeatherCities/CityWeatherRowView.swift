@@ -34,6 +34,7 @@ struct CityWeatherRowView: View {
             VStack(alignment: .trailing, spacing: 4) {
                 Text(item.temperatureText)
                     .font(.headline)
+                    .foregroundStyle(item.temperatureColor)
                     .monospacedDigit()
                 
                 HStack(spacing: 4) {
@@ -57,7 +58,7 @@ struct CityWeatherRowView: View {
 #Preview {
     CityWeatherRowView(item: CityWeather(
         city: City(name: "Madrid", latitude: 0, longitude: 0),
-        temperatureC: 18.4,
+        temperatureC: 25,
         windSpeedKmh: 11,
         windDirectionDeg: 120,
         weatherCode: 95,

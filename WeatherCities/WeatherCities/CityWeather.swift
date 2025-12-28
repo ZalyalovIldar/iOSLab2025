@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct CityWeather: Identifiable, Hashable {
-    var id: City { city }
+    var id: String { city.id }
     let city: City
 
     let temperatureC: Double
@@ -70,6 +71,21 @@ extension CityWeather {
         case 247.5..<292.5: return "W"
         case 292.5..<337.5: return "NW"
         default: return ""
+        }
+    }
+    
+    var temperatureColor: Color {
+        switch temperatureC {
+        case ..<0:
+            return .blue
+        case 0..<15:
+            return .cyan
+        case 15..<25:
+            return .primary
+        case 25..<35:
+            return .red
+        default:
+            return .red
         }
     }
 }

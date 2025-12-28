@@ -63,6 +63,9 @@ struct WeatherListView: View {
             .refreshable {
                 await viewModel.load()
             }
+            .transition(.opacity.combined(with: .move(edge: .bottom)))
+            .animation(.easeInOut(duration: 0.25), value: viewModel.state)
+            .animation(.easeInOut(duration: 0.15), value: viewModel.searchText)
 
         case .error(let message):
             ErrorView(message: message) {
