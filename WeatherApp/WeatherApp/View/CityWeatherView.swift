@@ -14,7 +14,7 @@ struct CityWeatherView: View {
         ZStack {
             StarSkyView()
             VStack {
-                if cityWeatherViewModel.isLoading ||  cityWeatherViewModel.selectedCityWeather == nil {
+                if cityWeatherViewModel.isLoading || cityWeatherViewModel.selectedCityWeather == nil {
                     ProgressView()
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {

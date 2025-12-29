@@ -47,4 +47,3 @@ struct CityWeatherRowView: View {
             .padding(.horizontal)
     }
 }
-
