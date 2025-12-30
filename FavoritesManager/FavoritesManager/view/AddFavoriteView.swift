@@ -17,6 +17,7 @@ struct AddFavoriteView: View {
 
     @State private var title: String = ""
     @State private var author: String = ""
+    @State private var description: String = ""
     
     @State private var selectedPhotoItem: PhotosPickerItem?
     @State private var coverImageData: Data?
@@ -27,51 +28,77 @@ struct AddFavoriteView: View {
     }
 
     var body: some View {
+        
         NavigationStack {
-            Form {
-                Section("Book") {
-                    TextField("Title", text: $title)
-                    TextField("Author", text: $author)
-                }
+            
+            ZStack {
                 
-                Section("Cover") {
-                    PhotosPicker(selection: $selectedPhotoItem, matching: .images) {
-                        Label("Choose Photo", systemImage: "photo")
+                Color.backgroundGradient
+                    .ignoresSafeArea()
+
+                Form {
+                    Section("Book") {
+                        TextField("Title", text: $title)
+                        TextField("Author", text: $author)
+                    }
+                    
+                    Section("Details") {
+                        TextField(
+                            "Description",
+                            text: $description,
+                            axis: .vertical
+                        )
+                        .lineLimit(3...8)
                     }
 
-                    if let coverImageData, let uiImage = UIImage(data: coverImageData) {
-                        Image(uiImage: uiImage)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxHeight: 180)
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
-                    } else {
-                        HStack {
-                            Spacer()
-                            
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(.quaternary)
-                                .frame(width: 92, height: 102)
-                                .overlay(
-                                    Image(systemName: "book")
-                                        .foregroundStyle(.secondary)
-                                )
-                            
-                            Spacer()
+                    Section("Cover") {
+                        
+                        PhotosPicker(selection: $selectedPhotoItem, matching: .images) {
+                            Label("Choose Photo", systemImage: "photo")
                         }
-                        Text("No photo selected")
-                            .foregroundStyle(.secondary)
-                    }
+                        
+                        if let coverImageData, let uiImage = UIImage(data: coverImageData) {
+                            HStack {
+                                Spacer()
+                                Image(uiImage: uiImage)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(maxHeight: 240)
+                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                Spacer()
+                            }
+                        } else {
+                            HStack {
+                                
+                                Spacer()
 
-                    if coverImageData != nil {
-                        Button(role: .destructive) {
-                            coverImageData = nil
-                            selectedPhotoItem = nil
-                        } label: {
-                            Label("Remove Photo", systemImage: "trash")
+                                RoundedRectangle(cornerRadius: 12)
+                                    .stroke(.secondary, lineWidth: 1)
+                                    .fill(Color.placeholderGradient)
+                                    .frame(width: 92, height: 102)
+                                    .overlay(
+                                        Image(systemName: "book")
+                                    )
+
+                                Spacer()
+                            }
+
+                            Text("No photo selected")
+                                .foregroundStyle(.secondary)
+                        }
+
+                        if coverImageData != nil {
+                            Button(role: .destructive) {
+                                coverImageData = nil
+                                selectedPhotoItem = nil
+                            } label: {
+                                Label("Remove Photo", systemImage: "trash")
+                                    .foregroundStyle(.red)
+                            }
                         }
                     }
                 }
+                .scrollContentBackground(.hidden)
             }
             .onChange(of: selectedPhotoItem) { _, newItem in
                 guard let newItem else { return }
@@ -85,7 +112,6 @@ struct AddFavoriteView: View {
                     }
                 }
             }
-
             .navigationTitle("Add Favorite")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -93,7 +119,12 @@ struct AddFavoriteView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Save") {
-                        viewModel.add(title: title, author: author, coverImageData: coverImageData)
+                        viewModel.add(
+                            title: title,
+                            author: author,
+                            coverImageData: coverImageData,
+                            description: description
+                        )
                         dismiss()
                     }
                     .disabled(!canSave)

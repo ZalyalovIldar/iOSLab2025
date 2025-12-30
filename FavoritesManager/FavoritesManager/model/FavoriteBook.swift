@@ -13,13 +13,15 @@ struct FavoriteBook: Identifiable, Codable, Equatable {
     var author: String
     var createdAt: Date
     var coverImageData: Data?
+    var description: String
 
-    init(id: UUID = UUID(), title: String, author: String, createdAt: Date = .now, coverImageData: Data? = nil) {
+    init(id: UUID = UUID(), title: String, author: String, createdAt: Date = .now, coverImageData: Data? = nil, description: String = "") {
         self.id = id
         self.title = title
         self.author = author
         self.createdAt = createdAt
         self.coverImageData = coverImageData
+        self.description = description
     }
 
     var firstLetterUppercased: String {

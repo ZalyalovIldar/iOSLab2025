@@ -8,6 +8,7 @@
 import Foundation
 
 actor FavoritesStore {
+    
     private let storage: FavoritesStorage
 
     init(storage: FavoritesStorage) {

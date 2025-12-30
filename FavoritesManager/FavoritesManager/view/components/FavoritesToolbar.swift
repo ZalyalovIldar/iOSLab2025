@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct FavoritesToolbar: ToolbarContent {
+    
     @Bindable var viewModel: FavoritesViewModel
 
     var body: some ToolbarContent {
+        
         ToolbarItem(placement: .topBarLeading) {
             Menu {
                 Picker("Sort", selection: $viewModel.sort) {
