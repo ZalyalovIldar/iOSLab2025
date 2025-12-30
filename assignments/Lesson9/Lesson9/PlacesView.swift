@@ -77,8 +77,7 @@ struct PlacesView: View {
         }
     }
     
-    @ViewBuilder
-    private var bodyContent: some View {
+    @ViewBuilder private var bodyContent: some View {
         if viewModel.filteredAndSortedPlaces.isEmpty {
             EmptyStateView(
                 title: "Нет мест",
