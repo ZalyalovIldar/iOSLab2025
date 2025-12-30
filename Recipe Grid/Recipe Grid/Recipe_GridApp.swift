@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct Recipe_GridApp: App {
+struct RecipeGridApp: App {
     @State var viewModel = RecipeViewModel(recipeService: MockRecipeService())
     var body: some Scene {
         WindowGroup {

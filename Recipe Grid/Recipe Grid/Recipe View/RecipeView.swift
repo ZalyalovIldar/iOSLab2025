@@ -158,8 +158,3 @@ struct RecipeView: View {
         }
     }
 }
-
-
-
-
-

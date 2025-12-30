@@ -19,7 +19,6 @@ struct RecipeDetailView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                // Large image
                 ZStack {
                     if hasImage {
                         Image(recipe.imageName)
@@ -72,4 +71,3 @@ struct RecipeDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 }
-

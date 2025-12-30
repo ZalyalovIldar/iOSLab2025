@@ -6,7 +6,7 @@
 //
 import SwiftUI
 
-struct RecipeCardView : View {
+struct RecipeCardView: View {
     let recipe: Recipe
     
     private let availableImages = ["balesh", "chak-chak", "kystyby", "triangle"]
