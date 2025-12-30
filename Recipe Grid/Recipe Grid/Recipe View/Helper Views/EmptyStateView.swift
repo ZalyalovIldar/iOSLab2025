@@ -13,7 +13,7 @@ struct EmptyStateView: View {
     var body: some View {
         VStack(spacing: 8) {
             Image(systemName: "rectangle.stack.badge.plus")
-                .font(.system(size:36))
+                .font(.system(size: 36))
             Text(title)
                 .font(.headline)
             Text(subtitle)

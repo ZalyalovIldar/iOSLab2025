@@ -17,10 +17,10 @@ struct AddRecipeSheet: View {
     @State private var summary: String = ""
     @State private var category: String = "Main"
     
-    var recipeToEdit: Recipe? = nil
+    var recipeToEdit: Recipe?
     
     var onAdd: (Recipe) -> Void
-    var onEdit: ((Recipe) -> Void)? = nil
+    var onEdit: ((Recipe) -> Void)?
     
     private var isEditMode: Bool {
         recipeToEdit != nil

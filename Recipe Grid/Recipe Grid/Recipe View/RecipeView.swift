@@ -11,8 +11,8 @@ struct RecipeView: View {
     @Bindable var viewModel: RecipeViewModel
     
     @State private var showAddView = false
-    @State private var recipeToEdit: Recipe? = nil
-    @State private var selectedRecipe: Recipe? = nil
+    @State private var recipeToEdit: Recipe?
+    @State private var selectedRecipe: Recipe?
     
     private let grid = [GridItem(.adaptive(minimum: 140), spacing: 12)]
     
@@ -105,8 +105,7 @@ struct RecipeView: View {
         }
     }
     
-    @ViewBuilder
-    private var bodyContent: some View {
+    @ViewBuilder private var bodyContent: some View {
         switch viewModel.screenState {
         case .loading:
             ProgressView()

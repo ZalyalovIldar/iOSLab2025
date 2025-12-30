@@ -13,7 +13,7 @@ struct ErrorStateView: View {
     var body: some View {
         VStack(spacing: 8) {
             Image(systemName: "exclamationmark.triangle.fill")
-                .font(.system(size:36))
+                .font(.system(size: 36))
                 .foregroundStyle(.red)
             Text(message)
                 .font(.headline)
