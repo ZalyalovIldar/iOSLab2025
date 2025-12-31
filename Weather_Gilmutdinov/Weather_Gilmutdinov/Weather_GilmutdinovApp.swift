@@ -1,10 +1,10 @@
 import SwiftUI
 
 @main
-struct CryptoList_GilmutdinovApp: App {
+struct Weather_GilmutdinovApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootWeatherView()
         }
     }
 }
