@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		E59C2B342F03F02B007F60FE /* Movie_Gilmutdinov.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movie_Gilmutdinov.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E59C2B802F046E19007F60FE /* CryptoList_Gilmutdinov.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoList_Gilmutdinov.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		E59C2B362F03F02B007F60FE /* Movie_Gilmutdinov */ = {
+		E59C2B822F046E19007F60FE /* CryptoList_Gilmutdinov */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Movie_Gilmutdinov;
+			path = CryptoList_Gilmutdinov;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E59C2B312F03F02B007F60FE /* Frameworks */ = {
+		E59C2B7D2F046E19007F60FE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -29,18 +29,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E59C2B2B2F03F02B007F60FE = {
+		E59C2B772F046E19007F60FE = {
 			isa = PBXGroup;
 			children = (
-				E59C2B362F03F02B007F60FE /* Movie_Gilmutdinov */,
-				E59C2B352F03F02B007F60FE /* Products */,
+				E59C2B822F046E19007F60FE /* CryptoList_Gilmutdinov */,
+				E59C2B812F046E19007F60FE /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		E59C2B352F03F02B007F60FE /* Products */ = {
+		E59C2B812F046E19007F60FE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E59C2B342F03F02B007F60FE /* Movie_Gilmutdinov.app */,
+				E59C2B802F046E19007F60FE /* CryptoList_Gilmutdinov.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,64 +48,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E59C2B332F03F02B007F60FE /* Movie_Gilmutdinov */ = {
+		E59C2B7F2F046E19007F60FE /* CryptoList_Gilmutdinov */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E59C2B3F2F03F02D007F60FE /* Build configuration list for PBXNativeTarget "Movie_Gilmutdinov" */;
+			buildConfigurationList = E59C2B8B2F046E1B007F60FE /* Build configuration list for PBXNativeTarget "CryptoList_Gilmutdinov" */;
 			buildPhases = (
-				E59C2B302F03F02B007F60FE /* Sources */,
-				E59C2B312F03F02B007F60FE /* Frameworks */,
-				E59C2B322F03F02B007F60FE /* Resources */,
+				E59C2B7C2F046E19007F60FE /* Sources */,
+				E59C2B7D2F046E19007F60FE /* Frameworks */,
+				E59C2B7E2F046E19007F60FE /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				E59C2B362F03F02B007F60FE /* Movie_Gilmutdinov */,
+				E59C2B822F046E19007F60FE /* CryptoList_Gilmutdinov */,
 			);
-			name = Movie_Gilmutdinov;
+			name = CryptoList_Gilmutdinov;
 			packageProductDependencies = (
 			);
-			productName = Movie_Gilmutdinov;
-			productReference = E59C2B342F03F02B007F60FE /* Movie_Gilmutdinov.app */;
+			productName = CryptoList_Gilmutdinov;
+			productReference = E59C2B802F046E19007F60FE /* CryptoList_Gilmutdinov.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		E59C2B2C2F03F02B007F60FE /* Project object */ = {
+		E59C2B782F046E19007F60FE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2620;
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
-					E59C2B332F03F02B007F60FE = {
+					E59C2B7F2F046E19007F60FE = {
 						CreatedOnToolsVersion = 26.2;
 					};
 				};
 			};
-			buildConfigurationList = E59C2B2F2F03F02B007F60FE /* Build configuration list for PBXProject "Movie_Gilmutdinov" */;
+			buildConfigurationList = E59C2B7B2F046E19007F60FE /* Build configuration list for PBXProject "CryptoList_Gilmutdinov" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = E59C2B2B2F03F02B007F60FE;
+			mainGroup = E59C2B772F046E19007F60FE;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = E59C2B352F03F02B007F60FE /* Products */;
+			productRefGroup = E59C2B812F046E19007F60FE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E59C2B332F03F02B007F60FE /* Movie_Gilmutdinov */,
+				E59C2B7F2F046E19007F60FE /* CryptoList_Gilmutdinov */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		E59C2B322F03F02B007F60FE /* Resources */ = {
+		E59C2B7E2F046E19007F60FE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,7 +115,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E59C2B302F03F02B007F60FE /* Sources */ = {
+		E59C2B7C2F046E19007F60FE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -125,7 +125,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		E59C2B3D2F03F02D007F60FE /* Debug */ = {
+		E59C2B892F046E1B007F60FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -188,7 +188,7 @@
 			};
 			name = Debug;
 		};
-		E59C2B3E2F03F02D007F60FE /* Release */ = {
+		E59C2B8A2F046E1B007F60FE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -244,7 +244,7 @@
 			};
 			name = Release;
 		};
-		E59C2B402F03F02D007F60FE /* Debug */ = {
+		E59C2B8C2F046E1B007F60FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -263,7 +263,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "kfu.Movie-Gilmutdinov";
+				PRODUCT_BUNDLE_IDENTIFIER = "kfu.CryptoList-Gilmutdinov";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -275,7 +275,7 @@
 			};
 			name = Debug;
 		};
-		E59C2B412F03F02D007F60FE /* Release */ = {
+		E59C2B8D2F046E1B007F60FE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -294,7 +294,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "kfu.Movie-Gilmutdinov";
+				PRODUCT_BUNDLE_IDENTIFIER = "kfu.CryptoList-Gilmutdinov";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -309,25 +309,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E59C2B2F2F03F02B007F60FE /* Build configuration list for PBXProject "Movie_Gilmutdinov" */ = {
+		E59C2B7B2F046E19007F60FE /* Build configuration list for PBXProject "CryptoList_Gilmutdinov" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E59C2B3D2F03F02D007F60FE /* Debug */,
-				E59C2B3E2F03F02D007F60FE /* Release */,
+				E59C2B892F046E1B007F60FE /* Debug */,
+				E59C2B8A2F046E1B007F60FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E59C2B3F2F03F02D007F60FE /* Build configuration list for PBXNativeTarget "Movie_Gilmutdinov" */ = {
+		E59C2B8B2F046E1B007F60FE /* Build configuration list for PBXNativeTarget "CryptoList_Gilmutdinov" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E59C2B402F03F02D007F60FE /* Debug */,
-				E59C2B412F03F02D007F60FE /* Release */,
+				E59C2B8C2F046E1B007F60FE /* Debug */,
+				E59C2B8D2F046E1B007F60FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = E59C2B2C2F03F02B007F60FE /* Project object */;
+	rootObject = E59C2B782F046E19007F60FE /* Project object */;
 }
