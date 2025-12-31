@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		E59C2BCC2F04ABE8007F60FE /* Weather_Gilmutdinov.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather_Gilmutdinov.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E59C2C122F04B162007F60FE /* Favorites_Gilmutdinov.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Favorites_Gilmutdinov.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		E59C2BCE2F04ABE8007F60FE /* Weather_Gilmutdinov */ = {
+		E59C2C142F04B162007F60FE /* Favorites_Gilmutdinov */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Weather_Gilmutdinov;
+			path = Favorites_Gilmutdinov;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E59C2BC92F04ABE8007F60FE /* Frameworks */ = {
+		E59C2C0F2F04B162007F60FE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -29,18 +29,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E59C2BC32F04ABE8007F60FE = {
+		E59C2C092F04B162007F60FE = {
 			isa = PBXGroup;
 			children = (
-				E59C2BCE2F04ABE8007F60FE /* Weather_Gilmutdinov */,
-				E59C2BCD2F04ABE8007F60FE /* Products */,
+				E59C2C142F04B162007F60FE /* Favorites_Gilmutdinov */,
+				E59C2C132F04B162007F60FE /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		E59C2BCD2F04ABE8007F60FE /* Products */ = {
+		E59C2C132F04B162007F60FE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E59C2BCC2F04ABE8007F60FE /* Weather_Gilmutdinov.app */,
+				E59C2C122F04B162007F60FE /* Favorites_Gilmutdinov.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,64 +48,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E59C2BCB2F04ABE8007F60FE /* Weather_Gilmutdinov */ = {
+		E59C2C112F04B162007F60FE /* Favorites_Gilmutdinov */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E59C2BD72F04ABEA007F60FE /* Build configuration list for PBXNativeTarget "Weather_Gilmutdinov" */;
+			buildConfigurationList = E59C2C1D2F04B164007F60FE /* Build configuration list for PBXNativeTarget "Favorites_Gilmutdinov" */;
 			buildPhases = (
-				E59C2BC82F04ABE8007F60FE /* Sources */,
-				E59C2BC92F04ABE8007F60FE /* Frameworks */,
-				E59C2BCA2F04ABE8007F60FE /* Resources */,
+				E59C2C0E2F04B162007F60FE /* Sources */,
+				E59C2C0F2F04B162007F60FE /* Frameworks */,
+				E59C2C102F04B162007F60FE /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				E59C2BCE2F04ABE8007F60FE /* Weather_Gilmutdinov */,
+				E59C2C142F04B162007F60FE /* Favorites_Gilmutdinov */,
 			);
-			name = Weather_Gilmutdinov;
+			name = Favorites_Gilmutdinov;
 			packageProductDependencies = (
 			);
-			productName = Weather_Gilmutdinov;
-			productReference = E59C2BCC2F04ABE8007F60FE /* Weather_Gilmutdinov.app */;
+			productName = Favorites_Gilmutdinov;
+			productReference = E59C2C122F04B162007F60FE /* Favorites_Gilmutdinov.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		E59C2BC42F04ABE8007F60FE /* Project object */ = {
+		E59C2C0A2F04B162007F60FE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2620;
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
-					E59C2BCB2F04ABE8007F60FE = {
+					E59C2C112F04B162007F60FE = {
 						CreatedOnToolsVersion = 26.2;
 					};
 				};
 			};
-			buildConfigurationList = E59C2BC72F04ABE8007F60FE /* Build configuration list for PBXProject "Weather_Gilmutdinov" */;
+			buildConfigurationList = E59C2C0D2F04B162007F60FE /* Build configuration list for PBXProject "Favorites_Gilmutdinov" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = E59C2BC32F04ABE8007F60FE;
+			mainGroup = E59C2C092F04B162007F60FE;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = E59C2BCD2F04ABE8007F60FE /* Products */;
+			productRefGroup = E59C2C132F04B162007F60FE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E59C2BCB2F04ABE8007F60FE /* Weather_Gilmutdinov */,
+				E59C2C112F04B162007F60FE /* Favorites_Gilmutdinov */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		E59C2BCA2F04ABE8007F60FE /* Resources */ = {
+		E59C2C102F04B162007F60FE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,7 +115,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E59C2BC82F04ABE8007F60FE /* Sources */ = {
+		E59C2C0E2F04B162007F60FE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -125,7 +125,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		E59C2BD52F04ABEA007F60FE /* Debug */ = {
+		E59C2C1B2F04B164007F60FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -188,7 +188,7 @@
 			};
 			name = Debug;
 		};
-		E59C2BD62F04ABEA007F60FE /* Release */ = {
+		E59C2C1C2F04B164007F60FE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -244,7 +244,7 @@
 			};
 			name = Release;
 		};
-		E59C2BD82F04ABEA007F60FE /* Debug */ = {
+		E59C2C1E2F04B164007F60FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -263,7 +263,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "kfu.Weather-Gilmutdinov";
+				PRODUCT_BUNDLE_IDENTIFIER = "kfu.Favorites-Gilmutdinov";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -275,7 +275,7 @@
 			};
 			name = Debug;
 		};
-		E59C2BD92F04ABEA007F60FE /* Release */ = {
+		E59C2C1F2F04B164007F60FE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -294,7 +294,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "kfu.Weather-Gilmutdinov";
+				PRODUCT_BUNDLE_IDENTIFIER = "kfu.Favorites-Gilmutdinov";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -309,25 +309,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E59C2BC72F04ABE8007F60FE /* Build configuration list for PBXProject "Weather_Gilmutdinov" */ = {
+		E59C2C0D2F04B162007F60FE /* Build configuration list for PBXProject "Favorites_Gilmutdinov" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E59C2BD52F04ABEA007F60FE /* Debug */,
-				E59C2BD62F04ABEA007F60FE /* Release */,
+				E59C2C1B2F04B164007F60FE /* Debug */,
+				E59C2C1C2F04B164007F60FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E59C2BD72F04ABEA007F60FE /* Build configuration list for PBXNativeTarget "Weather_Gilmutdinov" */ = {
+		E59C2C1D2F04B164007F60FE /* Build configuration list for PBXNativeTarget "Favorites_Gilmutdinov" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E59C2BD82F04ABEA007F60FE /* Debug */,
-				E59C2BD92F04ABEA007F60FE /* Release */,
+				E59C2C1E2F04B164007F60FE /* Debug */,
+				E59C2C1F2F04B164007F60FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = E59C2BC42F04ABE8007F60FE /* Project object */;
+	rootObject = E59C2C0A2F04B162007F60FE /* Project object */;
 }
