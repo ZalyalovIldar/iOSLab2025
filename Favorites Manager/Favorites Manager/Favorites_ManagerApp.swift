@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct Favorites_ManagerApp: App {
+struct FavoritesManagerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

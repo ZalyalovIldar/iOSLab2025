@@ -12,7 +12,7 @@ import SwiftUI
 class FavoritesViewModel: ObservableObject {
     @Published var favorites: [Favorite] = []
     @Published var filteredFavorites: [Favorite] = []
-    @Published var selectedFilter: String? = nil
+    @Published var selectedFilter: String?
     @Published var sortOption: SortOption = .title
     
     enum SortOption: String, CaseIterable {
