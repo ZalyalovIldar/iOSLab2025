@@ -1,6 +1,7 @@
 //
 //  ContentView.swift
-//  notee
+//  note_0
+//
 //
 
 
@@ -39,7 +40,7 @@ struct ContentView: View {
     @State private var new_note = NewNote()
     var body: some View {
         NavigationStack {
-            ZStack {
+            ZStack(alignment: .top) {
                 LinearGradient(
                     colors: [
                         Color.green.opacity(0.35),
@@ -51,18 +52,18 @@ struct ContentView: View {
                 )
                 .ignoresSafeArea()
                 VStack(spacing: 16) {
+                    Text("Заметки")
+                            .font(.system(size: 38, weight: .bold, design: .serif))
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .padding(.top, 5)
                     AddNote(new_note: new_note)
                     NotesList(new_note: new_note)
                 }
                 .font(.system(.body, design: .serif))
                 .padding()
             }
-            .toolbar{
-                ToolbarItem(placement: .principal){
-                    Text("Заметки")
-                        .font(.system(.headline, design: .serif))
-                }
-            }
+            //.navigationTitle("Заметки")
+            //.navigationBarTitleDisplayMode(.large)
             
             //.navigationTitle("Заметки")
             .tint(.orange)
@@ -95,6 +96,8 @@ struct NotesList: View {
                     NoteRow(note: note)
                         .listRowSeparator(.hidden)
                         .listRowBackground(Color.clear)
+                        .listRowInsets(EdgeInsets(top: 2, leading: 16, bottom: 2, trailing: 16))
+
                 }
                 .onDelete(perform: new_note.delete)
             }
@@ -121,10 +124,10 @@ struct NoteRow: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(12)
-        .background(Color.white.opacity(0.65))
-        .clipShape(RoundedRectangle(cornerRadius: 16))
-        .padding(.vertical, 6)
+        .padding(16)
+        .background(.regularMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 15))
+        //.padding(.vertical, 2)
     }
 }
 
@@ -132,7 +135,7 @@ struct NoteRow: View {
 struct AddNote: View {
     @Bindable var new_note: NewNote
     var body: some View{
-        VStack(spacing:12){
+        VStack(spacing:16){
             TextField("Заголовок", text: $new_note.title_in)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             TextField("Текст", text: $new_note.text_in)
@@ -147,7 +150,7 @@ struct AddNote: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(25)
-        .background(Color.white.opacity(0.65))
+        .background(.regularMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 16))
         //.padding(.vertical, 6)
         .padding(12)
@@ -164,4 +167,3 @@ struct AddNote: View {
 #Preview {
     ContentView()
 }
-
