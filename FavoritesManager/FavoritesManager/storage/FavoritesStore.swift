@@ -16,23 +16,26 @@ actor FavoritesStore {
     }
 
     func load() async -> [FavoriteBook] {
-        do { return try await storage.load() }
-        catch {
+        do {
+            return try await storage.load()
+        } catch {
             print("Error loading favorites: \(error)")
             return []
         }
     }
 
     func save(_ favorites: [FavoriteBook]) async {
-        do { try await storage.save(favorites) }
-        catch {
+        do {
+            try await storage.save(favorites)
+        } catch {
             print("Error saving favorites: \(error)")
         }
     }
 
     func clear() async {
-        do { try await storage.clear() }
-        catch {
+        do {
+            try await storage.clear()
+        } catch {
             print("Error clearing favorites: \(error)")
         }
     }

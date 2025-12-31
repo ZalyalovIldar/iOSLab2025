@@ -20,7 +20,9 @@ final class FileFavoritesStorage: FavoritesStorage {
     private let decoder: JSONDecoder
 
     init(filename: String = "favorites.json") {
-        let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        guard let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            fatalError("couldnt get Directory")
+        }
         self.fileURL = dir.appendingPathComponent(filename)
 
         let encoder = JSONEncoder()

@@ -148,8 +148,8 @@ struct FavoriteDetailView: View {
 }
 
 #Preview {
-    let vm = FavoritesViewModel()
+    let viewModel = FavoritesViewModel()
     let book = FavoriteBook(title: "Sample Book", author: "Sample Author", coverImageData: nil)
-    vm.favorites = [book]
-    return FavoriteDetailView(viewModel: vm, bookID: book.id)
+    viewModel.favorites = [book]
+    return FavoriteDetailView(viewModel: viewModel, bookID: book.id)
 }
