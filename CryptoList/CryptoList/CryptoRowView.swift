@@ -44,4 +44,3 @@ struct CryptoRowView: View {
         .padding(.vertical, 8)
     }
 }
-

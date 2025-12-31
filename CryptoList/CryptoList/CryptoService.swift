@@ -54,4 +54,3 @@ enum CryptoServiceError: Error, LocalizedError {
         }
     }
 }
-
