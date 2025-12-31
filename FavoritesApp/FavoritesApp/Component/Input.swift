@@ -16,4 +16,3 @@ struct Input: View {
             .glassEffect(.clear, in: .rect(cornerRadius: 20))
     }
 }
-
