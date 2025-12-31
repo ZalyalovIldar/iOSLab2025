@@ -39,4 +39,3 @@ struct MovieRowView: View {
     MovieRowView(movie: Movie(title: "The Matrix", genre: "Sci-Fi", description: "A computer hacker learns from mysterious rebels about the true nature of his reality.", releaseYear: 1999))
         .padding()
 }
-

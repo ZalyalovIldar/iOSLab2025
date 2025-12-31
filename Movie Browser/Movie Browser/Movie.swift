@@ -7,4 +7,3 @@ struct Movie: Identifiable, Codable, Hashable {
     var description: String
     var releaseYear: Int
 }
-

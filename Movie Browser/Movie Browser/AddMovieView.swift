@@ -1,7 +1,8 @@
 import SwiftUI
 
 struct AddMovieView: View {
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss)
+    var dismiss
     @Bindable var viewModel: MovieViewModel
     
     @State private var title = ""
@@ -56,4 +57,3 @@ struct AddMovieView: View {
         }
     }
 }
-
