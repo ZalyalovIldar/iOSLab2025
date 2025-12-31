@@ -11,13 +11,14 @@ import PhotosUI
 struct CreateRecipeView: View {
     @Environment(\.dismiss)
     private var dismiss
+    
     @Bindable var recipeViewModel: RecipeViewModel
     
     @State private var photoSelectionViewModel = PhotoSelectionViewModel()
     @State private var title: String
     @State private var summary: String
     @State private var selectedCategory: FoodCategory
-    
+
     @State var imageName: String
     
     private var folderName = "recipe_images"

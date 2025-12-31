@@ -18,7 +18,6 @@ final class LocalFileManager {
         
         guard let data = image.pngData(),
               let url = getImageUrl(imageName: imageName, folderName: folderName) else { return }
-        
         do {
             try data.write(to: url)
         } catch {
