@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		276807B72F0D115000E1B62E /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 276807B62F0D115000E1B62E /* CachedAsyncImage */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		277B87692F0D02F800F06610 /* CryptoCurrencies DZ7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CryptoCurrencies DZ7.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				276807B72F0D115000E1B62E /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = "CryptoCurrencies DZ7";
 			packageProductDependencies = (
+				276807B62F0D115000E1B62E /* CachedAsyncImage */,
 			);
 			productName = "CryptoCurrencies DZ7";
 			productReference = 277B87692F0D02F800F06610 /* CryptoCurrencies DZ7.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = 277B87602F0D02F800F06610;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				276807B52F0D115000E1B62E /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 277B876A2F0D02F800F06610 /* Products */;
 			projectDirPath = "";
@@ -332,6 +341,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		276807B52F0D115000E1B62E /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		276807B62F0D115000E1B62E /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 276807B52F0D115000E1B62E /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 277B87612F0D02F800F06610 /* Project object */;
 }

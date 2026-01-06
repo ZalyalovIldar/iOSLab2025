@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct CryptoView: View {
     @Bindable var viewModel: CryptoViewModel
@@ -61,11 +62,23 @@ struct CryptoRow: View {
     let crypto: Crypto
     
     var body: some View {
-        VStack(alignment: .leading){
-            HStack{
-                Text(crypto.name)
-            }
+        HStack(spacing: 12){
             
-            Text("\(crypto.currentPrice, format: .number.precision(.fractionLength(2))) $")        }
+            CachedAsyncImage(url: crypto.imageURL) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+            } placeholder: {
+                ProgressView()
+            }
+            .frame(width: 32, height: 32)
+            
+            VStack(alignment: .leading){
+                HStack{
+                    Text(crypto.name)
+                }
+                
+                Text("\(crypto.currentPrice, format: .number.precision(.fractionLength(2))) $")        }
+        }
     }
 }

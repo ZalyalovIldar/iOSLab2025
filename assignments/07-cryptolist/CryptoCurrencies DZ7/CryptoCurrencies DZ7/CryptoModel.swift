@@ -8,17 +8,16 @@
 import Foundation
 
 struct Crypto: Decodable, Identifiable{
-    let id: UUID = UUID()
+    let id: String
     let name: String
     let symbol: String
     let currentPrice: Double
-    let imageURL: String
-    
+    let imageURL: URL
 }
 
 extension Crypto{
     enum CodingKeys: String, CodingKey {
-        case name, symbol
+        case name, symbol, id
         
         case currentPrice = "current_price"
         case imageURL = "image"
