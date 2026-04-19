@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct UIKitSwiftUIIntegrationApp: App {
+struct Sem2HW3App: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
